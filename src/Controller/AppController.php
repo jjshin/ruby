@@ -44,7 +44,7 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         
-		$this->loadComponent('Auth', [
+		/*$this->loadComponent('Auth', [
 			'authorize' => 'Controller',
             'authenticate' => [
                 'Form' => [
@@ -63,7 +63,7 @@ class AppController extends Controller
 
         // Allow the display action so our pages controller
         // continues to work.
-        $this->Auth->allow(['display']);
+        $this->Auth->allow(['display']); */
 		
     }
 	
