@@ -83,6 +83,10 @@ body {
     text-align: left;
 }
 
+#content-body.login .form-wrapper label:last-of-type {
+    margin-top: 15px;
+}
+
 #content-body.login .form-wrapper div.input { display: block }
 #content-body.login .form-wrapper button.btn {
     width: 100%;
