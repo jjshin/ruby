@@ -40,7 +40,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <div id="logo" class="container">
-        <a href="#"><img src="/img/logo.png"></a>
+        <a href="/"><img src="/img/logo.png"></a>
         <div class="login">
             <a class="btn btn-info" href="/users/login" role="button">Login</a>
         </div>
@@ -130,7 +130,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
     </div>
 
-    <?= $this->fetch ('content'); ?>
+    <div id="content-body" class="container <?= $this->template ?>">
+        <?= $this->fetch ('content'); ?>
+    </div>
 
     <div id="footer-wrapper">
         <div id="footer" class="container">
