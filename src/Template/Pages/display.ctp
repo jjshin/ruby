@@ -28,126 +28,221 @@ endif;
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
 <!DOCTYPE html>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-
-Name       : SquareAway 
-Description: A four-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20130804
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SquareAway</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-
+    <?= $this->Html->charset() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?= $cakeDescription ?>
+    </title>
+    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('cake.css') ?>
 </head>
-<body>
-<div id="logo" class="container">
-	<h1><a href="#" class="icon icon-spinner"><span>SquareAway</span></a></h1>
-</div>
-<div id="header">
-	<div id="menu" class="container">
-		<ul>
-			<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-			<li><a href="#" accesskey="1" title="">Services</a></li>
-			<li><a href="#" accesskey="2" title="">Our Clients</a></li>
-			<li><a href="#" accesskey="3" title="">About Us</a></li>
-			<li><a href="#" accesskey="4" title="">Careers</a></li>
-			<li><a href="#" accesskey="5" title="">Contact Us</a></li>
-		</ul>
-	</div>
-</div>
-<div id="page-wrapper">
-	<div id="banner" class="container"><a href="#"><img src="images/pic06.jpg" width="1200" height="300" alt="" /></a></div>
-	<div id="featured" class="container">
-		<div class="box">
-			<div class="title">
-				<h2>Recent Updates</h2>
-			</div>
-			<p>Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Nam in massa. Sed vel tellus. Curabitur sem urna, consequat vel, suscipit in, mattis placerat, nulla. Sed ac leo.</p>
-		</div>
-		<div id="box1"> <a href="#"><img src="images/pic01.jpg" alt="" /></a>
-			<h2 class="subtitle">Donec dictum metus</h2>
-			<p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipiy.</p>
-			<ul class="contact">
-				<li><a href="#" class="icon icon-facebook"><span></span></a></li>
-				<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
-				<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
-			</ul>
-		</div>
-		<div id="box2"> <a href="#"><img src="images/pic02.jpg" alt="" /></a>
-			<h2 class="subtitle">Etiam posuere augue</h2>
-			<p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit.</p>
-			<ul class="contact">
-				<li><a href="#" class="icon icon-facebook"><span></span></a></li>
-				<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
-				<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
-			</ul>
-		</div>
-		<div id="box3"> <a href="#"><img src="images/pic03.jpg" alt="" /></a>
-			<h2 class="subtitle">Nulla luctus eleifend</h2>
-			<p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi.</p>
-			<ul class="contact">
-				<li><a href="#" class="icon icon-facebook"><span></span></a></li>
-				<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
-				<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
-			</ul>
-		</div>
-		<div id="box4"> <a href="#"><img src="images/pic04.jpg" alt="" /></a>
-			<h2 class="subtitle">Fusce ultrices fringilla </h2>
-			<p>Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
-			<ul class="contact">
-				<li><a href="#" class="icon icon-facebook"><span></span></a></li>
-				<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
-				<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
-			</ul>
-		</div>
-	</div>
-	<div id="page" class="container">
-		<div id="content">
-			<div class="title">
-				<h2>Welcome <span class="byline">to our website</span></h2>
-			</div>
-			<p>This is <strong>SquareAway</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p>
-			<a href="#" class="button icon icon-arrow-right">Learn More</a>
-		</div>
-		<div id="sidebar"><a href="#"><img src="images/pic05.jpg" width="588" height="250" alt="" /></a></div>
-	</div>
-</div>
-<div id="footer-wrapper">
-	<div id="footer" class="container">
-		<div id="fbox1">
-			<h2>Maecenas luctus</h2>
-			<p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>
-			<a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
-		<div id="fbox2">
-			<h2>Integer gravida</h2>
-			<p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris.</p>
-			<a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
-		<div id="fbox3">
-			<h2>Praesent scelerisque</h2>
-			<p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
-			<a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
-		<div id="fbox4">
-			<h2>Etiam rhoncus volutpat</h2>
-			<p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
-			<a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
-	</div>
-</div>
-<div id="copyright">
-	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
-</div>
+<body class="home">
+    <header>
+        <div class="header-image">
+            <?= $this->Html->image('http://cakephp.org/img/logo-cake.png') ?>
+            <h1>Get the Ovens Ready</h1>
+        </div>
+    </header>
+    <div id="content">
+        <div class="row">
+            <div class="columns large-12 ctp-warning checks">
+                Please be aware that this page will not be shown if you turn off debug mode unless you replace src/Template/Pages/home.ctp with your own version.
+            </div>
+            <?php Debugger::checkSecurityKeys(); ?>
+            <div id="url-rewriting-warning" class="columns large-12 url-rewriting checks">
+                <p class="problem">URL rewriting is not properly configured on your server.</p>
+                <p>
+                    1) <a target="_blank" href="http://book.cakephp.org/3.0/en/installation.html#url-rewriting">Help me configure it</a>
+                </p>
+                <p>
+                    2) <a target="_blank" href="http://book.cakephp.org/3.0/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
+                </p>
+            </div>
+
+            <div class="columns large-12 checks">
+                <h4>Environment</h4>
+                <?php if (version_compare(PHP_VERSION, '5.5.9', '>=')): ?>
+                    <p class="success">Your version of PHP is 5.5.9 or higher (detected <?= PHP_VERSION ?>).</p>
+                <?php else: ?>
+                    <p class="problem">Your version of PHP is too low. You need PHP 5.5.9 or higher to use CakePHP (detected <?= PHP_VERSION ?>).</p>
+                <?php endif; ?>
+
+                <?php if (extension_loaded('mbstring')): ?>
+                    <p class="success">Your version of PHP has the mbstring extension loaded.</p>
+                <?php else: ?>
+                    <p class="problem">Your version of PHP does NOT have the mbstring extension loaded.</p>;
+                <?php endif; ?>
+
+                <?php if (extension_loaded('openssl')): ?>
+                    <p class="success">Your version of PHP has the openssl extension loaded.</p>
+                <?php elseif (extension_loaded('mcrypt')): ?>
+                    <p class="success">Your version of PHP has the mcrypt extension loaded.</p>
+                <?php else: ?>
+                    <p class="problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</p>
+                <?php endif; ?>
+
+                <?php if (extension_loaded('intl')): ?>
+                    <p class="success">Your version of PHP has the intl extension loaded.</p>
+                <?php else: ?>
+                    <p class="problem">Your version of PHP does NOT have the intl extension loaded.</p>
+                <?php endif; ?>
+                <hr>
+
+                <h4>Filesystem</h4>
+                <?php if (is_writable(TMP)): ?>
+                    <p class="success">Your tmp directory is writable.</p>
+                <?php else: ?>
+                    <p class="problem">Your tmp directory is NOT writable.</p>
+                <?php endif; ?>
+
+                <?php if (is_writable(LOGS)): ?>
+                    <p class="success">Your logs directory is writable.</p>
+                <?php else: ?>
+                    <p class="problem">Your logs directory is NOT writable.</p>
+                <?php endif; ?>
+
+                <?php $settings = Cache::config('_cake_core_'); ?>
+                <?php if (!empty($settings)): ?>
+                    <p class="success">The <em><?= $settings['className'] ?>Engine</em> is being used for core caching. To change the config edit config/app.php</p>
+                <?php else: ?>
+                    <p class="problem">Your cache is NOT working. Please check the settings in config/app.php</p>
+                <?php endif; ?>
+
+                <hr>
+                <h4>Database</h4>
+                <?php
+                    try {
+                        $connection = ConnectionManager::get('default');
+                        $connected = $connection->connect();
+                    } catch (Exception $connectionError) {
+                        $connected = false;
+                        $errorMsg = $connectionError->getMessage();
+                        if (method_exists($connectionError, 'getAttributes')):
+                            $attributes = $connectionError->getAttributes();
+                            if (isset($errorMsg['message'])):
+                                $errorMsg .= '<br />' . $attributes['message'];
+                            endif;
+                        endif;
+                    }
+                ?>
+                <?php if ($connected): ?>
+                    <p class="success">CakePHP is able to connect to the database.</p>
+                <?php else: ?>
+                    <p class="problem">CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
+                <?php endif; ?>
+
+                <hr>
+                <h4>DebugKit</h4>
+                <?php if (Plugin::loaded('DebugKit')): ?>
+                    <p class="success">DebugKit is loaded.</p>
+                <?php else: ?>
+                    <p class="problem">DebugKit is NOT loaded. You need to either install pdo_sqlite, or define the "debug_kit" connection name.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="columns large-6">
+                <h3>Editing this Page</h3>
+                <ul>
+                    <li>To change the content of this page, edit: src/Template/Pages/home.ctp.</li>
+                    <li>You can also add some CSS styles for your pages at: webroot/css/.</li>
+                </ul>
+            </div>
+            <div class="columns large-6">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/">CakePHP 3.0 Docs</a></li>
+                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/bookmarks/intro.html">The 15 min Bookmarker Tutorial</a></li>
+                    <li><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html">The 15 min Blog Tutorial</a></li>
+                </ul>
+                <p>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="row">
+            <div class="columns large-12">
+                <h3 class="">More about Cake</h3>
+                <p>
+                    CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Front Controller and MVC.
+                </p>
+                <p>
+                    Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
+                </p>
+
+                <h3>Help and Bug Reports</h3>
+                <ul>
+                    <li>
+                        <a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
+                        <ul><li>Live chat about CakePHP</li></ul>
+                    </li>
+                    <li>
+                        <a href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
+                        <ul><li>CakePHP issues and pull requests</li></ul>
+                    </li>
+                    <li>
+                        <a href="http://discourse.cakephp.org/">CakePHP Forum</a>
+                        <ul><li>CakePHP official discussion forum</li></ul>
+                    </li>
+                    <li>
+                        <a href="https://groups.google.com/group/cake-php">CakePHP Google Group</a>
+                        <ul><li>Community mailing list</li></ul>
+                    </li>
+                </ul>
+
+                <h3>Docs and Downloads</h3>
+                <ul>
+                    <li>
+                        <a href="http://api.cakephp.org/3.0/">CakePHP API</a>
+                        <ul><li>Quick Reference</li></ul>
+                    </li>
+                    <li>
+                        <a href="http://book.cakephp.org/3.0/en/">CakePHP Documentation</a>
+                        <ul><li>Your Rapid Development Cookbook</li></ul>
+                    </li>
+                    <li>
+                        <a href="http://bakery.cakephp.org">The Bakery</a>
+                        <ul><li>Everything CakePHP</li></ul>
+                    </li>
+                    <li>
+                        <a href="http://plugins.cakephp.org">CakePHP plugins repo</a>
+                        <ul><li>A comprehensive list of all CakePHP plugins created by the community</li></ul>
+                    </li>
+                    <li>
+                        <a href="https://github.com/cakephp/">CakePHP Code</a>
+                        <ul><li>For the Development of CakePHP Git repository, Downloads</li></ul>
+                    </li>
+                    <li>
+                        <a href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
+                        <ul><li>A curated list of amazingly awesome CakePHP plugins, resources and shiny things.</li></ul>
+                    </li>
+                    <li>
+                        <a href="http://www.cakephp.org">CakePHP</a>
+                        <ul><li>The Rapid Development Framework</li></ul>
+                    </li>
+                </ul>
+
+                <h3>Training and Certification</h3>
+                <ul>
+                    <li>
+                        <a href="http://cakefoundation.org/">Cake Software Foundation</a>
+                        <ul><li>Promoting development related to CakePHP</li></ul>
+                    </li>
+                    <li>
+                        <a href="http://training.cakephp.org/">CakePHP Training</a>
+                        <ul><li>Learn to use the CakePHP framework</li></ul>
+                    </li>
+                    <li>
+                        <a href="http://certification.cakephp.org/">CakePHP Certification</a>
+                        <ul><li>Become a certified CakePHP developer</li></ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

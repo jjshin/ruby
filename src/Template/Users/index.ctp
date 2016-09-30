@@ -9,15 +9,15 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('firstname') ?></th>
-                <th><?= $this->Paginator->sort('lastname') ?></th>
-                <th><?= $this->Paginator->sort('username') ?></th>
-                <th><?= $this->Paginator->sort('password') ?></th>
-                <th><?= $this->Paginator->sort('email') ?></th>
-                <th><?= $this->Paginator->sort('phone') ?></th>
-                <th><?= $this->Paginator->sort('role') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('role') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
