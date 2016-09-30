@@ -1,0 +1,51 @@
+body {
+    min-width: 1280px;
+    background: none
+}
+
+.container {
+    width: 1280px;
+}
+
+#logo {
+    position: relative;
+    text-align: center
+}
+
+#logo .login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#logo a.btn { color: white }
+
+#menu {
+    text-align: center;
+}
+
+#menu a {
+    padding: 1em 1.5em;
+    cursor: pointer;
+}
+
+#menu .dropdown li {
+    position: relative;
+}
+
+#menu .dropdown li ul.dropdown-menu {
+    width: 160px;
+}
+
+#menu .dropdown li ul.dropdown-menu li {
+    width: 100%;
+}
+
+#menu .dropdown li ul.dropdown-menu a {
+    color: black;
+    font-size: 0.6em;
+}
+
+@media (min-width: 768px) {
+    .container { width: 1280px }
+}
