@@ -13,7 +13,14 @@ class UsersController extends AppController
 	public function initialize()
 	{
 		parent::initialize();
+		$this->Auth->deny();
 		$this->Auth->allow(['logout',  'add']);
+	}
+	
+	
+	public function isAuthorized($user)
+	{
+		return parent::isAuthorized($user);
 	}
 
     /**
@@ -41,9 +48,16 @@ class UsersController extends AppController
 		$this->viewBuilder()->layout('admin');
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
+			//print_r($user);exit;
 			if ($user) {
 				$this->Auth->setUser($user);
-				return $this->redirect($this->Auth->redirectUrl());
+				if($this->Auth->user('role')==1){	//Admin
+					return $this->redirect('/users/index');
+				}else{
+					return $this->redirect('/');
+				}
+				
+				//return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error('Your username or password is incorrect.');
 		}
@@ -89,7 +103,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
-
+	
     /**
      * Edit method
      *

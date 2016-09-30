@@ -21,7 +21,11 @@
             echo $this->Form->input('password');
             echo $this->Form->input('email');
             echo $this->Form->input('phone');
-            echo $this->Form->input('role');
+			 echo $this->Form->select(
+				'role',
+				array(1=>'Admin', 10=>'User'),
+				['empty' => '(choose one)']
+			);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

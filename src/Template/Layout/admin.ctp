@@ -41,6 +41,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <div id="logo" class="container">
 	<h1><a href="#" class="icon icon-spinner"><span>SquareAway</span></a></h1>
 </div>
+
+<div>
+	<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
+		<a href="/users/login">Login</a>
+	<?php } else { ?>
+		<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong> 
+		<a href="/users/logout">Logout</a>
+	<?php } ?>
+</div>
+
 <div>
 	<?= $this->fetch('content'); ?>
 </div>

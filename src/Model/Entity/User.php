@@ -15,6 +15,8 @@ use Cake\ORM\Entity;
  * @property int $phone
  * @property int $role
  */
+ use Cake\Auth\DefaultPasswordHasher;
+ 
 class User extends Entity
 {
 
@@ -40,4 +42,10 @@ class User extends Entity
     protected $_hidden = [
         'password'
     ];
+
+
+    protected function _setPassword($password)
+    {
+        return (new DefaultPasswordHasher)->hash($password);
+    }
 }

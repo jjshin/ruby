@@ -45,30 +45,31 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         
 		$this->loadComponent('Auth', [
-			'authorize' => 'Controller',
-            'authenticate' => [
-                'Form' => [
-                    'fields' => [
-                        'username' => 'username',
-                        'password' => 'password'
-                    ]
-                ]
-            ],
-            'loginAction' => [
-                'controller' => 'Users',
-                'action' => 'login'
-            ],
-			'unauthorizedRedirect' => $this->referer()
+			'authorize' => ['Controller'],
+			'loginRedirect' => [
+				'controller' => 'Main',
+				'action' => 'index'
+			],
+			'logoutRedirect' => [
+				'controller' => 'Main',
+				'action' => 'index'
+			]
         ]);
 
         // Allow the display action so our pages controller
         // continues to work.
-        $this->Auth->allow(['display']);
+        $this->Auth->allow();
 		
     }
 	
 	public function isAuthorized($user)
 	{
+		// Admin can access every action
+		if (isset($user['role']) && $user['role'] == 1) {
+			return true;
+		}
+
+		// Default deny
 		return false;
 	}
 
