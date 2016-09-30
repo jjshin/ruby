@@ -20,7 +20,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Ruby's Gifts</title>
+<title>Ruby's Gifts!</title>
 
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
