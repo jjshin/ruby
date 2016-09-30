@@ -16,8 +16,8 @@ class UsersController extends AppController
 		$this->Auth->deny();
 		$this->Auth->allow(['logout',  'add']);
 	}
-	
-	
+
+
 	public function isAuthorized($user)
 	{
 		return parent::isAuthorized($user);
@@ -36,16 +36,15 @@ class UsersController extends AppController
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
     }
-	
+
 	public function logout()
 	{
 		$this->Flash->success('You are now logged out.');
 		return $this->redirect($this->Auth->logout());
 	}
-	
+
 	public function login()
 	{
-		$this->viewBuilder()->layout('admin');
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
 			//print_r($user);exit;
@@ -56,7 +55,7 @@ class UsersController extends AppController
 				}else{
 					return $this->redirect('/');
 				}
-				
+
 				//return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error('Your username or password is incorrect.');
@@ -103,7 +102,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
-	
+
     /**
      * Edit method
      *
