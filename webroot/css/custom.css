@@ -43,7 +43,8 @@ body {
 
 #menu .dropdown li ul.dropdown-menu a {
     color: black;
-    font-size: 0.6em;
+    font-size: 12px;
+    padding: 10px 15px;
 }
 
 @media (min-width: 768px) {
