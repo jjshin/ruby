@@ -10,6 +10,11 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+	public function initialize()
+	{
+		parent::initialize();
+		$this->Auth->allow(['logout',  'add']);
+	}
 
     /**
      * Index method
@@ -18,11 +23,31 @@ class UsersController extends AppController
      */
     public function index()
     {
+		$this->viewBuilder()->layout('admin');
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
     }
+	
+	public function logout()
+	{
+		$this->Flash->success('You are now logged out.');
+		return $this->redirect($this->Auth->logout());
+	}
+	
+	public function login()
+	{
+		$this->viewBuilder()->layout('admin');
+		if ($this->request->is('post')) {
+			$user = $this->Auth->identify();
+			if ($user) {
+				$this->Auth->setUser($user);
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Flash->error('Your username or password is incorrect.');
+		}
+	}
 
     /**
      * View method
@@ -33,6 +58,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+		$this->viewBuilder()->layout('admin');
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -48,6 +74,7 @@ class UsersController extends AppController
      */
     public function add()
     {
+		$this->viewBuilder()->layout('admin');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
@@ -72,6 +99,7 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+		$this->viewBuilder()->layout('admin');
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -98,6 +126,7 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+		$this->viewBuilder()->layout('admin');
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
