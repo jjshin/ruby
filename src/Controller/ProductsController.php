@@ -18,9 +18,11 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
+        /*
+		$this->paginate = [
             'contain' => ['Subcategory']
         ];
+		*/
         $products = $this->paginate($this->Products);
 
         $this->set(compact('products'));
@@ -36,6 +38,26 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
+        $product = $this->Products->get($id, [
+            'contain' => ['Subcategory']
+        ]);
+
+        $this->set('product', $product);
+        $this->set('_serialize', ['product']);
+    }
+	
+	public function adminIndex()
+    {
+        $this->viewBuilder()->layout('admin');
+        $products = $this->paginate($this->Products);
+
+        $this->set(compact('products'));
+        $this->set('_serialize', ['products']);
+    }
+	
+	public function adminView($id = null)
+    {
+		$this->viewBuilder()->layout('admin');
         $product = $this->Products->get($id, [
             'contain' => ['Subcategory']
         ]);

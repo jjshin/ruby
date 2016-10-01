@@ -52,6 +52,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </div>
 
 <div>
+	<ul>
+		<li><a href="/users">User</a></li>
+		<li><a href="/category">Category</a></li>
+		<?php /*<li><a href="/products/adminIndex">Product</a></li>*/ ?>
+	</ul>
+</div>
+
+<div>
+	<?= $this->Flash->render(); ?>
 	<?= $this->fetch('content'); ?>
 </div>
 <div id="copyright">
