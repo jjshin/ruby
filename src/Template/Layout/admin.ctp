@@ -44,27 +44,27 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
 	<div id="logo" class="container">
-        <a href="/"><img src="/img/logo.png"></a>
+        <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
         <div class="login">
-            <a class="btn btn-info" href="/users/login" role="button">Login</a>
+            <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
         </div>
     </div>
 
 <div>
 	<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
-		<a href="/users/login">Login</a>
+		<a href="<?php echo  $this->request->webroot;?>users/login">Login</a>
 	<?php } else { ?>
 		<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong> 
-		<a href="/users/logout">Logout</a>
+		<a href="<?php echo  $this->request->webroot;?>users/logout">Logout</a>
 	<?php } ?>
 </div>
 
 <div>
 	<h3>Admin Menu</h3>
 	<ul>
-		<li><a href="/users">User</a></li>
-		<li><a href="/category">Category</a></li>
-		<li><a href="/products/adminIndex">Product</a></li>
+		<li><a href="<?php echo  $this->request->webroot;?>users">User</a></li>
+		<li><a href="<?php echo  $this->request->webroot;?>category">Category</a></li>
+		<li><a href="<?php echo  $this->request->webroot;?>products/adminIndex">Product</a></li>
 	</ul>
 </div>
 

@@ -41,9 +41,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
 
     <div id="logo" class="container">
-        <a href="<?php echo $_SERVER['REQUEST_URI'];?>"><img src="<?php echo $_SERVER['REQUEST_URI'];?>img/logo.png"></a>
+        <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
         <div class="login">
-            <a class="btn btn-info" href="/users/login" role="button">Login</a>
+            <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
         </div>
     </div>
     <div id="header">
