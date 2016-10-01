@@ -39,8 +39,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('custom.css') ?>
 </head>
 <body>
+
     <div id="logo" class="container">
-        <a href="/"><img src="/img/logo.png"></a>
+        <a href="<?php echo $_SERVER['REQUEST_URI'];?>"><img src="<?php echo $_SERVER['REQUEST_URI'];?>img/logo.png"></a>
         <div class="login">
             <a class="btn btn-info" href="/users/login" role="button">Login</a>
         </div>
