@@ -2,10 +2,28 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Subcategory'), ['controller' => 'Subcategory', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Subcategory'), ['controller' => 'Subcategory', 'action' => 'add']) ?></li>
     </ul>
 </nav>
+
+<div>
+	<h3>Category</h3>
+	<ul>
+		<li><a href="/Products/adminIndex"><strong>All</strong></a></li>
+		<?php foreach($category as $id=>$cate): ?>
+			<li>
+				<a href="/Products/adminIndex/<?php echo $id;?>"><strong><?php echo $cate['name'];?></strong></a>
+				<?php if(isset($cate['subcategory'])){?>
+					<ul>
+					<?php foreach($cate['subcategory'] as $subcate):?>
+						<li><a href="/Products/adminIndex/<?php echo $id;?>/<?php echo $subcate['id'];?>"><?php echo $subcate['name'];?></a></li>
+					<?php endforeach; ?>
+					</ul>
+				<?php }?>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+
 <div class="products index large-9 medium-8 columns content">
     <h3><?= __('Products') ?></h3>
     <table cellpadding="0" cellspacing="0">
@@ -30,9 +48,9 @@
                 <td><?= $this->Number->format($product->qty) ?></td>
                 <td><?= $this->Number->format($product->price) ?></td>
                 <td><?= h($product->image) ?></td>
-                <td><?= $product->has('subcategory') ? $this->Html->link($product->subcategory->name, ['controller' => 'Subcategory', 'action' => 'view', $product->subcategory->id]) : '' ?></td>
+                <td><?= $product->subcategory_id; ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'admin_view', $product->id]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'adminView', $product->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
                 </td>

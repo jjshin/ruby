@@ -34,12 +34,7 @@ class ProductsTable extends Table
 
         $this->table('products');
         $this->displayField('name');
-        $this->primaryKey(['id', 'subcategory_id']);
-
-        $this->belongsTo('Subcategory', [
-            'foreignKey' => 'subcategory_id',
-            'joinType' => 'INNER'
-        ]);
+        $this->primaryKey(['id']);
     }
 
     /**
@@ -59,8 +54,8 @@ class ProductsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->requirePresence('desc', 'create')
-            ->notEmpty('desc');
+            ->requirePresence('descript', 'create')
+            ->notEmpty('descript');
 
         $validator
             ->boolean('ship')
@@ -75,6 +70,11 @@ class ProductsTable extends Table
             ->numeric('price')
             ->requirePresence('price', 'create')
             ->notEmpty('price');
+			
+		$validator
+            ->integer('subcategory_id')
+            ->requirePresence('subcategory_id', 'create')
+            ->notEmpty('subcategory_id');
 
         $validator
             ->allowEmpty('image');
@@ -82,17 +82,4 @@ class ProductsTable extends Table
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['subcategory_id'], 'Subcategory'));
-
-        return $rules;
-    }
 }

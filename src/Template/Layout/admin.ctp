@@ -36,11 +36,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <?= $this->Html->css('custom.css') ?>
 </head>
 <body>
-<div id="logo" class="container">
-	<h1><a href="#" class="icon icon-spinner"><span>SquareAway</span></a></h1>
-</div>
+	<div id="logo" class="container">
+        <a href="/"><img src="/img/logo.png"></a>
+        <div class="login">
+            <a class="btn btn-info" href="/users/login" role="button">Login</a>
+        </div>
+    </div>
 
 <div>
 	<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
@@ -52,10 +60,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </div>
 
 <div>
+	<h3>Admin Menu</h3>
 	<ul>
 		<li><a href="/users">User</a></li>
 		<li><a href="/category">Category</a></li>
-		<?php /*<li><a href="/products/adminIndex">Product</a></li>*/ ?>
+		<li><a href="/products/adminIndex">Product</a></li>
 	</ul>
 </div>
 

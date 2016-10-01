@@ -7,9 +7,7 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Subcategory'), ['controller' => 'Subcategory', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Subcategory'), ['controller' => 'Subcategory', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Products'), ['action' => 'adminIndex']) ?></li>
     </ul>
 </nav>
 <div class="products form large-9 medium-8 columns content">
@@ -17,12 +15,17 @@
     <fieldset>
         <legend><?= __('Edit Product') ?></legend>
         <?php
+			$option=array();
+			foreach($subcategory as $cate){
+				$option[$cate->id]=$cate->name;
+			}
+            echo $this->Form->select('subcategory_id', $option);
             echo $this->Form->input('name');
-            echo $this->Form->input('desc');
+            echo $this->Form->input('descript');
             echo $this->Form->input('ship');
             echo $this->Form->input('qty');
             echo $this->Form->input('price');
-            echo $this->Form->input('image');
+            //echo $this->Form->input('image');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

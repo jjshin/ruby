@@ -31,7 +31,6 @@ class Product extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
-        'subcategory_id' => false
+        'id' => false
     ];
 }

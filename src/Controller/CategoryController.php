@@ -11,6 +11,11 @@ use App\Controller\AppController;
 class CategoryController extends AppController
 {
 
+	public function initialize()
+	{
+		parent::initialize();
+		$this->Auth->deny();
+	}
     /**
      * Index method
      *
