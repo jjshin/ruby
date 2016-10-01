@@ -8,14 +8,14 @@
 <div>
 	<h3>Category</h3>
 	<ul>
-		<li><a href="/Products/adminIndex"><strong>All</strong></a></li>
+		<li><?= $this->Html->link('All', ['action' => 'adminIndex']) ?></li>
 		<?php foreach($category as $id=>$cate): ?>
 			<li>
-				<a href="/Products/adminIndex/<?php echo $id;?>"><strong><?php echo $cate['name'];?></strong></a>
+				<strong><?= $this->Html->link($cate['name'], ['action' => 'adminIndex', $id]) ?></strong>
 				<?php if(isset($cate['subcategory'])){?>
 					<ul>
 					<?php foreach($cate['subcategory'] as $subcate):?>
-						<li><a href="/Products/adminIndex/<?php echo $id;?>/<?php echo $subcate['id'];?>"><?php echo $subcate['name'];?></a></li>
+						<li><?= $this->Html->link($subcate['name'], ['action' => 'adminIndex', $id, $subcate['id']]) ?></li>
 					<?php endforeach; ?>
 					</ul>
 				<?php }?>
