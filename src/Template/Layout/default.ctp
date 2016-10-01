@@ -53,7 +53,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Her <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="#">Accessorites</a></li>
+                            <li><a href="#">Accessories</a></li>
                             <li><a href="#">Body Products</a></li>
                             <li><a href="#">Handbags</a></li>
                             <li><a href="#">Jewellery</a></li>
@@ -137,7 +137,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <div id="footer-wrapper">
         <div id="footer" class="container">
-            <div id="fbox1">
+          <p>Social Media Connections, T&C and Privacy Policy </p>
+            <!-- <div id="fbox1">
                 <h2>Maecenas luctus</h2>
                 <p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>
                 <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
@@ -152,12 +153,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div id="fbox4">
                 <h2>Etiam rhoncus volutpat</h2>
                 <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
-                <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
+                <a href="#" class="button icon icon-arrow-right">Learn More</a> </div> -->
         </div>
     </div>
 
     <div id="copyright">
-        <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+        <p>&copy; Ruby's Gifts. All rights reserved. | Design by Ruby IT Solution.</p>
     </div>
 
     <!-- Latest compiled and minified JavaScript -->
