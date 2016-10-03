@@ -46,10 +46,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
             <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
 		<?php } else { ?>
-			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong> 
+			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
 			<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
 		<?php } ?>
-            
+
         </div>
     </div>
     <div id="header">
@@ -70,78 +70,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<?php } ?>
 					</li>
 				<?php endforeach; ?>
-				
-				<?php /*
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Her <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Body Products</a></li>
-                            <li><a href="#">Handbags</a></li>
-                            <li><a href="#">Jewellery</a></li>
-                            <li><a href="#">Key rings</a></li>
-                            <li><a href="#">Scarves</a></li>
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Wallets</a></li>
-                        </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Him <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cuff Links</a></li>
-                        <li><a href="#">Key rings</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Wallets</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Home <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Candles</a></li>
-                        <li><a href="#">African</a></li>
-                        <li><a href="#">Clocks</a></li>
-                        <li><a href="#">Diffusers</a></li>
-                        <li><a href="#">Jewellery Boxes</a></li>
-                        <li><a href="#">Mirrors</a></li>
-                        <li><a href="#">Ornaments</a></li>
-                        <li><a href="#">Photo Frames</a></li>
-                        <li><a href="#">Tableware</a></li>
-                        <li><a href="#">Wall Art</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Special Occasions <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Judaica</a></li>
-                        <li><a href="#">New Born</a></li>
-                        <li><a href="#">Xmas</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Allen Design</a></li>
-                        <li><a href="#">Bianc</a></li>
-                        <li><a href="#">Carrol Boyes</a></li>
-                        <li><a href="#">Cenzoni</a></li>
-                        <li><a href="#">Cocco</a></li>
-                        <li><a href="#">Cote Noir</a></li>
-                        <li><a href="#">Ecoya</a></li>
-                        <li><a href="#">Glasshouse</a></li>
-                        <li><a href="#">Jennifer</a></li>
-                        <li><a href="#">Dumet</a></li>
-                        <li><a href="#">Laguiole</a></li>
-                        <li><a href="#">Chateau</a></li>
-                        <li><a href="#">Liberte</a></li>
-                        <li><a href="#">Mukul Goyal</a></li>
-                        <li><a href="#">Nicole</a></li>
-                        <li><a href="#">Fendel</a></li>
-                        <li><a href="#">Pasticle</a></li>
-                    </ul>
-                </li>
-                <li><a class="direct-link">Sale</a></li>
-				*/ ?>
+				<li><a class="direct-link" href="#">Sale</a></li>
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
