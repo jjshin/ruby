@@ -43,13 +43,35 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <div id="logo" class="container">
         <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
         <div class="login">
+		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
             <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
+		<?php } else { ?>
+			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong> 
+			<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
+		<?php } ?>
+            
         </div>
     </div>
     <div id="header">
         <div id="menu" class="container">
             <ul class="dropdown">
                 <li><a class="direct-link">Home</a></li>
+				<?php foreach($categories as $id=>$cate): ?>
+				<li>
+                   	<?php if(isset($cate['subcategory'])){?>
+						<a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $cate['name'];?> <span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+						<?php foreach($cate['subcategory'] as $subcate):?>
+							<li><?= $this->Html->link($subcate['name'], ['controller'=>'Products', 'action' => 'index', $id, $subcate['id']]) ?></li>
+						<?php endforeach; ?>
+						</ul>
+					<?php }else{ ?>
+						<?= $this->Html->link($cate['name'], ['controller'=>'Products', 'action' => 'index', $id], ['class'=>'direct-link']) ?>
+					<?php } ?>
+					</li>
+				<?php endforeach; ?>
+				
+				<?php /*
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Her <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -119,6 +141,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     </ul>
                 </li>
                 <li><a class="direct-link">Sale</a></li>
+				*/ ?>
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">

@@ -52,7 +52,7 @@ class ProductsController extends AppController
         $this->set('_serialize', ['product']);
     }
 	
-	private function get_category(){
+	public function get_category(){
 		$this->loadModel('Category');
 		$categories = $this->Category->find()
 				->select(array('Category.id', 'Category.cate_name', 'Subcategory.id', 'Subcategory.name'))

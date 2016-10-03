@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use App\Controller\Products;
 /**
  * Users Controller
  *
@@ -18,7 +18,9 @@ class MainController extends AppController
      */
     public function index()
     {
-    
+		$productObj=new ProductsController;
+		$categories=$productObj->get_category();
+		$this->set(compact('categories')); 
 	}
 
 }
