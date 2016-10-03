@@ -1,5 +1,38 @@
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+  </head>
+  <body>
+
+  <div class="slick-slider">
+    <div><img src="/img/test2.jpg" width="600" height="450" alt="" /></div>
+    <div><img src="/img/test3.jpg" width="600" height="450" alt="" /></div>
+    <div><img src="/img/test4.jpg" width="600" height="450" alt="" /></div>
+  </div>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="js/slick.min.js"></script>
+
+  <script type="text/javascript">
+			$('.fade').slick({
+				dots: true,
+				infinite: true,
+				speed: 500,
+				fade: true,
+				cssEase: 'linear'
+			});
+  </script>
+
+  </body>
+</html>
+
+
+
 <div id="page-wrapper">
-	<div id="banner" class="container"><a href="#"><img src="/img/test3.jpg" width="1200" height="300" alt="" /></a></div>
+
+	<!-- 	<div id="banner" class="container"><a href="#"><img src="/img/test3.jpg" width="1200" height="300" alt="" /></a></div> -->
 	<div id="featured" class="container">
 		<div class="box">
 			<div class="title">
