@@ -87,5 +87,9 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+		
+		$productObj=new ProductsController;
+		$categories=$productObj->get_category();
+		$this->set(compact('categories')); 
     }
 }

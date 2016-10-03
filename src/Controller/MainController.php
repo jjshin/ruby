@@ -18,9 +18,7 @@ class MainController extends AppController
      */
     public function index()
     {
-		$productObj=new ProductsController;
-		$categories=$productObj->get_category();
-		$this->set(compact('categories')); 
+		
 	}
 
 }
