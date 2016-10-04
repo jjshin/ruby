@@ -145,7 +145,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="/aboutus">About Us</a></li>
+                        <li><a href="<?php echo  $this->request->webroot;?>aboutus">About Us</a></li>
                         <li><a href="#">Gift Vouchers</a></li>
                         <li><a href="#">FAQ</a></li>
                     </ul>

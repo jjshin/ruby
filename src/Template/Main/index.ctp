@@ -9,7 +9,7 @@
     <center>
     <h2> Slide Show Section </h2>
     <!-- <div><img src="/img/test2.jpg" width="600" height="450" alt="" /></div> -->
-    <div><img src="/img/test3.jpg" width="600" height="450" alt="" /></div>
+    <div><img src="<?php echo  $this->request->webroot;?>/img/test3.jpg" width="600" height="450" alt="" /></div>
     <!-- <div><img src="/img/test4.jpg" width="600" height="450" alt="" /></div> -->
   </div>
 
