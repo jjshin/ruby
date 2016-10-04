@@ -1,26 +1,6 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Subcategory'), ['controller' => 'Subcategory', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Subcategory'), ['controller' => 'Subcategory', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="products index large-9 medium-8 columns content">
     <h3><?= __('Products') ?></h3>
     <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('ship') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('qty') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('price') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('image') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('subcategory_id') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
         <tbody>
             <?php foreach ($products as $product): ?>
             <tr>

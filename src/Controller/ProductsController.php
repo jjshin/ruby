@@ -22,14 +22,33 @@ class ProductsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($cate=null, $subcate=null)
     {
-        /*
-		$this->paginate = [
-            'contain' => ['Subcategory']
-        ];
-		*/
-        $products = $this->paginate($this->Products);
+        if($subcate!==null){
+			$subcate_list=array($subcate);
+		}elseif($cate!==null){
+			$this->loadModel('Subcategory');
+			$subcategory=$this->Subcategory->find()
+							->select(array('id'))
+							->where(array('category_id'=>$cate));
+							
+			$subcate_list=array();
+			if($subcategory->count()>0){
+				foreach($subcategory as $sub){
+					$subcate_list[]=$sub->id;
+				}
+			}else{
+				$subcate_list[]=0;
+			}
+		}
+		
+		//Get Product list
+		$products = $this->Products->find();
+		if(isset($subcate_list)){
+			$products->where(array('subcategory_id IN'=>$subcate_list));
+		}
+		//debug($products);
+        $products = $this->paginate($products);
 
         $this->set(compact('products'));
         $this->set('_serialize', ['products']);

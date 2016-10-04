@@ -35,7 +35,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick-theme.css"/>
     <?= $this->Html->css('custom.css') ?>
 </head>
 <body>
@@ -55,7 +56,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <div id="header">
         <div id="menu" class="container">
             <ul class="dropdown">
-                <li><a class="direct-link">Home</a></li>
+                <li><a class="direct-link" href="/">Home</a></li>
 				<?php foreach($categories as $id=>$cate): ?>
 				<li>
                    	<?php if(isset($cate['subcategory'])){?>
@@ -74,7 +75,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="/aboutus">About Us</a></li>
                         <li><a href="#">Gift Vouchers</a></li>
                         <li><a href="#">FAQ</a></li>
                     </ul>
@@ -116,5 +117,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/slick.min.js"></script>
+	<script type="text/javascript">
+	  $(document).ready(function() {
+	      $('.main-slider').slick({
+	        dots: true,
+			arrows: true,
+	        infinite: true,
+	        speed: 500,
+			autoplay: true,
+	        fade: true,
+	        cssEase: 'linear'
+	      });
+	  });
+	</script>
 </body>
 </html>
