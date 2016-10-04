@@ -12,6 +12,6 @@
         <h2>Register</h2>
         <p> Faster Shop and Be up to date on an order status.</P>
         <p> *By creating an account you agree to our Terms of Use and Privacy Policy.</P>
-        <a class="btn btn-warning" href="#">Register</a>
+		<?= $this->Html->link('Register', ['controller'=>'Users', 'action'=>'register'], ['class'=>'btn btn-warning']);?>
     </div>
 </div>
