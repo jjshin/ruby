@@ -10,10 +10,9 @@
 <div class="registration-form form-wrapper">
     <h2>Register</h2>
     <form method="post" class="form-group">
-        <label for="username">Username</label>
-        <input type="text" name="username" class="form-control">
-        <label for="password">Password</label>
-        <input type="text" name="passworld" class="form-control">
+        <p> Faster Shop and Be up to date on an order status.</P>
+        <p> *By creating an account you agree to our Terms of Use and Privacy Policy.</P>
+
         <button type="button" name="button" class="btn btn-warning">Register</button>
     </form>
 </div>

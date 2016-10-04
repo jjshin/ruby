@@ -46,10 +46,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
             <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
 		<?php } else { ?>
-			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong> 
+			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
 			<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
 		<?php } ?>
-            
+
         </div>
     </div>
     <div id="header">
@@ -70,7 +70,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<?php } ?>
 					</li>
 				<?php endforeach; ?>
-				
+
 				<?php /*
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Her <span class="caret"></span></a>
@@ -145,7 +145,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="/aboutus">About Us</a></li>
                         <li><a href="#">Gift Vouchers</a></li>
                         <li><a href="#">FAQ</a></li>
                     </ul>

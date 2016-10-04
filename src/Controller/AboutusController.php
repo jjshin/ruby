@@ -8,7 +8,7 @@ use App\Controller\Products;
  *
  * @property \App\Model\Table\UsersTable $Users
  */
-class MainController extends AppController
+class AboutusController extends AppController
 {
 
     /**

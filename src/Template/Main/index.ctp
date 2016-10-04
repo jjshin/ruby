@@ -6,9 +6,11 @@
   <body>
 
   <div class="slick-slider">
-    <div><img src="/img/test2.jpg" width="600" height="450" alt="" /></div>
+    <center>
+    <h2> Slide Show Section </h2>
+    <!-- <div><img src="/img/test2.jpg" width="600" height="450" alt="" /></div> -->
     <div><img src="/img/test3.jpg" width="600" height="450" alt="" /></div>
-    <div><img src="/img/test4.jpg" width="600" height="450" alt="" /></div>
+    <!-- <div><img src="/img/test4.jpg" width="600" height="450" alt="" /></div> -->
   </div>
 
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -25,11 +27,6 @@
 			});
   </script>
 
-  </body>
-</html>
-
-
-
 <div id="page-wrapper">
 
 	<!-- 	<div id="banner" class="container"><a href="#"><img src="/img/test3.jpg" width="1200" height="300" alt="" /></a></div> -->
@@ -40,19 +37,19 @@
 			</div>
 			<p>Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Nam in massa. Sed vel tellus. Curabitur sem urna, consequat vel, suscipit in, mattis placerat, nulla. Sed ac leo.</p>
 		</div>
-		<div id="box1"> <a href="#"><img src="/img/test2.jpg" width="200" height="200" alt="" /></a>
+		<div id="box1"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test2.jpg" width="200" height="200" alt="" /></a>
 			<h2 class="subtitle">Donec dictum metus</h2>
 			<p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipiy.</p>
 		</div>
-		<div id="box2"> <a href="#"><img src="/img/test3.jpg" width="200" height="200" alt="" /></a>
+		<div id="box2"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test3.jpg" width="200" height="200" alt="" /></a>
 			<h2 class="subtitle">Etiam posuere augue</h2>
 			<p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit.</p>
 		</div>
-		<div id="box3"> <a href="#"><img src="/img/test4.jpg" width="200" height="200" alt="" /></a>
+		<div id="box3"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test4.jpg" width="200" height="200" alt="" /></a>
 			<h2 class="subtitle">Nulla luctus eleifend</h2>
 			<p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi.</p>
 		</div>
-		<div id="box4"> <a href="#"><img src="/img/test2.jpg" width="200" height="200" alt="" /></a>
+		<div id="box4"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test5.jpg" width="200" height="200" alt="" /></a>
 			<h2 class="subtitle">Fusce ultrices fringilla </h2>
 			<p>Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
 		</div>
