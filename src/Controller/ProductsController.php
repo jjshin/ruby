@@ -25,8 +25,20 @@ class ProductsController extends AppController
     public function index($cate=null, $subcate=null)
     {
         if($subcate!==null){
+			// Set category title
+			$this->loadModel('Subcategory');
+			$cate_info=$this->Subcategory->get($subcate);
+			$cate_title=$cate_info['name'];
+			
+			// Set sub category list
 			$subcate_list=array($subcate);
 		}elseif($cate!==null){
+			// Set category title
+			$this->loadModel('Category');
+			$cate_info=$this->Category->get($cate);
+			$cate_title=$cate_info['cate_name'];
+			
+			// Set sub category list
 			$this->loadModel('Subcategory');
 			$subcategory=$this->Subcategory->find()
 							->select(array('id'))
@@ -50,6 +62,7 @@ class ProductsController extends AppController
 		//debug($products);
         $products = $this->paginate($products);
 
+		$this->set('cate_title', $cate_title);
         $this->set(compact('products'));
         $this->set('_serialize', ['products']);
     }
@@ -63,9 +76,24 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
-        $product = $this->Products->get($id, [
-            'contain' => ['Subcategory']
-        ]);
+        $product = $this->Products->find()
+							->select(['Products.id', 'Products.name', 'Products.ship', 'Products.qty', 'Products.price', 'Products.image', 'Products.descript',
+							'Subcategory.id', 'Subcategory.name', 
+							'Category.id', 'Category.cate_name'])
+							->join(array(
+								'table'=>'subcategory',
+								'alias'=>'Subcategory',
+								'conditions'=>array('Products.subcategory_id=Subcategory.id'),
+								'type'=>'LEFT OUTER'
+								))
+							->join(array(
+								'table'=>'category',
+								'alias'=>'Category',
+								'conditions'=>array('Category.id=Subcategory.category_id'),
+								'type'=>'LEFT OUTER'
+								))
+							->where(array('Products.id'=>$id))
+							->first();
 
         $this->set('product', $product);
         $this->set('_serialize', ['product']);
