@@ -32,10 +32,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
+	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/slick.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick-theme.css"/>
     <?= $this->Html->css('custom.css') ?>
 </head>
 <body>
@@ -55,7 +60,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <div id="header">
         <div id="menu" class="container">
             <ul class="dropdown">
-                <li><a class="direct-link">Home</a></li>
+                <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>">Home</a></li>
 				<?php foreach($categories as $id=>$cate): ?>
 				<li>
                    	<?php if(isset($cate['subcategory'])){?>
@@ -70,78 +75,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<?php } ?>
 					</li>
 				<?php endforeach; ?>
-
-				<?php /*
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Her <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Body Products</a></li>
-                            <li><a href="#">Handbags</a></li>
-                            <li><a href="#">Jewellery</a></li>
-                            <li><a href="#">Key rings</a></li>
-                            <li><a href="#">Scarves</a></li>
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Wallets</a></li>
-                        </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Him <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cuff Links</a></li>
-                        <li><a href="#">Key rings</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Wallets</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">For Home <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Candles</a></li>
-                        <li><a href="#">African</a></li>
-                        <li><a href="#">Clocks</a></li>
-                        <li><a href="#">Diffusers</a></li>
-                        <li><a href="#">Jewellery Boxes</a></li>
-                        <li><a href="#">Mirrors</a></li>
-                        <li><a href="#">Ornaments</a></li>
-                        <li><a href="#">Photo Frames</a></li>
-                        <li><a href="#">Tableware</a></li>
-                        <li><a href="#">Wall Art</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Special Occasions <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Judaica</a></li>
-                        <li><a href="#">New Born</a></li>
-                        <li><a href="#">Xmas</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="#">Allen Design</a></li>
-                        <li><a href="#">Bianc</a></li>
-                        <li><a href="#">Carrol Boyes</a></li>
-                        <li><a href="#">Cenzoni</a></li>
-                        <li><a href="#">Cocco</a></li>
-                        <li><a href="#">Cote Noir</a></li>
-                        <li><a href="#">Ecoya</a></li>
-                        <li><a href="#">Glasshouse</a></li>
-                        <li><a href="#">Jennifer</a></li>
-                        <li><a href="#">Dumet</a></li>
-                        <li><a href="#">Laguiole</a></li>
-                        <li><a href="#">Chateau</a></li>
-                        <li><a href="#">Liberte</a></li>
-                        <li><a href="#">Mukul Goyal</a></li>
-                        <li><a href="#">Nicole</a></li>
-                        <li><a href="#">Fendel</a></li>
-                        <li><a href="#">Pasticle</a></li>
-                    </ul>
-                </li>
-                <li><a class="direct-link">Sale</a></li>
-				*/ ?>
+				<li><a class="direct-link" href="#">Sale</a></li>
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -184,8 +118,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <p>&copy; Ruby's Gifts. All rights reserved. | Design by Ruby IT Solution.</p>
     </div>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	  $(document).ready(function() {
+	      $('.main-slider').not('.slick-initialized').slick({
+	        dots: true,
+			arrows: true,
+	        infinite: true,
+	        speed: 500,
+			autoplay: true,
+	        fade: true,
+	        cssEase: 'linear'
+	      });
+	  });
+	</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <div class="products index large-9 medium-8 columns content">
-    <h3><?= __('Products') ?></h3>
+    <h3><?= $cate_title; ?></h3>
     <table cellpadding="0" cellspacing="0">
         <tbody>
             <?php foreach ($products as $product): ?>
@@ -13,8 +13,6 @@
                 <td><?= $product->has('subcategory') ? $this->Html->link($product->subcategory->name, ['controller' => 'Subcategory', 'action' => 'view', $product->subcategory->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
