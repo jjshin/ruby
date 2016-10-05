@@ -1,3 +1,6 @@
+/**
+*   Layout
+*/
 body {
     min-width: 1280px;
     background: white;
@@ -5,6 +8,25 @@ body {
 
 .container {
     width: 1280px;
+}
+
+/**
+*   Shared
+*/
+.form-wrapper h2 {
+    color: #ddd;
+}
+
+.form-wrapper h2,
+.form-wrapper label {
+    display: block;
+    text-align: left;
+}
+
+.form-wrapper div.input { display: block }
+.form-wrapper button.btn {
+    width: 100%;
+    margin-top: 20px;
 }
 
 /**
@@ -94,6 +116,10 @@ body {
     margin: 0 auto;
 }
 
+#content-body.login .form-wrapper .error.message {
+    display: none;
+}
+
 #content-body.login .form-wrapper {
     display: inline-block;
     padding: 15px;
@@ -105,24 +131,8 @@ body {
     float: left;
 }
 
-#content-body.login .form-wrapper h2 {
-    color: #ddd;
-}
-
-#content-body.login .form-wrapper h2,
-#content-body.login .form-wrapper label {
-    display: block;
-    text-align: left;
-}
-
 #content-body.login .form-wrapper label:last-of-type {
     margin-top: 15px;
-}
-
-#content-body.login .form-wrapper div.input { display: block }
-#content-body.login .form-wrapper button.btn {
-    width: 100%;
-    margin-top: 20px;
 }
 
 #content-body.login .form-wrapper p {
@@ -139,9 +149,57 @@ body {
 }
 
 /**
+*   Register page
+*/
+#content-body.register form {
+    width: 400px;
+    margin: 0 auto;
+}
+
+#content-body.register .form-wrapper {
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+#content-body.register .form-wrapper h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#content-body.register .form-wrapper .input {
+    overflow: hidden;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#content-body.register .form-wrapper label {
+    display: inline-block;
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-top: 7px;
+    padding-right: 10px;
+    font-weight: 500;
+}
+
+#content-body.register .form-wrapper label:after {
+    content: ': '
+}
+
+#content-body.register .form-wrapper input {
+    display: inline-block;
+    float: right;
+    width: 78%;
+}
+
+#content-body.register .form-wrapper button.btn {
+    width: 78%;
+    float: right;
+}
+
+/**
 *   About us page
 */
-
 #content-body.aboutus {
     padding: 30px 0;
     text-align: center;
