@@ -51,7 +51,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
             <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
 		<?php } else { ?>
-			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
+			Welcome <strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>&nbsp;
+			<a class="btn btn-success" href="<?php echo  $this->request->webroot;?>users/admin" role="button">Admin</a>
 			<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
 		<?php } ?>
 
