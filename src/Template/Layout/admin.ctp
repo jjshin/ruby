@@ -61,7 +61,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="btn-group admin-menu" role="group">
                 <a class="btn <?= $this->request->url == 'users' ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>users">User</a>
                 <a class="btn btn-secondary <?= $this->request->url == 'category' || strpos($this->request->url, 'subcategory') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>category">Category</a>
-                <a class="btn btn-secondary <?= $this->request->url == 'products/adminIndex' ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>products/adminIndex">Product</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'products') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>products/adminIndex">Product</a>
             </div>
         </div>
 
