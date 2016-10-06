@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Image') ?></th>
-            <td><?= h($product->image) ?></td>
+            <td><?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:200px;']); ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Subcategory') ?></th>

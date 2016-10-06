@@ -10,6 +10,22 @@ body {
     width: 1280px;
 }
 
+.container .half-row {
+    width: 50%;
+}
+
+.container .two-third-row {
+    width: 66.66%;
+}
+
+.center-block {
+    margin: 0 auto;
+}
+
+.paginator {
+    text-align: center;
+}
+
 /**
 *   Shared
 */
@@ -27,6 +43,13 @@ body {
 .form-wrapper button.btn {
     width: 100%;
     margin-top: 20px;
+}
+
+/**
+*   Admin page
+*/
+.admin-menu a {
+    border: 1px solid #ddd;
 }
 
 /**

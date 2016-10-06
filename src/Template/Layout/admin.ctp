@@ -36,49 +36,43 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <?= $this->Html->css('custom.css') ?>
 </head>
 <body>
-	<div id="logo" class="container">
-        <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
-        <div class="login">
-            <?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
-				<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
-			<?php } else { ?>
-				<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong> 
-				<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
-			<?php } ?>
+    <div class="container">
+        <div id="logo" class="two-third-row center-block">
+            <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
+            <div class="login">
+                <?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
+                    <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
+                <?php } else { ?>
+                    <strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
+                    <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
+                <?php } ?>
+            </div>
+        </div>
+
+        <div class="two-third-row center-block">
+            <h3>Admin Menu</h3>
+            <div class="btn-group admin-menu" role="group">
+                <a class="btn <?= $this->request->url == 'users' ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>users">User</a>
+                <a class="btn btn-secondary <?= $this->request->url == 'category' || strpos($this->request->url, 'subcategory') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>category">Category</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'products') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>products/adminIndex">Product</a>
+            </div>
+        </div>
+
+        <div class="two-third-row center-block">
+            <?= $this->Flash->render(); ?>
+            <?= $this->fetch('content'); ?>
+        </div>
+
+        <div id="copyright">
+            <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
         </div>
     </div>
-
-<div>
-	<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
-		<a href="<?php echo  $this->request->webroot;?>users/login">Login</a>
-	<?php } else { ?>
-		<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong> 
-		<a href="<?php echo  $this->request->webroot;?>users/logout">Logout</a>
-	<?php } ?>
-</div>
-
-<div>
-	<h3>Admin Menu</h3>
-	<ul>
-		<li><a href="<?php echo  $this->request->webroot;?>users">User</a></li>
-		<li><a href="<?php echo  $this->request->webroot;?>category">Category</a></li>
-		<li><a href="<?php echo  $this->request->webroot;?>products/adminIndex">Product</a></li>
-	</ul>
-</div>
-
-<div>
-	<?= $this->Flash->render(); ?>
-	<?= $this->fetch('content'); ?>
-</div>
-<div id="copyright">
-	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
-</div>
 </body>
 </html>

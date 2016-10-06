@@ -180,7 +180,34 @@ class ProductsController extends AppController
 		$this->viewBuilder()->layout('admin');
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
-            $product = $this->Products->patchEntity($product, $this->request->data);
+            
+			
+			
+			/* Image Upload */
+			$image=$this->request->data['image'];
+			//print_r($image);exit; 
+			if(!$image['error']){
+				$target_dir = "img/uploads/";
+				$file_name=basename($image["name"]);
+				$target_file = $target_dir . $file_name;
+				
+				// Check if file already exists
+				if (file_exists($target_file)) {
+					$arrFilename = explode('.', $file_name);
+					$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+					$target_file = $target_dir . $file_name;
+				}
+				
+				if (move_uploaded_file($image["tmp_name"], $target_file)) {
+					$this->request->data['image']='uploads/'.$file_name;
+				} else {
+					echo "Sorry, there was an error uploading your file.";exit;
+				}
+			}			
+			//print_r($this->request->data);exit;
+			
+			$product = $this->Products->patchEntity($product, $this->request->data);
+			
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 

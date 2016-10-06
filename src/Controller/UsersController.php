@@ -39,7 +39,6 @@ class UsersController extends AppController
 
 	public function logout()
 	{
-		$this->Flash->success('You are now logged out.');
 		return $this->redirect($this->Auth->logout());
 	}
 
@@ -47,7 +46,6 @@ class UsersController extends AppController
 	{
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
-			//print_r($user);exit;
 			if ($user) {
 				$this->Auth->setUser($user);
 				if($this->Auth->user('role')==1){	//Admin
@@ -55,8 +53,6 @@ class UsersController extends AppController
 				}else{
 					return $this->redirect('/');
 				}
-
-				//return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error('Your username or password is incorrect.');
 		}

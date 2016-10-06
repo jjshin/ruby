@@ -51,8 +51,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
             <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
 		<?php } else { ?>
-			Welcome <strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>&nbsp;
-			<a class="btn btn-success" href="<?php echo  $this->request->webroot;?>users/admin" role="button">Admin</a>
+			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
 			<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
 		<?php } ?>
 
@@ -90,6 +89,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
 
     <div id="content-body" class="container <?= $this->template ?>">
+		<?= $this->Flash->render() ?>
         <?= $this->fetch ('content'); ?>
     </div>
 
