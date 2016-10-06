@@ -47,7 +47,7 @@
                 <td><?= h($product->ship) ?></td>
                 <td><?= $this->Number->format($product->qty) ?></td>
                 <td><?= $this->Number->format($product->price) ?></td>
-                <td><?= h($product->image) ?></td>
+                <td><?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:50px;']); ?></td>
                 <td><?= $product->subcategory_id; ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'adminView', $product->id]) ?>

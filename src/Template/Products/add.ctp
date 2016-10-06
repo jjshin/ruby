@@ -5,7 +5,7 @@
     </ul>
 </nav>
 <div class="products form large-9 medium-8 columns content">
-    <?= $this->Form->create($product) ?>
+    <?= $this->Form->create($product, ['type'=>'file']) ?>
     <fieldset>
         <legend><?= __('Add Product') ?></legend>
         <?php
@@ -19,7 +19,7 @@
             echo $this->Form->input('ship');
             echo $this->Form->input('qty');
             echo $this->Form->input('price');
-         //   echo $this->Form->input('image');
+            echo $this->Form->file('image');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

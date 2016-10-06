@@ -13,15 +13,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Image') ?></th>
-            <td><?= h($product->image) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Subcategory') ?></th>
-            <td><?= $product->has('subcategory') ? $this->Html->link($product->subcategory->name, ['controller' => 'Subcategory', 'action' => 'view', $product->subcategory->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($product->id) ?></td>
+            <td><?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:200px;']); ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Qty') ?></th>
@@ -29,13 +21,20 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Price') ?></th>
-            <td><?= $this->Number->format($product->price) ?></td>
+            <td><?= '$'.$this->Number->format($product->price) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Ship') ?></th>
             <td><?= $product->ship ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
+	
+	<?php 
+	if ($this->request->session()->read('Auth.User.username')) {
+		echo $this->Html->link('Add Cart', ['controller'=>'Orders', 'action'=>'add_cart', $product->id], ['class'=>'btn btn-info', 'role'=>'button']);
+	}
+	?>
+	
     <div class="row">
         <h4><?= __('Descript') ?></h4>
         <?= $this->Text->autoParagraph(h($product->descript)); ?>
