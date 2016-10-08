@@ -52,6 +52,19 @@ body {
     border: 1px solid #ddd;
 }
 
+.add-user-form {
+    width: 400px;
+}
+
+.add-user-form .input {
+    margin-bottom: 10px;
+}
+
+.add-user-form select {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
 /**
 *   Homepage
 */

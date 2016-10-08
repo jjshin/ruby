@@ -4,24 +4,27 @@
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
+<div class="add-user-form from-wrapper">
+    <?= $this->Form->create($user, ['class' => 'form-group']) ?>
+	<h3><?= __('Add User') ?></h3>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
         <?php
-            echo $this->Form->input('firstname');
-            echo $this->Form->input('lastname');
-            echo $this->Form->input('username');
-            echo $this->Form->input('password');
-            echo $this->Form->input('email');
-            echo $this->Form->input('phone');
-           echo $this->Form->select(
+            echo $this->Form->input('firstname', ['class' => 'form-control']);
+            echo $this->Form->input('lastname', ['class' => 'form-control']);
+            echo $this->Form->input('username', ['class' => 'form-control']);
+            echo $this->Form->input('password', ['class' => 'form-control']);
+            echo $this->Form->input('email', ['class' => 'form-control']);
+            echo $this->Form->input('phone', ['class' => 'form-control']);
+		?>
+		<label>User Role</label>
+		<?php
+           	echo $this->Form->select(
 				'role',
 				array(1=>'Admin', 10=>'User'),
-				['empty' => '(choose one)']
+				['empty' => 'Select User Role', 'class' => 'form-control']
 			);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-info']) ?>
     <?= $this->Form->end() ?>
 </div>
