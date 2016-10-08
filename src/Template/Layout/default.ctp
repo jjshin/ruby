@@ -77,8 +77,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<?php } ?>
 					</li>
 				<?php endforeach; ?>
-
-				<li><a class="direct-link" href="#">Sale</a></li>
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
