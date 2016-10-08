@@ -53,6 +53,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<?php } else { ?>
 			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
       <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
+      <?= $this->Html->link('My Shopping', ['controller'=>'Myshop', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
       <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
 		<?php } ?>
 

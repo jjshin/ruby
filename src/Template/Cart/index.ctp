@@ -1,5 +1,6 @@
 <div class="products index large-9 medium-8 columns content">
   <h2>Cart</h2>
+  <?php echo $this->Form->create(null, ['url'=>['controller'=>'Orders', 'action'=>'index']]);?>
   <ul>
   <?php
   $total=0;
@@ -9,7 +10,8 @@
     <li>
       <?= empty($item->Products['image']) ? '' : $this->Html->image($item->Products['image'], ['style'=>'max-width:100px;']); ?>
       <strong><?= $item->Products['name'];?></strong>
-      <?= $this->Form->number('qty', ['value'=>$item['qty'], 'placeholder'=>'order qty', 'min'=>1, 'class'=>'cart_qty', 'data-price'=>$item->Products['price']]);?>
+      <?= $this->Form->hidden('cart_id[]', ['value'=>$item['id']]);?>
+      <?= $this->Form->number('qty[]', ['value'=>$item['qty'], 'placeholder'=>'order qty', 'min'=>1, 'class'=>'cart_qty', 'data-price'=>$item->Products['price']]);?>
       <span class="price"><?= $this->Number->currency($item->Products['price'], 'USD');?></span>
 
       <?= $this->Html->link('View', ['controller'=>'Products', 'action'=>'view', $item->Products['id']]);?>
@@ -22,11 +24,17 @@
     <label><strong>TOTAL</strong></label>
     <span id="cart_total"><?= $this->Number->currency($total, 'USD');?></span>
   </div>
+
+  <div>
+    <?php
+      echo $this->Form->button('Order', ['class'=>'btn btn-success']);
+      echo $this->Form->end();
+     ?>
 </div>
 
 <script>
   $(document).ready(function(){
-    $('.cart_qty').keyup(function(e){
+    $('.cart_qty').bind('keyup blur', function(e){
       var total=0;
       $('.cart_qty').each(function(key, item){
         var price=$(this).attr('data-price');
