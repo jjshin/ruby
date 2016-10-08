@@ -197,7 +197,7 @@
 
 	#logo
 	{
-		padding: 4em 0em;
+		padding: 3em 0em;
 		text-transform: uppercase;
 	}
 
@@ -235,7 +235,7 @@
 	#menu ul
 	{
 		margin: 0;
-		padding: 20px 0px 20px 0px;
+		padding: 10px 0px 10px 0px;
 		list-style: none;
 		line-height: normal;
 	}
