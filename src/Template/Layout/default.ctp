@@ -49,10 +49,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
         <div class="login">
 		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
-            <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
+      <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
 		<?php } else { ?>
 			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
-			<a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
+      <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
+      <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
 		<?php } ?>
 
         </div>
@@ -75,7 +76,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<?php } ?>
 					</li>
 				<?php endforeach; ?>
-        
+
 				<li><a class="direct-link" href="#">Sale</a></li>
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>

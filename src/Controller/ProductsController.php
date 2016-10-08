@@ -29,7 +29,7 @@ class ProductsController extends AppController
 			$this->loadModel('Subcategory');
 			$cate_info=$this->Subcategory->get($subcate);
 			$cate_title=$cate_info['name'];
-			
+
 			// Set sub category list
 			$subcate_list=array($subcate);
 		}elseif($cate!==null){
@@ -37,13 +37,13 @@ class ProductsController extends AppController
 			$this->loadModel('Category');
 			$cate_info=$this->Category->get($cate);
 			$cate_title=$cate_info['cate_name'];
-			
+
 			// Set sub category list
 			$this->loadModel('Subcategory');
 			$subcategory=$this->Subcategory->find()
 							->select(array('id'))
 							->where(array('category_id'=>$cate));
-							
+
 			$subcate_list=array();
 			if($subcategory->count()>0){
 				foreach($subcategory as $sub){
@@ -53,7 +53,7 @@ class ProductsController extends AppController
 				$subcate_list[]=0;
 			}
 		}
-		
+
 		//Get Product list
 		$products = $this->Products->find();
 		if(isset($subcate_list)){
@@ -78,7 +78,7 @@ class ProductsController extends AppController
     {
         $product = $this->Products->find()
 							->select(['Products.id', 'Products.name', 'Products.ship', 'Products.qty', 'Products.price', 'Products.image', 'Products.descript',
-							'Subcategory.id', 'Subcategory.name', 
+							'Subcategory.id', 'Subcategory.name',
 							'Category.id', 'Category.cate_name'])
 							->join(array(
 								'table'=>'subcategory',
@@ -98,7 +98,7 @@ class ProductsController extends AppController
         $this->set('product', $product);
         $this->set('_serialize', ['product']);
     }
-	
+
 	public function get_category(){
 		$this->loadModel('Category');
 		$categories = $this->Category->find()
@@ -110,7 +110,7 @@ class ProductsController extends AppController
 					'type'=>'LEFT OUTER'
 					))
 				->order(array('Category.id'=>'ASC', 'Subcategory.category_id'=>'ASC'));
-				
+
 		$result=array();
 		foreach($categories as $cate){
 			$result[$cate->id]['name']=$cate->cate_name;
@@ -120,16 +120,16 @@ class ProductsController extends AppController
 		}
 		return $result;
 	}
-	
+
 	public function adminIndex($cate=null, $subcate=null)
     {
 		$this->viewBuilder()->layout('admin');
-		
+
 		//Get Category list
 		$category=$this->get_category();
-		
+
 		//Set conditions for product list
-		
+
 		if($subcate!==null){
 			$subcate_list=array($subcate);
 		}elseif($cate!==null){
@@ -137,7 +137,7 @@ class ProductsController extends AppController
 			$subcategory=$this->Subcategory->find()
 							->select(array('id'))
 							->where(array('category_id'=>$cate));
-							
+
 			$subcate_list=array();
 			if($subcategory->count()>0){
 				foreach($subcategory as $sub){
@@ -147,7 +147,7 @@ class ProductsController extends AppController
 				$subcate_list[]=0;
 			}
 		}
-		
+
 		//Get Product list
 		$products = $this->Products->find();
 		if(isset($subcate_list)){
@@ -160,7 +160,7 @@ class ProductsController extends AppController
         $this->set(compact('products'));
         $this->set('_serialize', ['products']);
     }
-	
+
 	public function adminView($id = null)
     {
 		$this->viewBuilder()->layout('admin');
@@ -180,34 +180,34 @@ class ProductsController extends AppController
 		$this->viewBuilder()->layout('admin');
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
-            
-			
-			
+
+
+
 			/* Image Upload */
 			$image=$this->request->data['image'];
-			//print_r($image);exit; 
+			//print_r($image);exit;
 			if(!$image['error']){
 				$target_dir = "img/uploads/";
 				$file_name=basename($image["name"]);
 				$target_file = $target_dir . $file_name;
-				
+
 				// Check if file already exists
 				if (file_exists($target_file)) {
 					$arrFilename = explode('.', $file_name);
 					$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
 					$target_file = $target_dir . $file_name;
 				}
-				
+
 				if (move_uploaded_file($image["tmp_name"], $target_file)) {
 					$this->request->data['image']='uploads/'.$file_name;
 				} else {
 					echo "Sorry, there was an error uploading your file.";exit;
 				}
-			}			
+			}
 			//print_r($this->request->data);exit;
-			
+
 			$product = $this->Products->patchEntity($product, $this->request->data);
-			
+
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 
@@ -218,7 +218,7 @@ class ProductsController extends AppController
         }
 		$this->loadModel('Subcategory');
 		$subcategory=$this->Subcategory->find();
-		
+
         //$subcategory = $this->Products->Subcategory->find('list', ['limit' => 200]);
         $this->set(compact('product', 'subcategory'));
         $this->set('_serialize', ['product']);
@@ -249,7 +249,7 @@ class ProductsController extends AppController
         }
 		$this->loadModel('Subcategory');
 		$subcategory=$this->Subcategory->find();
-		
+
         $this->set(compact('product', 'subcategory'));
         $this->set('_serialize', ['product']);
     }
