@@ -1,5 +1,5 @@
 <h3>Submenu</h3>
-<div class="admin-submenu"><?= $this->Html->link(__('List Products'), ['action' => 'adminIndex']) ?></div>
+<div class="admin-submenu"><?= $this->Html->link(__('List Products'), ['action' => 'adminIndex'], ['class' => 'btn btn-warning']) ?></div>
 <h3 class="form-title"><?= __('Add Product') ?></h3>
 <div class="products-form half-row">
     <?= $this->Form->create($product, ['type'=>'file', 'class' => 'form-group']) ?>
