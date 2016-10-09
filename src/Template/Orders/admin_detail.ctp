@@ -62,6 +62,6 @@
     <span><?= $this->Number->currency($order['order_total'], 'USD');?></span>
   </div>
 
-  <?= $this->Html->link('List', ['action'=>'order'], ['class'=>'btn btn-info']);?>
+  <?= $this->Html->link('List', ['action'=>'adminIndex'], ['class'=>'btn btn-info']);?>
 
 </div>
