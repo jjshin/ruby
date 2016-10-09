@@ -23,11 +23,14 @@ class CategoryController extends AppController
      */
     public function index()
     {
-		$this->viewBuilder()->layout('admin');
+				$this->viewBuilder()->layout('admin');
+				
+				/*
         $category = $this->paginate($this->Category);
 
         $this->set(compact('category'));
         $this->set('_serialize', ['category']);
+				*/
     }
 
 	/**

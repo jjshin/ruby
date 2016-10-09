@@ -40,14 +40,14 @@ class SubcategoryController extends AppController
             if ($this->Subcategory->save($subcategory)) {
                 $this->Flash->success(__('The subcategory has been saved.'));
 
-                return $this->redirect(['action' => 'index', $this->request->data['category_id']]);
+                return $this->redirect(['controller'=>'Category', 'action' => 'index']);
             } else {
                 $this->Flash->error(__('The subcategory could not be saved. Please, try again.'));
             }
         }
 		$this->loadModel('Category');
 		$category=$this->Category->find();
-		
+
 		$this->set('category_id', $category_id);
         $this->set(compact('subcategory', 'category'));
         $this->set('_serialize', ['subcategory']);
@@ -69,15 +69,15 @@ class SubcategoryController extends AppController
             if ($this->Subcategory->save($subcategory)) {
                 $this->Flash->success(__('The subcategory has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'Category', 'action' => 'index']);
             } else {
                 $this->Flash->error(__('The subcategory could not be saved. Please, try again.'));
             }
         }
-		
+
 		$this->loadModel('Category');
 		$category=$this->Category->find();
-		
+
         $this->set(compact('subcategory', 'category'));
         $this->set('_serialize', ['subcategory']);
     }
@@ -100,6 +100,6 @@ class SubcategoryController extends AppController
             $this->Flash->error(__('The subcategory could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller'=>'Category', 'action' => 'index']);
     }
 }

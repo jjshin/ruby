@@ -6,6 +6,29 @@
 </nav>
 <div class="products index large-9 medium-8 columns content">
     <h3><?= __('Category') ?></h3>
+    <ul>
+  		<?php foreach($categories as $id=>$cate): ?>
+  			<li>
+  				<strong><?= $this->Html->link($cate['name'], ['action' => 'adminIndex', $id]) ?></strong>
+          <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Subcategory', 'action' => 'add', $id]) ?>
+          <?= $this->Html->link(__('Edit'), ['action' => 'edit', $id]) ?>
+          <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $id], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
+
+  				<?php if(isset($cate['subcategory'])){?>
+  					<ul>
+  					<?php foreach($cate['subcategory'] as $subcate):?>
+  						<li>
+                <span><?= $subcate['name']; ?></span>
+                <?= $this->Html->link(__('Edit'), ['controller'=>'Subcategory', 'action' => 'edit', $subcate['id']]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['controller'=>'Subcategory', 'action' => 'delete', $subcate['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $subcate['id'])]) ?>
+              </li>
+  					<?php endforeach; ?>
+  					</ul>
+  				<?php }?>
+  			</li>
+  		<?php endforeach; ?>
+  	</ul>
+    <?php /*
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -34,4 +57,5 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+     */?>
 </div>

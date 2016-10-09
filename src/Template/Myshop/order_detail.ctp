@@ -10,7 +10,12 @@
 
     <li>
       <label><strong>Order Status</strong></label>
-      <span><?= $order['order_status'];?></span>
+      <span class="label label-default">
+        <?php
+        $options=array(1=>'Confirming', 2=>'Confirmed', 3=>'On its way', 4=>'Out for delivery', 5=>'Delivered', 6=>'Cancelled');
+        echo $options[$order['order_status']];
+        ?>
+      </span>
     </li>
 
   </ul>
@@ -35,5 +40,7 @@
     <label><strong>TOTAL</strong></label>
     <span><?= $this->Number->currency($order['order_total'], 'USD');?></span>
   </div>
+
+  <?= $this->Html->link('List', ['action'=>'order'], ['class'=>'btn btn-info']);?>
 
 </div>

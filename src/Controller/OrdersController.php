@@ -75,4 +75,65 @@ class OrdersController extends AppController
 							->where(['Carts.users_id'=>$this->Auth->user('id')]);
 		return $cart;
 	}
+
+	public function adminIndex(){
+		$this->viewBuilder()->layout('admin');
+
+		$this->loadModel('Orderdetails');
+
+		$orders=$this->Orderdetails->find()
+							->select(['Orderdetails.id', 'Orderdetails.created', 'Orderdetails.order_status', 'Orderdetails.order_total',
+											'Users.id', 'Users.firstname', 'Users.lastname', 'Users.username', 'Users.email'])
+							->join([
+								'table'=>'users',
+								'alias'=>'Users',
+								'conditions'=>['Orderdetails.users_id=Users.id'],
+								'type'=>'INNER'
+							])
+							->order(['Orderdetails.id'=>'DESC']);
+		$orders=$this->paginate($orders);
+		$this->set(compact('orders'));
+	}
+
+	public function adminDetail($order_id){
+		$this->viewBuilder()->layout('admin');
+
+		$this->loadModel('Orderdetails');
+		$this->loadModel('Orderproducts');
+
+		$order=$this->Orderdetails->find()
+							->select(['Orderdetails.id', 'Orderdetails.created', 'Orderdetails.order_status', 'Orderdetails.order_total',
+												'Users.id', 'Users.firstname', 'Users.lastname', 'Users.username', 'Users.email'])
+							->join([
+								'table'=>'users',
+								'alias'=>'Users',
+								'conditions'=>['Orderdetails.users_id=Users.id'],
+								'type'=>'INNER'
+							])
+							->where(['Orderdetails.id'=>$order_id])
+							->first();
+
+		$products=$this->Orderproducts->find()
+							->select(['Orderproducts.id', 'Orderproducts.orderqty', 'Orderproducts.totalprice', 'Products.name', 'Products.price', 'Products.image'])
+							->join([
+								'table'=>'products',
+								'alias'=>'Products',
+								'conditions'=>array('Products.id=Orderproducts.products_id'),
+								'type'=>'INNER'
+							])
+							->where(['Orderproducts.orderdetails_id'=>$order_id]);
+		$this->set(compact('order', 'products'));
+	}
+
+	public function changeStatus($order_id, $order_status){
+		$this->loadModel('Orderdetails');
+		$query=$this->Orderdetails->query();
+		if($query->update()
+				->set(['order_status'=>$order_status])
+				->where(['id'=>$order_id])
+				->execute()
+		){
+			$this->redirect(['action'=>'adminIndex']);
+		}
+	}
 }
