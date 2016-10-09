@@ -40,7 +40,14 @@ form button {
 }
 
 .error-message {
+    display: block;
+    clear: both;
+    float: right;
     color: #d9534f;
+}
+
+.form-control.form-error {
+    border: 1px solid #d9534f;
 }
 
 /**
