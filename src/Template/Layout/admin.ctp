@@ -36,6 +36,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -62,6 +64,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <a class="btn <?= $this->request->url == 'users' ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>users">User</a>
                 <a class="btn btn-secondary <?= $this->request->url == 'category' || strpos($this->request->url, 'subcategory') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>category">Category</a>
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'products') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>products/adminIndex">Product</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'orders') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>orders/adminIndex">Order</a>
             </div>
         </div>
 

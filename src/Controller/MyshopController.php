@@ -21,6 +21,7 @@ class MyshopController extends AppController
 		$orders=$this->Orderdetails->find()
 							->where(['users_id'=>$this->Auth->user('id')])
 							->order(['id'=>'DESC']);
+		$orders=$this->paginate($orders);
 		$this->set(compact('orders'));
 	}
 
