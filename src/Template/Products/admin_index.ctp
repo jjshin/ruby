@@ -1,10 +1,5 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-
+<h3>Submenu</h3>
+<div class="admin-submenu"><?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
 <div>
 	<h3>Category</h3>
 	<ul>
@@ -24,9 +19,9 @@
 	</ul>
 </div>
 
-<div class="products index large-9 medium-8 columns content">
+<div class="products-table">
     <h3><?= __('Products') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>

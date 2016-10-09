@@ -6,6 +6,19 @@ body {
     background: white;
 }
 
+h3.form-title {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+form .input {
+    margin-bottom: 10px;
+}
+
+form button {
+    margin-top: 20px;
+}
+
 .container {
     width: 1280px;
 }
@@ -43,7 +56,10 @@ body {
     text-align: left;
 }
 
-.form-wrapper div.input { display: block }
+.form-wrapper div.input {
+    display: block
+}
+
 .form-wrapper button.btn {
     width: 100%;
     margin-top: 20px;
@@ -58,18 +74,6 @@ body {
 
 .admin-menu a.btn-success {
     border: 1px solid #5cb85c;
-}
-
-.add-user-form {
-    width: 400px;
-}
-
-.add-user-form .input {
-    margin-bottom: 10px;
-}
-
-.add-user-form select {
-    margin-bottom: 20px;
 }
 
 /**
@@ -217,7 +221,6 @@ body {
 #content-body.register .form-wrapper .input {
     overflow: hidden;
     display: block;
-    margin-bottom: 10px;
 }
 
 #content-body.register .form-wrapper label {

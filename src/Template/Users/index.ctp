@@ -1,5 +1,7 @@
-<div class="users index large-9 medium-8 columns content">
-    <h3><?= __('Users') ?></h3><?= $this->Html->link(__('Add New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?>
+<h3>Submenu</h3>
+<div class="admin-submenu"><?= $this->Html->link(__('Add New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
+<h3><?= __('Users') ?></h3>
+<div class="users-table">
     <table class="table table-striped">
         <thead>
             <tr>

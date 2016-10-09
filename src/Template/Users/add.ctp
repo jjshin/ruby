@@ -1,12 +1,8 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="add-user-form from-wrapper">
+<h3>Submenu</h3>
+<div class="admin-submenu"><?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'btn btn-warning']) ?></div>
+<h3 class="form-title"><?= __('Add User') ?></h3>
+<div class="add-user-form half-row">
     <?= $this->Form->create($user, ['class' => 'form-group']) ?>
-	<h3><?= __('Add User') ?></h3>
     <fieldset>
         <?php
             echo $this->Form->input('firstname', ['class' => 'form-control']);

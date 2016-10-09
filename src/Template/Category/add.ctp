@@ -1,17 +1,13 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Category'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="products form large-9 medium-8 columns content">
-    <?= $this->Form->create($category) ?>
+<h3>Submenu</h3>
+<div class="admin-submenu"><?= $this->Html->link(__('List Category'), ['action' => 'index'], ['class' => 'btn btn-warning']) ?></div>
+<h3 class="form-title"><?= __('Add Category') ?></h3>
+<div class="products-form half-row">
+    <?= $this->Form->create($category, ['class' => 'form-group']) ?>
     <fieldset>
-        <legend><?= __('Add Category') ?></legend>
         <?php
-            echo $this->Form->input('cate_name');
+            echo $this->Form->input('cate_name', ['class' => 'form-control']);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-info']) ?>
     <?= $this->Form->end() ?>
 </div>
