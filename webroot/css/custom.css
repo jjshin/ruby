@@ -26,6 +26,10 @@ body {
     text-align: center;
 }
 
+.error-message {
+    color: #d9534f;
+}
+
 /**
 *   Shared
 */
@@ -61,7 +65,6 @@ body {
 }
 
 .add-user-form select {
-    margin-top: 5px;
     margin-bottom: 20px;
 }
 
