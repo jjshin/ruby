@@ -19,6 +19,10 @@ form button {
     margin-top: 20px;
 }
 
+.btn.disabled {
+    opacity: .35;
+}
+
 .container {
     width: 1280px;
 }

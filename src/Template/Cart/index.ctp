@@ -27,8 +27,12 @@
 
   <div>
     <?php
-      echo $this->Form->button('Order', ['class'=>'btn btn-success']);
-      echo $this->Form->end();
+        if ( $cart->count() > 0 ) {
+            echo $this->Html->Link('Check out', ['controller' => 'Orders', 'action'=>'index'], ['class'=>'btn btn-success']);
+        } else {
+            echo $this->Html->Link('Check out', ['controller' => 'Orders', 'action'=>'index'], ['class'=>'btn btn-success disabled']);
+        }
+        echo $this->Form->end();
      ?>
 </div>
 
