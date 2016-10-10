@@ -23,8 +23,8 @@
                 <td><?= h($user->lastname) ?></td>
                 <td><?= h($user->username) ?></td>
                 <td><?= h($user->email) ?></td>
-                <td><?= $this->Number->format($user->phone) ?></td>
-                <td><?= $this->Number->format($user->role) ?></td>
+                <td><?= h($user->phone) ?></td>
+                <td><?= h($user->role == 1 ? 'Admin' : 'Customer') ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
