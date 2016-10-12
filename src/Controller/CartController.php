@@ -65,6 +65,7 @@ class CartController extends AppController
 												'type'=>'inner'
 										))
 										->where(['Carts.users_id'=>$this->Auth->user('id')]);
+					//print_r($cart);
 					$this->set(compact('cart'));
 				}
 		}

@@ -28,10 +28,12 @@ class UsersController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($role=10)
     {
-		$this->viewBuilder()->layout('admin');
-        $users = $this->paginate($this->Users);
+				$this->viewBuilder()->layout('admin');
+				$users = $this->Users->find()
+									->where(['role'=>$role]);
+        $users = $this->paginate($users);
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
@@ -146,7 +148,7 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-	
+
 	public function register()
     {
         $user = $this->Users->newEntity();

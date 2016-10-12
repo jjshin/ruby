@@ -1,6 +1,13 @@
 <h3>Submenu</h3>
 <div class="admin-submenu"><?= $this->Html->link(__('Add New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
 <h3><?= __('Users') ?></h3>
+<div>
+  <nav>
+    <ul>
+      <li><?= $this->Html->link('Users', ['action'=>'index', 10]);?></li>
+      <li><?= $this->Html->link('Admins', ['action'=>'index', 1]);?></li>
+    </ul>
+</div>
 <div class="users-table">
     <table class="table table-striped">
         <thead>
