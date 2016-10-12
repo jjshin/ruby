@@ -35,7 +35,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/slick.min.js"></script>
-  
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -50,6 +50,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="login">
 		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
       <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
+    <?php } elseif($this->request->session()->read('Auth.User.role')==1){ ?>
+      <strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
+      <?= $this->Html->link('Admin Tool', ['controller'=>'Users', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
+      <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
 		<?php } else { ?>
 			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
       <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
