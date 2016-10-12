@@ -17,6 +17,14 @@
 				'empty' => 'Select User Role',
 				'class' => 'form-control required'
 			]);
+
+      echo $this->Form->input('address1', ['class' => 'form-control']);
+      echo $this->Form->input('address2', ['class' => 'form-control']);
+      echo $this->Form->input('suburb', ['class' => 'form-control']);
+      echo $this->Form->input('state', ['class' => 'form-control']);
+      echo $this->Form->input('postcode', ['class' => 'form-control']);
+
+      echo $this->Form->input('subscribe', ['type'=>'checkbox', 'value'=>1, 'label'=>'I would like to receive emails about special promos and offers from Ruby\'s Gifts.']);
 		?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-info']) ?>

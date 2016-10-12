@@ -79,6 +79,28 @@ class UsersTable extends Table
             ->requirePresence('role', 'create')
             ->notEmpty('role');
 
+        $validator
+            ->requirePresence('address1', 'create')
+            ->notEmpty('address1');
+
+        $validator
+            ->allowEmpty('address2');
+
+        $validator
+            ->requirePresence('suburb', 'create')
+            ->notEmpty('suburb');
+
+        $validator
+            ->requirePresence('state', 'create')
+            ->notEmpty('state');
+
+        $validator
+            ->requirePresence('postcode', 'create')
+            ->notEmpty('postcode');
+
+        $validator
+            ->allowEmpty('subscribe');
+
         return $validator;
     }
 

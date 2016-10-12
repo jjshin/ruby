@@ -42,5 +42,15 @@
             <th scope="row"><?= __('Role') ?></th>
             <td><?= $this->Number->format($user->role) ?></td>
         </tr>
+
+        <tr>
+            <th scope="row"><?= __('Address') ?></th>
+            <td><?= $user->address1.' '.$user->address2.', '.$user->suburb.' '.$user->state.' '.$user->postcode; ?></td>
+        </tr>
+
+        <tr>
+            <th scope="row"><?= __('Subscribe') ?></th>
+            <td><?= $user->subscribe?'Yes':'No'; ?></td>
+        </tr>
     </table>
 </div>

@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `address1` VARCHAR(100) NOT NULL AFTER `phone`, ADD `address2` VARCHAR(100) NULL AFTER `address1`, ADD `suburb` VARCHAR(40) NOT NULL AFTER `address2`, ADD `state` VARCHAR(20) NOT NULL AFTER `suburb`, ADD `postcode` VARCHAR(10) NOT NULL AFTER `state`, ADD `subscribe` BOOLEAN NOT NULL AFTER `postcode`;

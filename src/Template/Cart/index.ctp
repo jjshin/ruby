@@ -28,9 +28,9 @@
   <div>
     <?php
         if ( $cart->count() > 0 ) {
-            echo $this->Html->Link('Check out', ['controller' => 'Orders', 'action'=>'index'], ['class'=>'btn btn-success']);
+            echo $this->FOrm->button('Check out', ['class'=>'btn btn-success']);
         } else {
-            echo $this->Html->Link('Check out', ['controller' => 'Orders', 'action'=>'index'], ['class'=>'btn btn-success disabled']);
+            echo $this->Form->button('Check out', ['class'=>'btn btn-success disabled']);
         }
         echo $this->Form->end();
      ?>
