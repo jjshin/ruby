@@ -121,6 +121,13 @@ class ProductsController extends AppController
 		return $result;
 	}
 
+	public function check_qty($id, $qty){
+		$check=$this->Products->find()
+			->where(array('id'=>$id, 'qty >= '=>$qty))
+			->count();
+		return $check;
+	}
+
 	public function adminIndex($cate=null, $subcate=null)
     {
 		$this->viewBuilder()->layout('admin');

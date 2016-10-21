@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
 
 class OrdersController extends AppController
 {
@@ -17,12 +18,21 @@ class OrdersController extends AppController
 
 		// Update carts table
 		foreach($this->request->data['cart_id'] as $key=>$cart_id){
-			$query=$this->Carts->query();
 			$qty=$this->request->data['qty'][$key];
-			$query->update()
-				->set(['qty'=>$qty])
-				->where(['id'=>$cart_id])
-				->execute();
+			$product_id=$this->request->data['product_id'][$key];
+
+			$productObj=new ProductsController;
+			$qty_check=$productObj->check_qty($product_id, $qty);
+			if($qty_check>0){
+				$query=$this->Carts->query();
+				$query->update()
+					->set(['qty'=>$qty])
+					->where(['id'=>$cart_id])
+					->execute();
+			}else{
+				$this->Flash->error(__('Not enough stock.'));
+				$this->redirect($this->referer());
+			}
 		}
 
 		// Get cart list
@@ -39,26 +49,42 @@ class OrdersController extends AppController
 		$cart=$this->getCarts();
 		$total=0;
 		foreach($cart as $item){
-			$total += $item['qty'] * $item->Products['price'];
-		}
-		// Add Orderdetails table
-		$orderdetail=$this->Orderdetails->newEntity();
-		$orderdetail=$this->Orderdetails->patchEntity($orderdetail, ['users_id'=>$this->Auth->user('id'), 'order_status'=>1, 'order_total'=>$total]);
-		if($this->Orderdetails->save($orderdetail)){
-
-			foreach($cart as $item){
-				// Add Orderproducts table
-				$orderproducts=$this->Orderproducts->newEntity();
-				$data=array(
-					'orderqty'=>$item['qty'],
-					'totalprice'=>$item->Products['price'],
-					'orderdetails_id'=>$orderdetail->id,
-					'products_id'=>$item->Products['id']
-				);
-				$orderproducts=$this->Orderproducts->patchEntity($orderproducts, $data);
-				$this->Orderproducts->save($orderproducts);
+			//Check qty of product
+			$productObj=new ProductsController;
+			$qty_check=$productObj->check_qty($item->Products['id'], $item['qty']);
+			if($qty_check>0){	//continue
+				$total += $item['qty'] * $item->Products['price'];
+			}else{
+				$this->Flash->error(__('Not enough stock.'));
+				break;
 			}
-			$this->Carts->deleteAll(['users_id'=>$this->Auth->user('id')]);
+		}
+		if($qty_check>0){
+			// Add Orderdetails table
+			$orderdetail=$this->Orderdetails->newEntity();
+			$orderdetail=$this->Orderdetails->patchEntity($orderdetail, ['users_id'=>$this->Auth->user('id'), 'order_status'=>1, 'order_total'=>$total]);
+			if($this->Orderdetails->save($orderdetail)){
+
+				foreach($cart as $item){
+					// Add Orderproducts table
+					$orderproducts=$this->Orderproducts->newEntity();
+					$data=array(
+						'orderqty'=>$item['qty'],
+						'totalprice'=>$item->Products['price'],
+						'orderdetails_id'=>$orderdetail->id,
+						'products_id'=>$item->Products['id']
+					);
+					$orderproducts=$this->Orderproducts->patchEntity($orderproducts, $data);
+					$this->Orderproducts->save($orderproducts);
+
+					// Reduce qty of products table
+					$conn = ConnectionManager::get('default');
+					$conn->execute('UPDATE products SET qty=qty-'. $item['qty'].' WHERE id='.$item->Products['id']);
+				}
+				$this->Carts->deleteAll(['users_id'=>$this->Auth->user('id')]);
+			}
+		}else{
+			$this->redirect(['controller'=>'Cart', 'action'=>'index']);
 		}
 	}
 

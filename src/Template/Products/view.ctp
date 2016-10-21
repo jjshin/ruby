@@ -35,7 +35,7 @@
         </tr>
     </table>
   <?php
-  if ($this->request->session()->read('Auth.User.username')) {
+  if ($this->request->session()->read('Auth.User.id')) {
     echo $this->Form->button('Add Cart',  ['class'=>'btn btn-info', 'role'=>'button']);
   }
   ?>

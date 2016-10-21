@@ -10,6 +10,7 @@
     <li>
       <?= empty($item->Products['image']) ? '' : $this->Html->image($item->Products['image'], ['style'=>'max-width:100px;']); ?>
       <strong><?= $item->Products['name'];?></strong>
+      <?= $this->Form->hidden('product_id[]', ['value'=>$item->Products['id']]);?>
       <?= $this->Form->hidden('cart_id[]', ['value'=>$item['id']]);?>
       <?= $this->Form->number('qty[]', ['value'=>$item['qty'], 'placeholder'=>'order qty', 'min'=>1, 'class'=>'cart_qty', 'data-price'=>$item->Products['price']]);?>
       <span class="price"><?= $this->Number->currency($item->Products['price'], 'USD');?></span>
