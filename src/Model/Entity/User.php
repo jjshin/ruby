@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  * @property int $role
  */
  use Cake\Auth\DefaultPasswordHasher;
- 
+
 class User extends Entity
 {
 

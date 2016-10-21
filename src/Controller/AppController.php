@@ -43,25 +43,30 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        
-		$this->loadComponent('Auth', [
-			'authorize' => ['Controller'],
-			'loginRedirect' => [
-				'controller' => 'Main',
-				'action' => 'index'
-			],
-			'logoutRedirect' => [
-				'controller' => 'Main',
-				'action' => 'index'
-			]
-        ]);
+
+    		$this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => ['username' => 'email']
+                ]
+            ],
+      			'authorize' => ['Controller'],
+      			'loginRedirect' => [
+      				'controller' => 'Main',
+      				'action' => 'index'
+      			],
+      			'logoutRedirect' => [
+      				'controller' => 'Main',
+      				'action' => 'index'
+      			]
+          ]);
 
         // Allow the display action so our pages controller
         // continues to work.
         $this->Auth->allow();
-	
+
     }
-	
+
 	public function isAuthorized($user)
 	{
 		// Admin can access every action
@@ -87,9 +92,9 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
-		
+
 		$productObj=new ProductsController;
 		$categories=$productObj->get_category();
-		$this->set(compact('categories')); 
+		$this->set(compact('categories'));
     }
 }

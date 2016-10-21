@@ -1,9 +1,9 @@
 <div class="login-register-container">
     <div class="login-form form-wrapper">
         <h2>Login</h2>
-        
+
         <?= $this->Form->create(null, ['class' => 'form-group']) ?>
-        <?= $this->Form->input('username', ['class' => 'form-control']) ?>
+        <?= $this->Form->input('email', ['class' => 'form-control']) ?>
         <?= $this->Form->input('password', ['class' => 'form-control']) ?>
         <?= $this->Form->button('Login', ['class' => 'btn btn-info']) ?>
         <?= $this->Form->end() ?>

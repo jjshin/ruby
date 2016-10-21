@@ -7,11 +7,11 @@
         <?php
             echo $this->Form->input('firstname', ['class' => 'form-control']);
             echo $this->Form->input('lastname', ['class' => 'form-control']);
-            echo $this->Form->input('username', ['class' => 'form-control']);
+            //echo $this->Form->input('username', ['class' => 'form-control']);
             echo $this->Form->input('password', ['class' => 'form-control']);
             echo $this->Form->input('email', ['class' => 'form-control']);
             echo $this->Form->input('phone', ['class' => 'form-control']);
-			echo $this->Form->input('userRole', [
+			echo $this->Form->input('role', [
 				'type' => 'select',
 				'options' => [1=>'Admin', 10=>'User'],
 				'empty' => 'Select User Role',
@@ -29,4 +29,5 @@
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-info']) ?>
     <?= $this->Form->end() ?>
+
 </div>

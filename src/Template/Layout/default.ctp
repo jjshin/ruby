@@ -48,14 +48,14 @@ $cakeDescription = 'Rubys Gifts';
     <div id="logo" class="container" style="padding-top: 0px; padding-bottom: 10px;">
         <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
         <div class="login">
-		<?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
+		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
       <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
-    <?php } elseif($this->request->session()->read('Auth.User.role')==1){ ?>
-      <strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
+    <?php } elseif($this->request->session()->read('Auth.User.role')==1){ //Admin ?>
+      <strong>Admin</strong>
       <?= $this->Html->link('Admin Tool', ['controller'=>'Users', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
       <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
-		<?php } else { ?>
-			<strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
+		<?php } else { //User ?>
+			<strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
       <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
       <?= $this->Html->link('My Shopping', ['controller'=>'Myshop', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
       <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>

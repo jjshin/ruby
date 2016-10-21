@@ -17,11 +17,12 @@
         <tr>
             <th scope="row"><?= __('Lastname') ?></th>
             <td><?= h($user->lastname) ?></td>
-        </tr>
+        <?php /*
         <tr>
             <th scope="row"><?= __('Username') ?></th>
             <td><?= h($user->username) ?></td>
         </tr>
+        */?>
         <tr>
             <th scope="row"><?= __('Password') ?></th>
             <td><?= h($user->password) ?></td>
