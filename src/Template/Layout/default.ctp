@@ -100,7 +100,7 @@ $cakeDescription = 'Rubys Gifts';
 
     <div id="footer-wrapper">
         <div id="footer" class="container">
-          <p>Social Media Connections, T&C and Privacy Policy </p>
+          <p>Contact Us with Social Media Connections, Help and About Us Links </p>
             <!-- <div id="fbox1">
                 <h2>Maecenas luctus</h2>
                 <p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>
@@ -120,8 +120,10 @@ $cakeDescription = 'Rubys Gifts';
         </div>
     </div>
 
-    <div id="copyright">
-        <p>&copy; Ruby's Gifts | Terms and Condition | Privacy Policy</p>
+    <div id="copyright" class="container" style="padding-top: 20px; padding-bottom: 40px;">
+        <p>&copy; 2016 Ruby's Gifts  |
+          <a href="/terms/">Terms &amp; Conditions</a> |
+          <a href="/privacy/">Privacy Policy</a></p>
     </div>
 
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

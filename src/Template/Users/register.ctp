@@ -1,5 +1,5 @@
 <div class="registration-form form-wrapper">
-	<h2><?= __('Registeration') ?></h2>
+	<h2><?= __('Registration') ?></h2>
 
     <?= $this->Form->create($user, ['class' => 'form-group']) ?>
     <?php
