@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Rubys Gifts';
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
 
-    <div id="logo" class="container">
+    <div id="logo" class="container" style="padding-top: 0px; padding-bottom: 10px;">
         <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
         <div class="login">
 		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
@@ -121,7 +121,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
 
     <div id="copyright">
-        <p>&copy; Ruby's Gifts. All rights reserved. | Design by Ruby IT Solution.</p>
+        <p>&copy; Ruby's Gifts | Terms and Condition | Privacy Policy</p>
     </div>
 
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
