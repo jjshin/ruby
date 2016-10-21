@@ -121,7 +121,7 @@ $cakeDescription = 'Rubys Gifts';
     </div>
 
     <div id="copyright">
-        <p>&copy; Ruby's Gifts. All rights reserved. | Design by Ruby IT Solution.</p>
+        <p>&copy; Ruby's Gifts | Terms and Condition | Privacy Policy</p>
     </div>
 
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
