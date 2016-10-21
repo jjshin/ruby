@@ -1,18 +1,18 @@
-<h3>Submenu</h3>
-<div class="admin-submenu"><?= $this->Html->link(__('Add New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
-<h3><?= __('Users') ?></h3>
+<h3>Manage Customers</h3>
+<!-- <div class="admin-submenu"><?= $this->Html->link(__('Add New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div> -->
+<!-- <h3><?= __('Customer List') ?></h3> -->
 <div>
   <nav>
-    <ul>
+    <!-- <ul>
       <li><?= $this->Html->link('Users', ['action'=>'index', 10]);?></li>
       <li><?= $this->Html->link('Admins', ['action'=>'index', 1]);?></li>
-    </ul>
+    </ul> -->
 </div>
 <div class="users-table">
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
                 <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
                 <?php /*<th scope="col"><?= $this->Paginator->sort('username') ?></th>*/?>
@@ -25,7 +25,7 @@
         <tbody>
             <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= $this->Number->format($user->id) ?></td>
+                <!-- <td><?= $this->Number->format($user->id) ?></td> -->
                 <td><?= h($user->firstname) ?></td>
                 <td><?= h($user->lastname) ?></td>
                 <?php /*<td><?= h($user->username) ?></td>*/?>

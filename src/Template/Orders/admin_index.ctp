@@ -1,10 +1,10 @@
 <div>
-  <h3>Order</h3>
+  <h3>Manage Orders</h3>
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>User Name</th>
+        <th>Order No.</th>
+        <th>Customer Email</th>
         <th>Order Date</th>
         <th>Order Total</th>
         <th>Status</th>
@@ -16,7 +16,7 @@
     <?php foreach($orders as $order):?>
       <tr>
         <td><?= $order['id'];?></td>
-        <td><?= $order->Users['username'];?></td>
+        <td><?= $order->Users['email'];?></td>
         <td><?= $order['created'];?></td>
         <td><?= $this->Number->currency($order['order_total'], 'USD');?></td>
         <td>
@@ -40,7 +40,7 @@
     <?php endforeach;?>
     </tbody>
   </table>
-  
+
   <div class="paginator">
       <ul class="pagination">
           <?= $this->Paginator->prev('< ' . __('previous')) ?>
