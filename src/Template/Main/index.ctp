@@ -1,6 +1,6 @@
 
 <div id="page-wrapper">
-    <div id="slider-section" class="container" style="width: 400px; height: 300px;">
+    <div id="slider-section" class="container">
         <div class="main-slider">
             <div><img src="<?php echo  $this->request->webroot;?>img/test2.jpg" alt="" /></div>
             <div><img src="<?php echo  $this->request->webroot;?>img/test3.jpg" alt="" /></div>
