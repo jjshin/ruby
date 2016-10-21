@@ -15,7 +15,7 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+                <?php /*<th scope="col"><?= $this->Paginator->sort('username') ?></th>*/?>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('role') ?></th>
@@ -28,7 +28,7 @@
                 <td><?= $this->Number->format($user->id) ?></td>
                 <td><?= h($user->firstname) ?></td>
                 <td><?= h($user->lastname) ?></td>
-                <td><?= h($user->username) ?></td>
+                <?php /*<td><?= h($user->username) ?></td>*/?>
                 <td><?= h($user->email) ?></td>
                 <td><?= h($user->phone) ?></td>
                 <td><?= h($user->role == 1 ? 'Admin' : 'Customer') ?></td>

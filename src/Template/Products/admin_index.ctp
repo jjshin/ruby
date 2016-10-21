@@ -2,19 +2,27 @@
 <div class="admin-submenu"><?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
 <div>
 	<h3>Category</h3>
-	<ul>
-		<li><?= $this->Html->link('All', ['action' => 'adminIndex']) ?></li>
+
+	<ul class="nav nav-tabs">
+	  <li role="presentation"><?= $this->Html->link('All', ['action' => 'adminIndex']) ?></li>
+
 		<?php foreach($category as $id=>$cate): ?>
-			<li>
-				<strong><?= $this->Html->link($cate['name'], ['action' => 'adminIndex', $id]) ?></strong>
-				<?php if(isset($cate['subcategory'])){?>
-					<ul>
+			<?php if(isset($cate['subcategory'])): ?>
+		  <li role="presentation" class="dropdown">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		      <?= $cate['name']; ?> <span class="caret"></span>
+		    </a>
+		    <ul class="dropdown-menu">
 					<?php foreach($cate['subcategory'] as $subcate):?>
 						<li><?= $this->Html->link($subcate['name'], ['action' => 'adminIndex', $id, $subcate['id']]) ?></li>
 					<?php endforeach; ?>
-					</ul>
-				<?php }?>
+		    </ul>
+		  </li>
+			<?php else:?>
+			<li role="presentation">
+		    <?= $this->Html->link($cate['name'], ['action' => 'adminIndex', $id]) ?>
 			</li>
+			<?php endif;?>
 		<?php endforeach; ?>
 	</ul>
 </div>
@@ -35,6 +43,7 @@
             </tr>
         </thead>
         <tbody>
+					<?php if($products->count() > 0):?>
             <?php foreach ($products as $product): ?>
             <tr>
                 <td><?= $this->Number->format($product->id) ?></td>
@@ -51,6 +60,11 @@
                 </td>
             </tr>
             <?php endforeach; ?>
+					<?php else:?>
+						<tr>
+							<td colspan="8">No Data</td>
+						</tr>
+					<?php endif;?>
         </tbody>
     </table>
     <div class="paginator">

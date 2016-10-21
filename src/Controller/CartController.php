@@ -24,7 +24,7 @@ class CartController extends AppController
      */
     public function addCart()
     {
-				if($this->Auth->user('username')){
+				if($this->Auth->user('id')){
 	       $this->loadModel('Carts');
 
 	 		 	 $check=$this->Carts->find()
@@ -54,7 +54,7 @@ class CartController extends AppController
     }
 
 		public function index(){
-				if($this->Auth->user('username')){
+				if($this->Auth->user('id')){
 					$this->loadModel('Carts');
 					$cart=$this->Carts->find()
 										->select(['Carts.id', 'Carts.qty', 'Products.id', 'Products.name', 'Products.image', 'Products.price'])
@@ -71,7 +71,7 @@ class CartController extends AppController
 		}
 
 		public function delCart($cart_id){
-			if($this->Auth->user('username')){
+			if($this->Auth->user('id')){
 				$this->loadModel('Carts');
 				$entity=$this->Carts->find()
 					->where(['id'=>$cart_id, 'users_id'=>$this->Auth->user('id')])

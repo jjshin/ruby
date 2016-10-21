@@ -49,10 +49,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div id="logo" class="two-third-row center-block">
             <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
             <div class="login">
-                <?php if (is_null($this->request->session()->read('Auth.User.username'))) { ?>
+                <?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
                     <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/login" role="button">Login</a>
                 <?php } else { ?>
-                    <strong><?php echo $this->request->session()->read('Auth.User.username');?></strong>
+                    <strong>Admin</strong>
                     <a class="btn btn-info" href="<?php echo  $this->request->webroot;?>users/logout" role="button">Logout</a>
                 <?php } ?>
             </div>

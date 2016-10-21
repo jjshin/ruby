@@ -5,7 +5,7 @@
     <?php
         echo $this->Form->input('firstname', ['class' => 'form-control']);
         echo $this->Form->input('lastname', ['class' => 'form-control']);
-        echo $this->Form->input('username', ['class' => 'form-control']);
+        //echo $this->Form->input('username', ['class' => 'form-control']);
         echo $this->Form->input('password', ['class' => 'form-control']);
         echo $this->Form->input('email', ['class' => 'form-control']);
         echo $this->Form->input('phone', ['class' => 'form-control']);
