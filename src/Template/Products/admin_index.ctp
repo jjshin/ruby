@@ -1,7 +1,8 @@
-<h3>Submenu</h3>
+<h3>Manage Products</h3>
+<br>
 <div class="admin-submenu"><?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
 <div>
-	<h3>Category</h3>
+	<!-- <h3>Category</h3> -->
 
 	<ul class="nav nav-tabs">
 	  <li role="presentation"><?= $this->Html->link('All', ['action' => 'adminIndex']) ?></li>

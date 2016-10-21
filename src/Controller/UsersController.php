@@ -56,7 +56,7 @@ class UsersController extends AppController
 					return $this->redirect('/');
 				}
 			}
-			$this->Flash->error('Your username or password is incorrect.');
+			$this->Flash->error('Your email or password is incorrect.');
 		}
 	}
 

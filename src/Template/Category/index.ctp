@@ -1,6 +1,8 @@
-<h3>Submenu</h3>
+<h3>Manage Categories</h3>
+<br>
+<!-- <h3><?= __('Category') ?></h3> -->
 <div class="admin-submenu"><?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
-<h3><?= __('Category') ?></h3>
+<br>
 <div class="products index large-9 medium-8 columns content">
     <ul>
   		<?php foreach($categories as $id=>$cate): ?>
