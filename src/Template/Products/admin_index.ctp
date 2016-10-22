@@ -55,9 +55,9 @@
                 <td><?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:50px;']); ?></td>
                 <td><?= $product->subcategory_id; ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'adminView', $product->id]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'adminView', $product->id]) ?> |
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
+                    <!-- <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?> -->
                 </td>
             </tr>
             <?php endforeach; ?>
