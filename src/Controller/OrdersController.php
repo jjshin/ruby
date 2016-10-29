@@ -109,7 +109,7 @@ class OrdersController extends AppController
 
 		$orders=$this->Orderdetails->find()
 							->select(['Orderdetails.id', 'Orderdetails.created', 'Orderdetails.order_status', 'Orderdetails.order_total',
-											'Users.id', 'Users.firstname', 'Users.lastname', 'Users.username', 'Users.email'])
+											'Users.id', 'Users.firstname', 'Users.lastname', 'Users.email'])
 							->join([
 								'table'=>'users',
 								'alias'=>'Users',
@@ -129,7 +129,7 @@ class OrdersController extends AppController
 
 		$order=$this->Orderdetails->find()
 							->select(['Orderdetails.id', 'Orderdetails.created', 'Orderdetails.order_status', 'Orderdetails.order_total',
-												'Users.id', 'Users.firstname', 'Users.lastname', 'Users.username', 'Users.email'])
+												'Users.id', 'Users.firstname', 'Users.lastname', 'Users.email'])
 							->join([
 								'table'=>'users',
 								'alias'=>'Users',

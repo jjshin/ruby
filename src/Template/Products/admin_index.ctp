@@ -35,9 +35,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('ship') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('qty') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('price') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('image') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('subcategory_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -49,9 +47,7 @@
             <tr>
                 <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= h($product->name) ?></td>
-                <td><?= h($product->ship) ?></td>
                 <td><?= $this->Number->format($product->qty) ?></td>
-                <td><?= $this->Number->format($product->price) ?></td>
                 <td><?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:50px;']); ?></td>
                 <td><?= $product->subcategory_id; ?></td>
                 <td class="actions">

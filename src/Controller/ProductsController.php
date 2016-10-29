@@ -76,10 +76,13 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
-        $product = $this->Products->find()
-							->select(['Products.id', 'Products.name', 'Products.ship', 'Products.qty', 'Products.price', 'Products.image', 'Products.descript',
-							'Subcategory.id', 'Subcategory.name',
-							'Category.id', 'Category.cate_name'])
+				$this->loadModel('Category');
+        $product = $this->Products->find('all')
+							->select($this->Products)
+							->select($this->Category)
+							->select($this->Products->Subcategory)
+							->select($this->Products->Suppliers)
+							->select($this->Products->Brands)
 							->join(array(
 								'table'=>'subcategory',
 								'alias'=>'Subcategory',
@@ -92,6 +95,18 @@ class ProductsController extends AppController
 								'conditions'=>array('Category.id=Subcategory.category_id'),
 								'type'=>'LEFT OUTER'
 								))
+							->join(array(
+								'table'=>'suppliers',
+								'alias'=>'suppliers',
+								'conditions'=>array('Products.suppliers_id=suppliers.id'),
+								'type'=>'LEFT OUTER'
+							))
+							->join(array(
+								'table'=>'brands',
+								'alias'=>'brands',
+								'conditions'=>array('Products.brands_id=brands.id'),
+								'type'=>'LEFT OUTER'
+							))
 							->where(array('Products.id'=>$id))
 							->first();
 
@@ -192,9 +207,14 @@ class ProductsController extends AppController
 
 			/* Image Upload */
 			$image=$this->request->data['image'];
+			$image2=$this->request->data['image2'];
+			$image3=$this->request->data['image3'];
+			$image4=$this->request->data['image4'];
+			$image5=$this->request->data['image5'];
 			//print_r($image);exit;
+
+			$target_dir = "img/uploads/";
 			if(!$image['error']){
-				$target_dir = "img/uploads/";
 				$file_name=basename($image["name"]);
 				$target_file = $target_dir . $file_name;
 
@@ -211,6 +231,78 @@ class ProductsController extends AppController
 					echo "Sorry, there was an error uploading your file.";exit;
 				}
 			}
+
+			if(!$image2['error']){
+				$file_name=basename($image2["name"]);
+				$target_file = $target_dir . $file_name;
+
+				// Check if file already exists
+				if (file_exists($target_file)) {
+					$arrFilename = explode('.', $file_name);
+					$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+					$target_file = $target_dir . $file_name;
+				}
+
+				if (move_uploaded_file($image2["tmp_name"], $target_file)) {
+					$this->request->data['image2']='uploads/'.$file_name;
+				} else {
+					echo "Sorry, there was an error uploading your file.";exit;
+				}
+			}
+
+			if(!$image3['error']){
+				$file_name=basename($image3["name"]);
+				$target_file = $target_dir . $file_name;
+
+				// Check if file already exists
+				if (file_exists($target_file)) {
+					$arrFilename = explode('.', $file_name);
+					$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+					$target_file = $target_dir . $file_name;
+				}
+
+				if (move_uploaded_file($image3["tmp_name"], $target_file)) {
+					$this->request->data['image3']='uploads/'.$file_name;
+				} else {
+					echo "Sorry, there was an error uploading your file.";exit;
+				}
+			}
+
+			if(!$image4['error']){
+				$file_name=basename($image4["name"]);
+				$target_file = $target_dir . $file_name;
+
+				// Check if file already exists
+				if (file_exists($target_file)) {
+					$arrFilename = explode('.', $file_name);
+					$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+					$target_file = $target_dir . $file_name;
+				}
+
+				if (move_uploaded_file($image4["tmp_name"], $target_file)) {
+					$this->request->data['image4']='uploads/'.$file_name;
+				} else {
+					echo "Sorry, there was an error uploading your file.";exit;
+				}
+			}
+
+			if(!$image5['error']){
+				$file_name=basename($image5["name"]);
+				$target_file = $target_dir . $file_name;
+
+				// Check if file already exists
+				if (file_exists($target_file)) {
+					$arrFilename = explode('.', $file_name);
+					$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+					$target_file = $target_dir . $file_name;
+				}
+
+				if (move_uploaded_file($image5["tmp_name"], $target_file)) {
+					$this->request->data['image5']='uploads/'.$file_name;
+				} else {
+					echo "Sorry, there was an error uploading your file.";exit;
+				}
+			}
 			//print_r($this->request->data);exit;
 
 			$product = $this->Products->patchEntity($product, $this->request->data);
@@ -223,11 +315,21 @@ class ProductsController extends AppController
                 $this->Flash->error(__('The product could not be saved. Please, try again.'));
             }
         }
-		$this->loadModel('Subcategory');
-		$subcategory=$this->Subcategory->find();
+
+				//subcategory list
+				$this->loadModel('Subcategory');
+				$subcategory=$this->Subcategory->find('list');
+
+				//brand list
+				$this->loadModel('Brands');
+				$brands=$this->Brands->find('list');
+
+				//supplier list
+				$this->loadModel('Suppliers');
+				$suppliers=$this->Suppliers->find('list');
 
         //$subcategory = $this->Products->Subcategory->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'subcategory'));
+        $this->set(compact('product', 'subcategory', 'brands', 'suppliers'));
         $this->set('_serialize', ['product']);
     }
 
@@ -244,7 +346,117 @@ class ProductsController extends AppController
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
+
+				if ($this->request->is(['patch', 'post', 'put'])) {
+					/* Image Upload */
+					$image=$this->request->data['image'];
+					$image2=$this->request->data['image2'];
+					$image3=$this->request->data['image3'];
+					$image4=$this->request->data['image4'];
+					$image5=$this->request->data['image5'];
+					//print_r($image);exit;
+
+					$target_dir = "img/uploads/";
+					if(!$image['error']){
+						$file_name=basename($image["name"]);
+						$target_file = $target_dir . $file_name;
+
+						// Check if file already exists
+						if (file_exists($target_file)) {
+							$arrFilename = explode('.', $file_name);
+							$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+							$target_file = $target_dir . $file_name;
+						}
+
+						if (move_uploaded_file($image["tmp_name"], $target_file)) {
+							$this->request->data['image']='uploads/'.$file_name;
+						} else {
+							echo "Sorry, there was an error uploading your file.";exit;
+						}
+					}else{
+						unset($this->request->data['image']);
+					}
+
+					if(!$image2['error']){
+						$file_name=basename($image2["name"]);
+						$target_file = $target_dir . $file_name;
+
+						// Check if file already exists
+						if (file_exists($target_file)) {
+							$arrFilename = explode('.', $file_name);
+							$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+							$target_file = $target_dir . $file_name;
+						}
+
+						if (move_uploaded_file($image2["tmp_name"], $target_file)) {
+							$this->request->data['image2']='uploads/'.$file_name;
+						} else {
+							echo "Sorry, there was an error uploading your file.";exit;
+						}
+					}else{
+						unset($this->request->data['image2']);
+					}
+
+					if(!$image3['error']){
+						$file_name=basename($image3["name"]);
+						$target_file = $target_dir . $file_name;
+
+						// Check if file already exists
+						if (file_exists($target_file)) {
+							$arrFilename = explode('.', $file_name);
+							$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+							$target_file = $target_dir . $file_name;
+						}
+
+						if (move_uploaded_file($image3["tmp_name"], $target_file)) {
+							$this->request->data['image3']='uploads/'.$file_name;
+						} else {
+							echo "Sorry, there was an error uploading your file.";exit;
+						}
+					}else{
+						unset($this->request->data['image3']);
+					}
+
+					if(!$image4['error']){
+						$file_name=basename($image4["name"]);
+						$target_file = $target_dir . $file_name;
+
+						// Check if file already exists
+						if (file_exists($target_file)) {
+							$arrFilename = explode('.', $file_name);
+							$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+							$target_file = $target_dir . $file_name;
+						}
+
+						if (move_uploaded_file($image4["tmp_name"], $target_file)) {
+							$this->request->data['image4']='uploads/'.$file_name;
+						} else {
+							echo "Sorry, there was an error uploading your file.";exit;
+						}
+					}else{
+						unset($this->request->data['image4']);
+					}
+
+					if(!$image5['error']){
+						$file_name=basename($image5["name"]);
+						$target_file = $target_dir . $file_name;
+
+						// Check if file already exists
+						if (file_exists($target_file)) {
+							$arrFilename = explode('.', $file_name);
+							$file_name = $arrFilename[0].'_'.time().'.'.$arrFilename[1];
+							$target_file = $target_dir . $file_name;
+						}
+
+						if (move_uploaded_file($image5["tmp_name"], $target_file)) {
+							$this->request->data['image5']='uploads/'.$file_name;
+						} else {
+							echo "Sorry, there was an error uploading your file.";exit;
+						}
+					}else{
+						unset($this->request->data['image5']);
+					}
+
             $product = $this->Products->patchEntity($product, $this->request->data);
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
@@ -254,10 +466,20 @@ class ProductsController extends AppController
                 $this->Flash->error(__('The product could not be saved. Please, try again.'));
             }
         }
-		$this->loadModel('Subcategory');
-		$subcategory=$this->Subcategory->find();
 
-        $this->set(compact('product', 'subcategory'));
+				//subcategory list
+				$this->loadModel('Subcategory');
+				$subcategory=$this->Subcategory->find('list');
+
+				//brand list
+				$this->loadModel('Brands');
+				$brands=$this->Brands->find('list');
+
+				//supplier list
+				$this->loadModel('Suppliers');
+				$suppliers=$this->Suppliers->find('list');
+
+        $this->set(compact('product', 'subcategory', 'brands', 'suppliers'));
         $this->set('_serialize', ['product']);
     }
 

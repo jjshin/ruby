@@ -26,17 +26,12 @@
 
     <li>
       <label><strong>User ID</strong></label>
-      <span><?= $order->Users['username'];?></span>
+      <span><?= $order->Users['email'];?></span>
     </li>
 
     <li>
       <label><strong>User Name</strong></label>
       <span><?= $order->Users['firstname'].', '.$order->Users['lastname'];?></span>
-    </li>
-
-    <li>
-      <label><strong>User Email</strong></label>
-      <span><?= $order->Users['email'];?></span>
     </li>
 
   </ul>
