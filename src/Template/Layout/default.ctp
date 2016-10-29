@@ -51,8 +51,8 @@ $cakeDescription = 'Rubys Gifts';
 		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
       <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
     <?php } elseif($this->request->session()->read('Auth.User.role')==1){ //Admin ?>
-      <strong>Admin</strong>
-      <?= $this->Html->link('Admin Tool', ['controller'=>'Users', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
+      <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
+      <?= $this->Html->link('Admin', ['controller'=>'Users', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
       <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
 		<?php } else { //User ?>
 			<strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>

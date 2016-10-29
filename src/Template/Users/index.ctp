@@ -1,5 +1,7 @@
+<br>
+<div class="admin-submenu"><?= $this->Html->link(__('Add Admin Account'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
+
 <h3>Manage Customers</h3>
-<!-- <div class="admin-submenu"><?= $this->Html->link(__('Add New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div> -->
 <!-- <h3><?= __('Customer List') ?></h3> -->
 <div>
   <nav>

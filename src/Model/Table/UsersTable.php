@@ -33,7 +33,6 @@ class UsersTable extends Table
         $this->table('users');
         $this->displayField('id');
         $this->primaryKey('id');
-        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -57,9 +56,6 @@ class UsersTable extends Table
             ->notEmpty('lastname');
 
         $validator
-            ->allowEmpty('username');
-
-        $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
@@ -70,8 +66,27 @@ class UsersTable extends Table
 
         $validator
             ->integer('phone')
-            ->requirePresence('phone', 'create')
-            ->notEmpty('phone');
+            ->allowEmpty('phone');
+
+        $validator
+            ->allowEmpty('address1');
+
+        $validator
+            ->allowEmpty('address2');
+
+        $validator
+            ->allowEmpty('suburb');
+
+        $validator
+            ->allowEmpty('state');
+
+        $validator
+            ->allowEmpty('postcode');
+
+        $validator
+            ->boolean('subscribe')
+            ->requirePresence('subscribe', 'create')
+            ->notEmpty('subscribe');
 
         $validator
             ->integer('role')
@@ -79,26 +94,14 @@ class UsersTable extends Table
             ->notEmpty('role');
 
         $validator
-            ->requirePresence('address1', 'create')
-            ->notEmpty('address1');
+            ->allowEmpty('country');
 
         $validator
-            ->allowEmpty('address2');
+            ->date('dob')
+            ->allowEmpty('dob');
 
         $validator
-            ->requirePresence('suburb', 'create')
-            ->notEmpty('suburb');
-
-        $validator
-            ->requirePresence('state', 'create')
-            ->notEmpty('state');
-
-        $validator
-            ->requirePresence('postcode', 'create')
-            ->notEmpty('postcode');
-
-        $validator
-            ->allowEmpty('subscribe');
+            ->allowEmpty('gender');
 
         return $validator;
     }
@@ -112,7 +115,6 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        //$rules->add($rules->isUnique(['username']));
         $rules->add($rules->isUnique(['email']));
 
         return $rules;
