@@ -2,7 +2,8 @@
 *   Layout
 */
 body {
-    min-width: 1280px;
+    width: 100%;
+    min-width: 840px;
     background: white;
 }
 
@@ -24,11 +25,15 @@ form button {
 }
 
 .container {
-    width: 1280px;
+    width: 100%;
 }
 
 .container .half-row {
     width: 50%;
+}
+
+.container .one-third-row {
+    width: 33.33%;
 }
 
 .container .two-third-row {
@@ -76,15 +81,68 @@ form button {
     margin-top: 20px;
 }
 
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.flex-column {
+  flex-direction: column;
+}
+
+.sub-ul {
+  padding-left: 10px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
 /**
 *   Admin page
 */
+.container.admin-page {
+  padding: 0 80px;
+}
+
 .admin-menu a {
     border: 1px solid #ddd;
 }
 
 .admin-menu a.btn-success {
     border: 1px solid #5cb85c;
+}
+
+/**
+*   Admin Category
+*/
+.admin-category-header {
+  align-items: center;
+}
+
+.main-category-column {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+.sub-category-column .link-block {
+  padding-right: 15px;
+}
+
+.sub-category-column .link-block a:first-child {
+  margin-right: 10px;
+}
+
+.sub-category-column .sub-category-row {
+  justify-content: space-between;
+  margin-bottom: 3px;
 }
 
 /**
@@ -158,10 +216,6 @@ form button {
 #featured {
     margin-top: 15px;
     border-top: 1px solid #47A665;
-}
-
-@media (min-width: 768px) {
-    .container { width: 1280px }
 }
 
 

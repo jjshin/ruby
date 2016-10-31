@@ -45,8 +45,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('custom.css') ?>
 </head>
 <body>
-    <div class="container">
-        <div id="logo" class="two-third-row center-block">
+    <div class="container admin-page">
+        <div id="logo" class="center-block">
             <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
             <div class="login">
                 <?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
@@ -58,7 +58,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </div>
         </div>
 
-        <div class="two-third-row center-block">
+        <div class="center-block">
             <h3>Admin Menu</h3>
             <div class="btn-group admin-menu" role="group">
                 <a class="btn <?= strpos($this->request->url, 'users') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>users">User</a>
@@ -71,7 +71,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </div>
         </div>
 
-        <div class="two-third-row center-block">
+        <div class="center-block">
             <?= $this->Flash->render(); ?>
             <?= $this->fetch('content'); ?>
         </div>

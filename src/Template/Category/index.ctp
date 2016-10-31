@@ -3,29 +3,45 @@
 <!-- <h3><?= __('Category') ?></h3> -->
 <div class="admin-submenu"><?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
 <br>
-<div class="products index large-9 medium-8 columns content">
-    <ul>
-  		<?php foreach($categories as $id=>$cate): ?>
-  			<li>
-  				<strong><?= $this->Html->link($cate['name'], ['action' => 'adminIndex', $id]) ?></strong>
-          <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Subcategory', 'action' => 'add', $id]) ?>
-          <?= $this->Html->link(__('Edit'), ['action' => 'edit', $id]) ?>
-          <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $id], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
+<div class="admin-category-body container no-padding">
+  <table class="table table-striped categories-table">
+    <thead class="thead-default">
+      <tr>
+        <td class="text-align-center"><h5>Main Categories</h5></td>
+        <td class="text-align-center"><h5>Sub Categories</h5></td>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($categories as $id=>$cate): ?>
+        <tr>
+          <td class="main-category-column half-row">
+            <div class="flex flex-column">
+              <h3 class="flex-el"><?= $cate['name'] ?></h3>
+              <div class="link-block flex-column flex">
+                <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Subcategory', 'action' => 'add', $id], ['class' => 'flex-el']) ?>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $id], ['class' => 'flex-el']) ?>
+                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $id], ['class' => 'flex-el'], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
+              </div>
+            </div>
+          </td>
+          <td class="sub-category-column half-row">
+            <?php if(isset($cate['subcategory'])){?>
+              <?php foreach($cate['subcategory'] as $subcate):?>
+                <div class="sub-category-row flex">
+                  <span><strong><?= $subcate['name']; ?></strong></span>
+                  <div class="link-block">
+                    <?= $this->Html->link(__('Edit'), ['controller'=>'Subcategory', 'action' => 'edit', $subcate['id']]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller'=>'Subcategory', 'action' => 'delete', $subcate['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $subcate['id'])]) ?>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php }?>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
 
-  				<?php if(isset($cate['subcategory'])){?>
-  					<ul>
-  					<?php foreach($cate['subcategory'] as $subcate):?>
-  						<li>
-                <span><?= $subcate['name']; ?></span>
-                <?= $this->Html->link(__('Edit'), ['controller'=>'Subcategory', 'action' => 'edit', $subcate['id']]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['controller'=>'Subcategory', 'action' => 'delete', $subcate['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $subcate['id'])]) ?>
-              </li>
-  					<?php endforeach; ?>
-  					</ul>
-  				<?php }?>
-  			</li>
-  		<?php endforeach; ?>
-  	</ul>
     <?php /*
     <table cellpadding="0" cellspacing="0">
         <thead>
