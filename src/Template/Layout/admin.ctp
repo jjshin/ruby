@@ -61,11 +61,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="two-third-row center-block">
             <h3>Admin Menu</h3>
             <div class="btn-group admin-menu" role="group">
-                <a class="btn <?= strpos($this->request->url, 'users') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>users">User</a>
-                <a class="btn btn-secondary <?= strpos($this->request->url, 'category') !== FALSE || strpos($this->request->url, 'subcategory') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>category">Category</a>
-                <a class="btn btn-secondary <?= strpos($this->request->url, 'products') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>products/adminIndex">Product</a>
-                <a class="btn btn-secondary <?= strpos($this->request->url, 'orders') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>orders/adminIndex">Order</a>
-                <a class="btn btn-secondary <?= strpos($this->request->url, 'brands') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>brands">Brand</a>
+                <a class="btn <?= strpos($this->request->url, 'users') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>users">Accounts</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'category') !== FALSE || strpos($this->request->url, 'subcategory') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>category">Categories</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'products') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>products/adminIndex">Products</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'orders') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>orders/adminIndex">Orders</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'brands') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>brands">Brands</a>
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'suppliers') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>suppliers">Suppliers</a>
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'enquires') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>enquires">Enquires</a>
             </div>
