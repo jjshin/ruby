@@ -503,4 +503,19 @@ class ProductsController extends AppController
 
         return $this->redirect(['action' => 'adminIndex']);
     }
+
+		public function brands($brand_id)
+    {
+			//Get Brands detail
+			$this->loadModel('Brands');
+			$brand=$this->Brands->get($brand_id);
+    	//Get Product list
+			$products = $this->Products->find()
+											->where(['brands_id'=>$brand_id]);
+
+	    $products = $this->paginate($products);
+
+	        $this->set(compact('products', 'brand'));
+	        $this->set('_serialize', ['products']);
+	  }
 }

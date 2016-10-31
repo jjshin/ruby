@@ -93,8 +93,12 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
 
-		$productObj=new ProductsController;
-		$categories=$productObj->get_category();
-		$this->set(compact('categories'));
+  		$productObj=new ProductsController;
+  		$categories=$productObj->get_category();
+  		$this->set(compact('categories'));
+
+      $this->loadModel('Brands');
+      $global_brands=$this->Brands->find('list');
+      $this->set(compact('global_brands'));
     }
 }

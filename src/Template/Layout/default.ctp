@@ -81,6 +81,15 @@ $cakeDescription = 'Rubys Gifts';
 					<?php } ?>
 					</li>
 				<?php endforeach; ?>
+        <li>
+          <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BRANDS <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <?php foreach($global_brands as $id=>$brand):?>
+              <li><?= $this->Html->link($brand, ['controller'=>'Products', 'action'=>'brands', $id]);?></li>
+            <?php endforeach; ?>
+          </ul>
+        </li>
+
                 <li>
                     <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">

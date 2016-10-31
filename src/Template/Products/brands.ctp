@@ -1,7 +1,8 @@
 <div class="products index large-9 medium-8 columns content">
-    <h3><?= $cate_title; ?></h3>
+    <h3>Brands > <?= $brand['name'];?></h3>
     <table cellpadding="0" cellspacing="0">
         <tbody>
+          <?php //echo '<pre>'; print_r($products);?>
           <?php if($products->count() > 0):?>
             <?php foreach ($products as $product): ?>
             <tr>
