@@ -85,8 +85,7 @@ class UsersTable extends Table
 
         $validator
             ->boolean('subscribe')
-            ->requirePresence('subscribe', 'create')
-            ->notEmpty('subscribe');
+            ->allowEmpty('subscribe');
 
         $validator
             ->integer('role')
