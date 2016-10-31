@@ -136,12 +136,12 @@ form button {
 }
 
 #slider-section {
-    height: 670px;
+    height: 300px;
     overflow: hidden;
 }
 
 .main-slider {
-    width: 800px;
+    width: 640px;
     margin: 0 auto;
 }
 
