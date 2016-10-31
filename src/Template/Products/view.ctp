@@ -54,7 +54,7 @@
   if ($this->request->session()->read('Auth.User.id') && $product->status==1) {
     echo $this->Form->button('Add Cart',  ['class'=>'btn btn-info', 'role'=>'button']);
   }elseif ($this->request->session()->read('Auth.User.id') && $product->status==2) {
-    echo '<a href="#" class="btn btn-info">Enquire</a>';
+    echo $this->Html->link('Enquire', ['controller'=>'Enquires', 'action'=>'add', $product->id], ['class'=>'btn btn-info']);
   }else{
     echo $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);
   }
