@@ -5,6 +5,7 @@
     <?= $this->Form->create($product, ['type'=>'file', 'class' => 'form-group']) ?>
     <fieldset>
       <?php
+            echo $this->Form->input('active');
             echo $this->Form->input('subcategory_id', ['options' => $subcategory, 'class' => 'form-control']);
             echo $this->Form->input('suppliers_id', ['options' => $suppliers, 'class' => 'form-control']);
             echo $this->Form->input('brands_id', ['options' => $brands, 'class' => 'form-control']);

@@ -33,6 +33,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th scope="col"><?= $this->Paginator->sort('active') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('qty') ?></th>
@@ -45,6 +46,7 @@
 					<?php if($products->count() > 0):?>
             <?php foreach ($products as $product): ?>
             <tr>
+                <td><?= ($product->active==1)?'Yes':'No'; ?></td>
                 <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= h($product->name) ?></td>
                 <td><?= $this->Number->format($product->qty) ?></td>
