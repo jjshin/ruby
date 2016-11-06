@@ -15,13 +15,16 @@
         <thead>
             <tr>
                 <!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
-                <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('first name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('last name') ?></th>
                 <?php /*<th scope="col"><?= $this->Paginator->sort('username') ?></th>*/?>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('role') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('gender') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('DOB') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Subscribe') ?></th>
+                <!-- <th scope="col"><?= $this->Paginator->sort('role') ?></th> -->
+                <th scope="col" class="actions"><?= __('More') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -33,11 +36,15 @@
                 <?php /*<td><?= h($user->username) ?></td>*/?>
                 <td><?= h($user->email) ?></td>
                 <td><?= h($user->phone) ?></td>
-                <td><?= h($user->role == 1 ? 'Admin' : 'Customer') ?></td>
+                <td><?= h($user->gender) ?></td>
+                <td><?= h($user->dob) ?></td>
+                <td><?= h($user->Subscribe == 1 ? 'Yes' : 'No') ?></td>
+
+                <!-- <td><?= h($user->role == 1 ? 'Admin' : 'Customer') ?></td> -->
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                    <?= $this->Html->link(__('Details'), ['action' => 'view', $user->id]) ?>
+                    <!-- <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?> -->
+                    <!-- <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> -->
                 </td>
             </tr>
             <?php endforeach; ?>
