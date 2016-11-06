@@ -41,6 +41,24 @@
     <span><?= $this->Number->currency($order['order_total'], 'USD');?></span>
   </div>
 
+  <div>
+    <h3>Delivery Detail</h3>
+    <p>
+      <strong>Receive Name</strong><br>
+      <span><?= $order['receive_name'];?></span>
+    </p>
+
+    <p>
+      <strong>Phone</strong><br>
+      <span><?= $order['phone'];?></span>
+    </p>
+
+    <p>
+      <strong>Address</strong><br>
+      <span><?= $order['address1'] .' '. $order['address2'] .'<br>'. $order['suburb'] .' '.  $order['state'] .' '. $order['postcode'];?></span>
+    </p>
+  </div>
+
   <?= $this->Html->link('List', ['action'=>'order'], ['class'=>'btn btn-info']);?>
 
 </div>

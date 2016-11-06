@@ -4,22 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Orderdetail Entity
+ * Tmpcart Entity
  *
  * @property int $id
  * @property \Cake\I18n\Time $created
- * @property int $users_id
- * @property int $order_status
- * @property float $order_total
- * @property string $receive_name
- * @property string $phone
- * @property string $address1
- * @property string $address2
- * @property string $suburb
- * @property string $state
- * @property string $postcode
+ * @property int $session_id
+ * @property int $qty
+ * @property int $products_id
+ *
+ * @property \App\Model\Entity\Session $session
+ * @property \App\Model\Entity\Product $product
  */
-class Orderdetail extends Entity
+class Tmpcart extends Entity
 {
 
     /**

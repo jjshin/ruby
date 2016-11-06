@@ -34,7 +34,7 @@ class MyshopController extends AppController
 							->first();
 
 		$products=$this->Orderproducts->find()
-							->select(['Orderproducts.id', 'Orderproducts.orderqty', 'Orderproducts.totalprice', 'Products.name', 'Products.price', 'Products.image'])
+							->select(['Orderproducts.id', 'Orderproducts.orderqty', 'Orderproducts.totalprice', 'Products.name', 'Products.image'])
 							->join([
 								'table'=>'products',
 								'alias'=>'Products',

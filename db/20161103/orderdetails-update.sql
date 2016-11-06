@@ -1,0 +1,1 @@
+ALTER TABLE `orderdetails` ADD `receive_name` VARCHAR(45) NOT NULL , ADD `phone` VARCHAR(10) NOT NULL , ADD `address1` VARCHAR(100) NOT NULL , ADD `address2` VARCHAR(100) NULL , ADD `suburb` VARCHAR(40) NOT NULL , ADD `state` VARCHAR(20) NOT NULL , ADD `postcode` VARCHAR(10) NOT NULL ;

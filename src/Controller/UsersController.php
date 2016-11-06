@@ -50,6 +50,9 @@ class UsersController extends AppController
 			$user = $this->Auth->identify();
 			if ($user) {
 				$this->Auth->setUser($user);
+
+				$this->copy_cart();
+
 				if($this->Auth->user('role')==1){	//Admin
 					return $this->redirect('/users/index');
 				}else{
@@ -154,7 +157,7 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
-			$user['role']=10;
+						$user['role']=10;
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -166,4 +169,34 @@ class UsersController extends AppController
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
+
+		private function copy_cart(){
+			/* Copty data from tmpcarts to carts table */
+			if($this->request->session()->read('session_id')){
+				$this->loadModel('Carts');
+				$this->loadModel('Tmpcarts');
+
+				$tmpcarts=$this->Tmpcarts->find()
+									->select(['qty', 'products_id'])
+									->where(['session_id'=>$this->request->session()->read('session_id')]);
+				$data=array();
+				if($tmpcarts->count() > 0){
+					foreach($tmpcarts as $tmp){
+						$item=array(
+							'users_id'=>$this->Auth->user('id'),
+							'products_id'=>$tmp['products_id'],
+							'qty'=>$tmp['qty']
+						);
+						array_push($data, $item);
+					}
+
+					$cart=$this->Carts->newEntities($data);
+					if($this->Carts->saveMany($cart)){
+						if($this->Tmpcarts->deleteAll(['session_id'=>$this->request->session()->read('session_id')])){
+							$this->request->session()->delete('session_id');
+						}
+					}
+				}
+			}
+		}
 }
