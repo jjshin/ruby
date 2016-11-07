@@ -130,10 +130,7 @@
         </tr>
 
     </table>
-    <div class="row">
-        <h4><?= __('Descript') ?></h4>
-        <?= $this->Text->autoParagraph(h($product->descript)); ?>
-    </div>
+
     <div class="row">
         <h4><?= __('Short Desc') ?></h4>
         <?= $this->Text->autoParagraph(h($product->short_desc)); ?>

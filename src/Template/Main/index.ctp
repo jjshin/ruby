@@ -42,22 +42,19 @@
             </div>
             <p>Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Nam in massa. Sed vel tellus. Curabitur sem urna, consequat vel, suscipit in, mattis placerat, nulla. Sed ac leo.</p>
         </div>
-        <div id="box1"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test2.jpg" width="200" height="200" alt="" /></a>
-            <h2 class="subtitle">Donec dictum metus</h2>
-            <p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipiy.</p>
+        <?php
+        if($new_arrivals->count() > 0):
+          foreach($new_arrivals as $key=>$item):
+        ?>
+        <div id="box<?=($key+1);?>">
+            <?php echo $this->Html->image($item->image, ['style'=>'width:200px; height:200px;', 'url'=>['controller'=>'Products', 'action'=>'view', $item->id]]);?>
+            <h2 class="subtitle"><?=$item->name;?></h2>
+            <p><?php echo $item->short_desc;?></p>
         </div>
-        <div id="box2"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test3.jpg" width="200" height="200" alt="" /></a>
-            <h2 class="subtitle">Etiam posuere augue</h2>
-            <p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit.</p>
-        </div>
-        <div id="box3"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test4.jpg" width="200" height="200" alt="" /></a>
-            <h2 class="subtitle">Nulla luctus eleifend</h2>
-            <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi.</p>
-        </div>
-        <div id="box4"> <a href="#"><img src="<?php echo  $this->request->webroot;?>img/test5.jpg" width="200" height="200" alt="" /></a>
-            <h2 class="subtitle">Fusce ultrices fringilla </h2>
-            <p>Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
-        </div>
+        <?php
+          endforeach;
+        endif;
+        ?>
     </div>
     <!-- <div id="page" class="container">
         <div id="content">
