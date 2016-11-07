@@ -38,6 +38,7 @@ $cakeDescription = 'Rubys Gifts';
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick-theme.css"/>
@@ -109,9 +110,86 @@ $cakeDescription = 'Rubys Gifts';
         <?= $this->fetch ('content'); ?>
     </div>
 
-    <div id="footer-wrapper">
+    <!--footer-->
+    <footer class="footer1">
+      <div class="container" style="padding-left: 200px;">
+        <div class="row"><!-- row -->
+          <div class="col-lg-4 col-md-3"><!-- widgets column center -->
+            <ul class="list-unstyled clear-margins"><!-- widgets -->
+            	<li class="widget-container widget_recent_news"><!-- widgets list -->
+                <h1 class="title-widget">Contact</h1>
+                  <div class="footerp">
+                    <p><b>Email:</b> <a href="mailto:info@rubysgifts.com.au">info@rubysgifts.com.au</a></p>
+                    <p><b>Phone: </b>03 9532 9155</p>
+                    <p><b>Fax: </b>03 9523 5216</p>
+                  </div>
+                  <div class="social-icons">
+                  	<ul class="nomargin">
+                      <a href="https://www.facebook.com/rubygifts"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
+        	            <a href="https://#"><i class="fa fa-instagram fa-3x social-is" id="social"></i></a>
+        	            <a href="https://#"><i class="fa fa-pinterest-square fa-3x social-gp" id="social"></i></a>
+        	            <a href="mailto:info@rubysgifts.com.au"><i class="fa fa-envelope-square fa-3x social-em" id="social"></i></a>
+                    </ul>
+                  </div>
+            	</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-3"><!-- widgets column left -->
+            <ul class="list-unstyled clear-margins"><!-- widgets -->
+            	<li class="widget-container widget_recent_news"><!-- widgets list -->
+                <h1 class="title-widget"> About</h1>
+                  <ul>
+                  	<p><b><a href="#">About Us</b></a></p>
+                    <p><b><a href="#">Brands</b></a></p>
+                    <p><b><a href="#">Terms &amp; Conditions</b></a></p>
+                    <p><b><a href="#">Privacy Policy</b></a></p>
+                  </ul>
+    							  </li>
+                  </ul>
+          </div><!-- widgets column left end -->
+
+          <div class="col-lg-3 col-md-3"><!-- widgets column left -->
+            <ul class="list-unstyled clear-margins"><!-- widgets -->
+            	<li class="widget-container widget_recent_news"><!-- widgets list -->
+                <h1 class="title-widget">Help</h1>
+                  <ul>
+                    <p><b><a href="#">Delivery</b></a></p>
+             				<p><b><a href="#">Returns</b></a></p>
+            				<p><b><a href="#">Contact</b></a></p>
+            				<p><b><a href="#">FAQs</b></a></p>
+                  </ul>
+							</li>
+            </ul>
+          </div><!-- widgets column left end -->
+      </div>
+    </div>
+    </footer>
+    <!--header-->
+
+    <div class="footer-bottom">
+
+    	<div class="container">
+
+    		<div class="row">
+
+
+    				<div class="copyright">
+
+    					© 2016, Ruby's Gifts, All rights reserved
+
+    				</div>
+
+
+
+    		</div>
+
+    	</div>
+
+    </div>
+    <!-- <div id="footer-wrapper">
         <div id="footer" class="container">
-          <p>Contact Us with Social Media Connections, Help and About Us Links </p>
+          <p>Contact Us with Social Media Connections, Help and About Us Links </p> -->
             <!-- <div id="fbox1">
                 <h2>Maecenas luctus</h2>
                 <p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>
@@ -128,14 +206,14 @@ $cakeDescription = 'Rubys Gifts';
                 <h2>Etiam rhoncus volutpat</h2>
                 <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
                 <a href="#" class="button icon icon-arrow-right">Learn More</a> </div> -->
-        </div>
+        <!-- </div>
     </div>
 
     <div id="copyright" class="container" style="padding-top: 20px; padding-bottom: 40px;">
         <p>&copy; 2016 Ruby's Gifts  |
           <a href="/terms/">Terms &amp; Conditions</a> |
           <a href="/privacy/">Privacy Policy</a></p>
-    </div>
+    </div> -->
 
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="<?php echo $this->request->webroot;?>js/custom.js"></script>
