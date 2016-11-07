@@ -49,6 +49,7 @@ $cakeDescription = 'Rubys Gifts';
         <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png"></a>
         <div class="login">
 		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
+      <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
       <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
     <?php } elseif($this->request->session()->read('Auth.User.role')==1){ //Admin ?>
       <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>

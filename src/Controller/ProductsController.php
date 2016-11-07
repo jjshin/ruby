@@ -55,7 +55,8 @@ class ProductsController extends AppController
 		}
 
 		//Get Product list
-		$products = $this->Products->find();
+		$products = $this->Products->find()
+											->where(['active'=>1]);
 		if(isset($subcate_list)){
 			$products->where(array('subcategory_id IN'=>$subcate_list));
 		}

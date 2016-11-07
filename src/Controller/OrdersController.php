@@ -14,25 +14,29 @@ class OrdersController extends AppController
 	}
 
 	public function index(){
-		$this->loadModel('Carts');
+		if($this->Auth->user('id')){
+			$this->loadModel('Carts');
 
-		// Update carts table
-		foreach($this->request->data['cart_id'] as $key=>$cart_id){
-			$qty=$this->request->data['qty'][$key];
-			$product_id=$this->request->data['product_id'][$key];
+			// Update carts table
+			foreach($this->request->data['cart_id'] as $key=>$cart_id){
+				$qty=$this->request->data['qty'][$key];
+				$product_id=$this->request->data['product_id'][$key];
 
-			$productObj=new ProductsController;
-			$qty_check=$productObj->check_qty($product_id, $qty);
-			if($qty_check>0){
-				$query=$this->Carts->query();
-				$query->update()
-					->set(['qty'=>$qty])
-					->where(['id'=>$cart_id])
-					->execute();
-			}else{
-				$this->Flash->error(__('Not enough stock.'));
-				$this->redirect($this->referer());
+				$productObj=new ProductsController;
+				$qty_check=$productObj->check_qty($product_id, $qty);
+				if($qty_check>0){
+					$query=$this->Carts->query();
+					$query->update()
+						->set(['qty'=>$qty])
+						->where(['id'=>$cart_id])
+						->execute();
+				}else{
+					$this->Flash->error(__('Not enough stock.'));
+					$this->redirect($this->referer());
+				}
 			}
+		}else{
+			$this->redirect(['controller'=>'Users','action'=>'login']);
 		}
 
 		// Get cart list
@@ -53,7 +57,7 @@ class OrdersController extends AppController
 			$productObj=new ProductsController;
 			$qty_check=$productObj->check_qty($item->Products['id'], $item['qty']);
 			if($qty_check>0){	//continue
-				$total += $item['qty'] * $item->Products['price'];
+				$total += $item['qty'] * $item->Products['sale_price'];
 			}else{
 				$this->Flash->error(__('Not enough stock.'));
 				break;
@@ -62,7 +66,19 @@ class OrdersController extends AppController
 		if($qty_check>0){
 			// Add Orderdetails table
 			$orderdetail=$this->Orderdetails->newEntity();
-			$orderdetail=$this->Orderdetails->patchEntity($orderdetail, ['users_id'=>$this->Auth->user('id'), 'order_status'=>1, 'order_total'=>$total]);
+			$od_data=array(
+				'users_id'=>$this->Auth->user('id'),
+				'order_status'=>1,
+				'order_total'=>$total,
+				'receive_name'=>$this->request->data['receive_name'],
+				'phone'=>$this->request->data['phone'],
+				'address1'=>$this->request->data['address1'],
+				'address2'=>$this->request->data['address2'],
+				'suburb'=>$this->request->data['suburb'],
+				'state'=>$this->request->data['state'],
+				'postcode'=>$this->request->data['postcode']
+			);
+			$orderdetail=$this->Orderdetails->patchEntity($orderdetail, $od_data);
 			if($this->Orderdetails->save($orderdetail)){
 
 				foreach($cart as $item){
@@ -70,7 +86,7 @@ class OrdersController extends AppController
 					$orderproducts=$this->Orderproducts->newEntity();
 					$data=array(
 						'orderqty'=>$item['qty'],
-						'totalprice'=>$item->Products['price'],
+						'totalprice'=>$item->Products['sale_price'],
 						'orderdetails_id'=>$orderdetail->id,
 						'products_id'=>$item->Products['id']
 					);
@@ -89,16 +105,30 @@ class OrdersController extends AppController
 	}
 
 	private function getCarts(){
-		$this->loadModel('Carts');
-		$cart=$this->Carts->find()
-							->select(['Carts.id', 'Carts.qty', 'Products.id', 'Products.name', 'Products.image', 'Products.price'])
-							->join(array(
-									'table'=>'products',
-									'alias'=>'Products',
-									'conditions'=>array('Carts.products_id = Products.id'),
-									'type'=>'inner'
-							))
-							->where(['Carts.users_id'=>$this->Auth->user('id')]);
+		if($this->Auth->user('id')){
+			$this->loadModel('Carts');
+			$cart=$this->Carts->find()
+								->select(['Carts.id', 'Carts.qty', 'Products.id', 'Products.name', 'Products.image', 'Products.sale_price'])
+								->join(array(
+										'table'=>'products',
+										'alias'=>'Products',
+										'conditions'=>array('Carts.products_id = Products.id'),
+										'type'=>'inner'
+								))
+								->where(['Carts.users_id'=>$this->Auth->user('id')]);
+		}else{
+			$this->loadModel('Tmpcarts');
+			$cart=$this->Tmpcarts->find()
+								->select($this->Tmpcarts)
+								->select($this->Tmpcarts->Products)
+								->join(array(
+										'table'=>'products',
+										'alias'=>'Products',
+										'conditions'=>array('Tmpcarts.products_id = Products.id'),
+										'type'=>'inner'
+								))
+								->where(['Tmpcarts.session_id'=>$this->request->session()->read('session_id')]);
+		}
 		return $cart;
 	}
 

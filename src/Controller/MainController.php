@@ -17,7 +17,9 @@ class MainController extends AppController
      * @return \Cake\Network\Response|null
      */
     public function index(){
-
+      $this->loadModel('Sliders');
+      $sliders=$this->Sliders->find();
+      $this->set(compact('sliders'));
     }
 
 }

@@ -68,6 +68,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'brands') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>brands">Brands</a>
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'suppliers') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>suppliers">Suppliers</a>
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'enquires') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>enquires">Enquires</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'sliders') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>sliders">Sliders</a>
             </div>
         </div>
 

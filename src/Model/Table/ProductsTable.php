@@ -149,6 +149,9 @@ class ProductsTable extends Table
         $validator
             ->allowEmpty('image5');
 
+        $validator
+            ->notEmpty('active');
+
         return $validator;
     }
 
