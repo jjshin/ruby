@@ -18,8 +18,8 @@
             <div class="flex flex-column">
               <h3 class="flex-el"><?= $cate['name'] ?></h3>
               <div class="link-block flex-column flex">
-                <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Subcategory', 'action' => 'add', $id], ['class' => 'flex-el']) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $id], ['class' => 'flex-el']) ?>
+                <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Subcategory', 'action' => 'add', $id], ['class' => 'btn btn-xs btn-primary']) ?>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $id], ['class' => 'btn btn-xs btn-primary']) ?>
                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $id], ['class' => 'flex-el'], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
               </div>
             </div>

@@ -1,17 +1,18 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Brand'), ['action' => 'add']) ?></li>
+      <br>
+        <!-- <li class="heading"><?= __('Actions') ?></li> -->
+        <li><?= $this->Html->link(__('Add Brands'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></li>
     </ul>
 </nav>
 <div class="brands index large-9 medium-8 columns content">
     <h3><?= __('Brands') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('name') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
