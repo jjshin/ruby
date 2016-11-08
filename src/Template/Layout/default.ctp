@@ -93,12 +93,10 @@ $cakeDescription = 'Rubys Gifts';
         </li>
 
                 <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
+                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enquires <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><a href="<?php echo  $this->request->webroot;?>aboutus">About Us</a></li>
+                        <li><?php echo $this->Html->link('Enquires', ['controller'=>'Enquires', 'action'=>'add']);?></li>
                         <li><a href="#">Gift Vouchers</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><?php echo $this->Html->link('Enquire', ['controller'=>'Enquires', 'action'=>'add']);?></li>
                     </ul>
                 </li>
             </ul>

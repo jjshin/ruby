@@ -49,7 +49,7 @@
         <div id="box<?=($key+1);?>">
             <?php echo $this->Html->image($item->image, ['style'=>'width:200px; height:200px;', 'url'=>['controller'=>'Products', 'action'=>'view', $item->id]]);?>
             <h2 class="subtitle"><?=$item->name;?></h2>
-            <p><?php echo $item->short_desc;?></p>
+            <p>$<?php echo $item->sale_price;?></p>
         </div>
         <?php
           endforeach;
