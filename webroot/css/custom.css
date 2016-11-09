@@ -3,7 +3,7 @@
 */
 body {
     width: 100%;
-    min-width: 840px;
+
     background: white;
 }
 
@@ -476,7 +476,27 @@ form button {
     text-align: center;
 }
 
+.nav-top {
+    padding:10px 0 10px 0;
+}
+.nav-top a
+{
+	display: block;
+	padding: 1em 2em;
+	letter-spacing: 1px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1em;
+	font-weight: 700;
+	color: #FFF;
+}
 
+.nav-top a:hover
+{
+	background: #7BDB99 !important;
+	text-decoration: none;
+	color: #FFF;
+}
 
 /************************************************************
 *************************Footer******************************

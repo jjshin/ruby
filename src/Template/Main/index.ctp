@@ -16,11 +16,11 @@
             <li data-target="#carousel-example-generic" data-slide-to="<?= $key;?>" class="<?= $class;?>"></li>
           <?php endforeach;?>
         </ol>
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox" style="height:300px;">
           <?php foreach($sliders as $key=>$slider): ?>
             <?php if($key==0){ $class='active'; }else{ $class=''; } ?>
-            <div class="item <?= $class;?>">
-              <?= $this->Html->image($slider['img'], ['data-holder-rendered'=>'true']);?>
+            <div class="item <?= $class;?>" style="height:100%;">
+              <?= $this->Html->image($slider['img'], ['data-holder-rendered'=>'true', 'style'=>'max-height:100%; margin:0 auto 0 auto;']);?>
             </div>
           <?php endforeach;?>
         </div>
