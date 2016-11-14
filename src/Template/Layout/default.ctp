@@ -232,33 +232,6 @@ $cakeDescription = 'Rubys Gifts';
             </div>
         </div>
     </div>
-    <!-- <div id="footer-wrapper">
-        <div id="footer" class="container">
-          <p>Contact Us with Social Media Connections, Help and About Us Links </p> -->
-            <!-- <div id="fbox1">
-                <h2>Maecenas luctus</h2>
-                <p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>
-                <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
-            <div id="fbox2">
-                <h2>Integer gravida</h2>
-                <p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris.</p>
-                <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
-            <div id="fbox3">
-                <h2>Praesent scelerisque</h2>
-                <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
-                <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>
-            <div id="fbox4">
-                <h2>Etiam rhoncus volutpat</h2>
-                <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>
-                <a href="#" class="button icon icon-arrow-right">Learn More</a> </div> -->
-        <!-- </div>
-    </div>
-
-    <div id="copyright" class="container" style="padding-top: 20px; padding-bottom: 40px;">
-        <p>&copy; 2016 Ruby's Gifts  |
-          <a href="/terms/">Terms &amp; Conditions</a> |
-          <a href="/privacy/">Privacy Policy</a></p>
-    </div> -->
 
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="<?php echo $this->request->webroot;?>js/custom.js"></script>
