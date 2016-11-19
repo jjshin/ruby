@@ -240,12 +240,12 @@ form button {
 #content-body.login .form-wrapper {
     display: inline-block;
     padding: 15px;
-    margin: 0 20px;
+    margin: 0 auto;
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 300px;
     height: 300px;
-    float: left;
+
 }
 
 #content-body.login .form-wrapper label:last-of-type {
@@ -496,6 +496,14 @@ form button {
 	background: #7BDB99 !important;
 	text-decoration: none;
 	color: #FFF;
+}
+
+.navbar-header {margin-right:0 !important;}
+.thumbnail {height:400px; overflow:hidden; }
+.thumbnail img {max-height:280px; }
+
+@media (max-width: 768px) {
+    .thumbnail {height:auto; }
 }
 
 /************************************************************
