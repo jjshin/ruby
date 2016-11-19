@@ -94,14 +94,22 @@ class CartController extends AppController
 				if($this->Auth->user('id')){
 					$this->loadModel('Carts');
 					$this->loadModel('Products');
+					$this->loadModel('Brands');
 					$cart=$this->Carts->find()
 										->select($this->Carts)
 										->select($this->Products)
+										->select($this->Brands)
 										->join(array(
 												'table'=>'products',
 												'alias'=>'Products',
 												'conditions'=>array('Carts.products_id = Products.id'),
 												'type'=>'inner'
+										))
+										->join(array(
+												'table'=>'brands',
+												'alias'=>'Brands',
+												'conditions'=>array('Brands.id = Products.brands_id'),
+												'type'=>'left outer'
 										))
 										->where(['Carts.users_id'=>$this->Auth->user('id')]);
 					//print_r($cart);
