@@ -14,7 +14,7 @@ class ProductsController extends AppController
 	{
 		parent::initialize();
 		$this->Auth->deny();
-		$this->Auth->allow(['index',  'view']);
+		$this->Auth->allow(['index',  'view', 'brands']);
 	}
 
     /**
