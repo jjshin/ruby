@@ -170,14 +170,15 @@ $cakeDescription = 'Rubys Gifts';
     <footer class="footer1">
       <div class="container">
         <div class="row"><!-- row -->
-          <div class="col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-1"><!-- widgets column center -->
+          <div class="col-md-3 col-sm-3"><!-- widgets column center -->
             <ul class="list-unstyled clear-margins"><!-- widgets -->
             	<li class="widget-container widget_recent_news"><!-- widgets list -->
-                <h1 class="title-widget">Contact</h1>
+                <h1 class="title-widget">Discover Us</h1>
                   <div class="footerp">
-                    <p><b>Email:</b> <a href="mailto:info@rubysgifts.com.au">info@rubysgifts.com.au</a></p>
-                    <p><b>Phone: </b>03 9532 9155</p>
-                    <p><b>Fax: </b>03 9523 5216</p>
+                    <p><b><a href="#">About Us</b></a></p>
+                    <p><b><a href="#">Contact Us</b></a></p>
+                    <p><b><a href="#">Gift Wrapping</b></a></p>
+                    <p><b><a href="#">Gift Vouchers</b></a></p>
                   </div>
                   <div class="social-icons">
                   	<ul class="nomargin">
@@ -191,29 +192,44 @@ $cakeDescription = 'Rubys Gifts';
             </ul>
           </div>
 
-            <div class="col-md-3 col-sm-4"><!-- widgets column left -->
+            <div class="col-md-3 col-sm-3"><!-- widgets column left -->
                 <ul class="list-unstyled clear-margins"><!-- widgets -->
                     <li class="widget-container widget_recent_news"><!-- widgets list -->
-                        <h1 class="title-widget"> About</h1>
+                        <h1 class="title-widget">Brands</h1>
                         <ul>
-                            <p><b><a href="#">About Us</b></a></p>
-                            <p><b><a href="#">Brands</b></a></p>
-                            <p><b><a href="#">Terms &amp; Conditions</b></a></p>
-                            <p><b><a href="#">Privacy Policy</b></a></p>
+                            <p><b><a href="#">Glasshouse</b></a></p>
+                            <p><b><a href="#">Pastiche</b></a></p>
+                            <p><b><a href="#">Ecoya</b></a></p>
+                            <p><b><a href="#">Mukul Goyal</b></a></p>
                         </ul>
                     </li>
                 </ul>
             </div><!-- widgets column left end -->
 
-            <div class="col-md-2 col-sm-3"><!-- widgets column left -->
+            <div class="col-md-3 col-sm-3"><!-- widgets column left -->
                 <ul class="list-unstyled clear-margins"><!-- widgets -->
                     <li class="widget-container widget_recent_news"><!-- widgets list -->
-                        <h1 class="title-widget">Help</h1>
+                        <h1 class="title-widget">Shop</h1>
                         <ul>
+                            <p><b><a href="#">For Her</b></a></p>
+                            <p><b><a href="#">Jewellery</b></a></p>
+                            <p><b><a href="#">Homeware</b></a></p>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- widgets column left end -->
+
+            <div class="col-md-3 col-sm-3"><!-- widgets column left -->
+                <ul class="list-unstyled clear-margins"><!-- widgets -->
+                    <li class="widget-container widget_recent_news"><!-- widgets list -->
+                        <h1 class="title-widget">Customer Care</h1>
+                        <ul>
+                            <p><b><a href="#">Terms &amp; Conditions</b></a></p>
                             <p><b><a href="#">Delivery</b></a></p>
                             <p><b><a href="#">Returns</b></a></p>
-                            <p><b><a href="#">Contact</b></a></p>
-                            <p><b><a href="#">FAQs</b></a></p>
+                            <p><b><a href="#">Payments</b></a></p>
+                            <p><b><a href="#">Candle tips and tricks</b></a></p>
+                            <p><b><a href="#">Privacy Policy</b></a></p>
                         </ul>
                     </li>
                 </ul>
