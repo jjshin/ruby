@@ -116,24 +116,37 @@ class ProductsController extends AppController
     }
 
 	public function get_category(){
+		$this->loadModel('Maincategory');
 		$this->loadModel('Category');
-		$categories = $this->Category->find()
-				->select(array('Category.id', 'Category.cate_name', 'Subcategory.id', 'Subcategory.name'))
-				->join(array(
-					'table'=>'subcategory',
-					'alias'=>'Subcategory',
-					'conditions'=>array('Category.id=Subcategory.category_id'),
-					'type'=>'LEFT OUTER'
-					))
-				->order(array('Category.id'=>'ASC', 'Subcategory.category_id'=>'ASC'));
+		$this->loadModel('Subcategory');
+
+		$maincate = $this->Maincategory->find()->order(array('id'=>'ASC'));
+		$category = $this->Category->find()->order(array('id'=>'ASC'));
+		$subcate = $this->Subcategory->find()->order(array('id'=>'ASC'));
 
 		$result=array();
-		foreach($categories as $cate){
-			$result[$cate->id]['name']=$cate->cate_name;
-			if($cate->Subcategory['id']){
-				$result[$cate->id]['subcategory'][]=$cate->Subcategory;
+		if($maincate->count()>0){
+			foreach($maincate as $main){
+				$result[$main->id]['name']=$main->name;
+
+				if($category->count()>0){
+					foreach($category as $cate){
+						if($main->id == $cate->maincategory_id){
+							$result[$main->id]['children'][$cate->id]['name']= $cate->cate_name;
+
+							if($subcate->count()>0){
+								foreach($subcate as $sub){
+									if($cate->id == $sub->category_id){
+										$result[$main->id]['children'][$cate->id]['children'][]=array('id'=>$sub->id, 'name'=>$sub->name);
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
+
 		return $result;
 	}
 

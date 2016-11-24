@@ -7,36 +7,54 @@
   <table class="table table-striped categories-table">
     <thead class="thead-default">
       <tr>
-        <td class="text-align-center"><h5>Main Categories</h5></td>
-        <td class="text-align-center"><h5>Sub Categories</h5></td>
-        <td class="text-align-center"><h5>Sub SubCategories</h5></td>
+        <th class="text-align-center"><h5>1st Categories</h5></th>
+        <th class="text-align-center"><h5>2nd Categories</h5></th>
+        <th class="text-align-center"><h5>3rd Categories</h5></th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach($categories as $id=>$cate): ?>
+      <?php foreach($categories as $id=>$main): ?>
         <tr>
-          <td class="main-category-column half-row">
+          <td class="col-xs-4">
             <div class="flex flex-column">
-              <h3 class="flex-el"><?= $cate['name'] ?></h3>
-              <div class="link-block flex-column flex">
-                <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Subcategory', 'action' => 'add', $id], ['class' => 'btn btn-xs btn-primary']) ?>
+              <h3 class="flex-el"><?= $main['name'] ?></h3>
+              <div>
+                <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Maincategory', 'action' => 'add', $id], ['class' => 'btn btn-xs btn-primary']) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $id], ['class' => 'btn btn-xs btn-primary']) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $id], ['class' => 'flex-el'], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $id], ['class' => 'btn btn-xs btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
               </div>
             </div>
           </td>
-          <td class="sub-category-column half-row">
-            <?php if(isset($cate['subcategory'])){?>
-              <?php foreach($cate['subcategory'] as $subcate):?>
-                <div class="sub-category-row flex">
-                  <span><strong><?= $subcate['name']; ?></strong></span>
-                  <div class="link-block">
-                    <?= $this->Html->link(__('Edit'), ['controller'=>'Subcategory', 'action' => 'edit', $subcate['id']]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller'=>'Subcategory', 'action' => 'delete', $subcate['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $subcate['id'])]) ?>
-                  </div>
-                </div>
-              <?php endforeach; ?>
-            <?php }?>
+          <td colspan="2" class="col-xs-8">
+            <?php if(sizeof($main)>1){?>
+              <?php foreach($main['children'] as $cateid=>$cate):?>
+                  <table class="table">
+                    <td class="col-xs-6">
+                      <span><strong><?= $cate['name']; ?></strong></span>
+                      <div>
+                        <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Category', 'action' => 'add', $cateid], ['class' => 'btn btn-xs btn-primary']) ?>
+                        <?= $this->Html->link(__('Edit'), ['controller'=>'Category', 'action' => 'edit', $cateid], ['class' => 'btn btn-xs btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['controller'=>'Category', 'action' => 'delete', $cateid], ['class' => 'btn btn-xs btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $cateid)]) ?>
+                      </div>
+                  </td>
+
+                    <td class="col-xs-6">
+                        <?php if(sizeof($cate)>1){?>
+                          <?php foreach($cate['children'] as $sub):?>
+                            <div class="sub-category-row flex">
+                              <span><strong><?= $sub['name']; ?> </strong></span>
+                              <div>
+                                <?= $this->Html->link(__('Edit'), ['controller'=>'Subcategory', 'action' => 'edit', $sub['id']], ['class' => 'btn btn-xs btn-primary']) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller'=>'Subcategory', 'action' => 'delete', $sub['id']], ['class' => 'btn btn-xs btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $sub['id'])]) ?>
+                              </div>
+                            </div>
+                          <?php endforeach; ?>
+                        <?php }?>
+                    </td>
+                </table>
+                <div class="clearfix"></div>
+            <?php endforeach; ?>
+          <?php }?>
           </td>
         </tr>
       <?php endforeach; ?>

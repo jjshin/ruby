@@ -68,7 +68,7 @@ $cakeDescription = 'Rubys Gifts';
 
         </div>
     </div>
-
+<?php /*
     <nav class="navbar navbar-inverse">
       <div class="container-fluid nav-top">
                   <!-- Brand and toggle get grouped for better mobile display -->
@@ -99,47 +99,70 @@ $cakeDescription = 'Rubys Gifts';
 
                   </div>
     </nav>
-
-    <?php /*
-    <div id="header">
-        <div id="menu" class="container">
-            <ul class="dropdown">
-                <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>">Home</a></li>
-				<?php foreach($categories as $id=>$cate): ?>
-				<li>
-                   	<?php if(isset($cate['subcategory'])){?>
-						<a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $cate['name'];?> <span class="caret"></span></a>
-						<ul class="dropdown-menu" aria-labelledby="dLabel">
-						<?php foreach($cate['subcategory'] as $subcate):?>
-							<li><?= $this->Html->link($subcate['name'], ['controller'=>'Products', 'action' => 'index', $id, $subcate['id']]) ?></li>
-						<?php endforeach; ?>
-						</ul>
-					<?php }else{ ?>
-						<?= $this->Html->link($cate['name'], ['controller'=>'Products', 'action' => 'index', $id], ['class'=>'direct-link']) ?>
-					<?php } ?>
-				</li>
-				<?php endforeach; ?>
-
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BRANDS <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <?php foreach($global_brands as $id=>$brand):?>
-                            <li><?= $this->Html->link($brand, ['controller'=>'Products', 'action'=>'brands', $id]);?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
-
-                <li>
-                    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enquires <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <li><?php echo $this->Html->link('Enquires', ['controller'=>'Enquires', 'action'=>'add']);?></li>
-                        <li><a href="#">Gift Vouchers</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
     */?>
+<?php //echo '<pre>'; print_r($categories); echo '</pre>';?>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid nav-top">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>">Home</a></li>
+    				<?php foreach($categories as $id=>$main): ?>
+    				<li>
+                       	<?php if(sizeof($main)>1){?>
+    						<a type="button" class="dropdown-toggle" data-toggle="dropdown"><?= $main['name'];?> <span class="caret"></span></a>
+    						<ul class="dropdown-menu">
+    						<?php foreach($main['children'] as $cateid=>$cate):?>
+    							<li>
+                                    <?php if(sizeof($cate)>1){?>
+                						<a type="button" class="dropdown-toggle" data-toggle="dropdown"><?= $cate['name'];?> <span class="caret"></span></a>
+                						<ul class="dropdown-menu">
+                						<?php foreach($cate['children'] as $sub):?>
+                							<li>
+                                                <?php echo $this->Html->link($sub['name'], ['controller'=>'Products', 'action' => 'index', $id, $cateid, $sub['id']], ['class'=>'direct-link']) ?>
+                                            </li>
+                						<?php endforeach; ?>
+                						</ul>
+                					<?php }else{ ?>
+                						<?= $this->Html->link($cate['name'], ['controller'=>'Products', 'action' => 'index', $id, $cateid], ['class'=>'direct-link']) ?>
+                					<?php } ?>
+                                </li>
+    						<?php endforeach; ?>
+    						</ul>
+    					<?php }else{ ?>
+    						<?= $this->Html->link($main['name'], ['controller'=>'Products', 'action' => 'index', $id], ['class'=>'direct-link']) ?>
+    					<?php } ?>
+    				</li>
+    				<?php endforeach; ?>
+
+                    <li>
+                        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BRANDS <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <?php foreach($global_brands as $id=>$brand):?>
+                                <li><?= $this->Html->link($brand, ['controller'=>'Products', 'action'=>'brands', $id]);?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enquires <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li><?php echo $this->Html->link('Enquires', ['controller'=>'Enquires', 'action'=>'add']);?></li>
+                            <li><a href="#">Gift Vouchers</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div id="content-body" class="container <?= $this->template ?>">
 		<?= $this->Flash->render() ?>
