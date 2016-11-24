@@ -9,6 +9,7 @@
       <tr>
         <td class="text-align-center"><h5>Main Categories</h5></td>
         <td class="text-align-center"><h5>Sub Categories</h5></td>
+        <td class="text-align-center"><h5>Sub SubCategories</h5></td>
       </tr>
     </thead>
     <tbody>

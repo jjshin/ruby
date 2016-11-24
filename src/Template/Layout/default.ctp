@@ -35,6 +35,7 @@ $cakeDescription = 'Rubys Gifts';
 
 	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/slick.min.js"></script>
+  <script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/dropdown.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
@@ -69,55 +70,34 @@ $cakeDescription = 'Rubys Gifts';
     </div>
 
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid nav-top">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
+      <div class="container-fluid nav-top">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>
+                  <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                      <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>">Home</a></li>
+                      <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">For Her <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Accessories <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Ring<b class="caret"></b></a>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>">Home</a></li>
-                    <?php foreach($categories as $id=>$cate): ?>
-                    <li>
-                        <?php if(isset($cate['subcategory'])){?>
-                            <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $cate['name'];?> <span class="caret"></span></a>
-                            <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <?php foreach($cate['subcategory'] as $subcate):?>
-                                <li><?= $this->Html->link($subcate['name'], ['controller'=>'Products', 'action' => 'index', $id, $subcate['id']]) ?></li>
-                            <?php endforeach; ?>
-                            </ul>
-                        <?php }else{ ?>
-                            <?= $this->Html->link($cate['name'], ['controller'=>'Products', 'action' => 'index', $id], ['class'=>'direct-link']) ?>
-                        <?php } ?>
-                    </li>
-                    <?php endforeach; ?>
+                                                          </li>
+                                                      </ul>
+                                                  </li>
+                                              </ul>
+                                          </li>
+                                      </ul>
 
-                    <li>
-                        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BRANDS <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <?php foreach($global_brands as $id=>$brand):?>
-                                <li><?= $this->Html->link($brand, ['controller'=>'Products', 'action'=>'brands', $id]);?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </li>
 
-                    <li>
-                        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enquires <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><?php echo $this->Html->link('Enquires', ['controller'=>'Enquires', 'action'=>'add']);?></li>
-                            <li><a href="#">Gift Vouchers</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                  </div>
     </nav>
 
     <?php /*
