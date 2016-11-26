@@ -1,29 +1,38 @@
 <h3>Manage Products</h3>
 <br>
 <div class="admin-submenu"><?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
-<div>
-	<!-- <h3>Category</h3> -->
 
-	<ul class="nav nav-tabs">
-	  <li role="presentation"><?= $this->Html->link('All', ['action' => 'adminIndex']) ?></li>
-
-		<?php foreach($category as $id=>$cate): ?>
-			<?php if(isset($cate['subcategory'])): ?>
-		  <li role="presentation" class="dropdown">
-		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-		      <?= $cate['name']; ?> <span class="caret"></span>
-		    </a>
-		    <ul class="dropdown-menu">
-					<?php foreach($cate['subcategory'] as $subcate):?>
-						<li><?= $this->Html->link($subcate['name'], ['action' => 'adminIndex', $id, $subcate['id']]) ?></li>
-					<?php endforeach; ?>
-		    </ul>
-		  </li>
-			<?php else:?>
-			<li role="presentation">
-		    <?= $this->Html->link($cate['name'], ['action' => 'adminIndex', $id]) ?>
-			</li>
-			<?php endif;?>
+<div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+		<li><a class="direct-link" href="<?php echo  $this->request->webroot;?>">Home</a></li>
+		<?php foreach($categories as $id=>$main): ?>
+		<li>
+			<?php if(sizeof($main)>1){?>
+				<a type="button" class="dropdown-toggle" data-toggle="dropdown"><?= $main['name'];?> <span class="caret"></span></a>
+				<ul class="dropdown-menu multi-level">
+				<?php foreach($main['children'] as $cateid=>$cate):?>
+					<?php if(sizeof($cate)>1){?>
+						<li class="dropdown-submenu">
+							<a type="button" class="dropdown-toggle" data-toggle="dropdown"><?= $cate['name'];?></a>
+							<ul class="dropdown-menu">
+							<?php foreach($cate['children'] as $sub):?>
+								<li>
+									<?php echo $this->Html->link($sub['name'], ['action' => 'adminIndex', $id, $cateid, $sub['id']], ['class'=>'direct-link']) ?>
+								</li>
+							<?php endforeach; ?>
+							</ul>
+						</li>
+					<?php }else{ ?>
+						<li>
+							<?= $this->Html->link($cate['name'], ['action' => 'adminIndex', $id, $cateid], ['class'=>'direct-link']) ?>
+						</li>
+					<?php } ?>
+				<?php endforeach; ?>
+				</ul>
+			<?php }else{ ?>
+				<?= $this->Html->link($main['name'], ['action' => 'adminIndex', $id], ['class'=>'direct-link']) ?>
+			<?php } ?>
+		</li>
 		<?php endforeach; ?>
 	</ul>
 </div>

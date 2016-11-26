@@ -1,7 +1,7 @@
 <h3>Manage Categories</h3>
 <br>
 <!-- <h3><?= __('Category') ?></h3> -->
-<div class="admin-submenu"><?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
+<div class="admin-submenu"><?= $this->Html->link(__('New Category'), ['controller'=>'Maincategory', 'action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
 <br>
 <div class="admin-category-body container no-padding">
   <table class="table table-striped categories-table">
@@ -19,9 +19,9 @@
             <div class="flex flex-column">
               <h3 class="flex-el"><?= $main['name'] ?></h3>
               <div>
-                <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Maincategory', 'action' => 'add', $id], ['class' => 'btn btn-xs btn-primary']) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $id], ['class' => 'btn btn-xs btn-primary']) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $id], ['class' => 'btn btn-xs btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
+                <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Category', 'action' => 'add', $id], ['class' => 'btn btn-xs btn-primary']) ?>
+                <?= $this->Html->link(__('Edit'), ['controller'=>'Maincategory', 'action' => 'edit', $id], ['class' => 'btn btn-xs btn-primary']) ?>
+                <?= $this->Form->postLink(__('Delete'), ['controller'=>'Maincategory', 'action' => 'delete', $id], ['class' => 'btn btn-xs btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $id)]) ?>
               </div>
             </div>
           </td>
@@ -32,7 +32,7 @@
                     <td class="col-xs-6">
                       <span><strong><?= $cate['name']; ?></strong></span>
                       <div>
-                        <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Category', 'action' => 'add', $cateid], ['class' => 'btn btn-xs btn-primary']) ?>
+                        <?= $this->Html->link(__('Add Sub Category'), ['controller'=>'Subcategory', 'action' => 'add', $cateid], ['class' => 'btn btn-xs btn-primary']) ?>
                         <?= $this->Html->link(__('Edit'), ['controller'=>'Category', 'action' => 'edit', $cateid], ['class' => 'btn btn-xs btn-primary']) ?>
                         <?= $this->Form->postLink(__('Delete'), ['controller'=>'Category', 'action' => 'delete', $cateid], ['class' => 'btn btn-xs btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $cateid)]) ?>
                       </div>

@@ -22,7 +22,7 @@ class ProductsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index($cate=null, $subcate=null)
+    public function index($maincate=null, $cate=null, $subcate=null)
     {
         if($subcate!==null){
 			// Set category title
@@ -157,7 +157,7 @@ class ProductsController extends AppController
 		return $check;
 	}
 
-	public function adminIndex($cate=null, $subcate=null)
+	public function adminIndex($maincate=null, $cate=null, $subcate=null)
     {
 		$this->viewBuilder()->layout('admin');
 

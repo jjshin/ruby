@@ -24,7 +24,7 @@ class CategoryController extends AppController
     public function index()
     {
 				$this->viewBuilder()->layout('admin');
-				
+
 				/*
         $category = $this->paginate($this->Category);
 
@@ -38,7 +38,7 @@ class CategoryController extends AppController
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($maincategory_id)
     {
 		$this->viewBuilder()->layout('admin');
         $category = $this->Category->newEntity();
@@ -52,7 +52,10 @@ class CategoryController extends AppController
                 $this->Flash->error(__('The category could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('category'));
+		$this->loadModel('Maincategory');
+		$maincategories=$this->Maincategory->find('list');
+		$this->set('maincategory_id', $maincategory_id);
+        $this->set(compact('category', 'maincategories'));
         $this->set('_serialize', ['category']);
     }
 

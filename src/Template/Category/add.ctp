@@ -5,6 +5,7 @@
     <?= $this->Form->create($category, ['class' => 'form-group']) ?>
     <fieldset>
         <?php
+            echo $this->Form->select('maincategory_id', $maincategories, array('default'=>$maincategory_id));
             echo $this->Form->input('cate_name', ['class' => 'form-control']);
         ?>
     </fieldset>
