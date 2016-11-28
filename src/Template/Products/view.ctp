@@ -23,11 +23,11 @@
             <?= $this->Number->currency($product->sale_price, 'USD') ?>
             <small><strike><?= $this->Number->currency($product->cost_price, 'USD') ?></strike></small>
         </h2>
-        <div class="col-xs-12">
-            <span class="label label-success"><?= $product->Brands['name']; ?></span> 
+        <!-- <div class="col-xs-12">
+            <span class="label label-success"><?= $product->Brands['name']; ?></span>
             <span class="label label-warning">SKU: <?= $product->sku; ?></span>
-        </div>
-        <br>
+        </div> -->
+        <!-- <br> -->
         <div class="col-md-12">
             <?= $this->Text->autoParagraph(h($product->short_desc)); ?>
         </div>
@@ -49,49 +49,51 @@
         <br>
 
 
-        <div class="col-md-12">
-            <table class="table">
-                <?php if($product->size):?>
-                <tr>
-                    <th><?= __('Size') ?></th>
-                    <td><?= h($product->size) ?><?= h($product->sizeunit) ?></td>
-                </tr>
-                <?php endif;?>
-
-                <?php if($product->weight):?>
-                <tr>
-                    <th><?= __('Weight') ?></th>
-                    <td><?= h($product->weight) ?><?= h($product->weightunit) ?></td>
-                </tr>
-                <?php endif;?>
-
-                <?php if($product->height):?>
-                <tr>
-                    <th><?= __('Height') ?></th>
-                    <td><?= h($product->height) ?><?= h($product->heightunit) ?></td>
-                </tr>
-                <?php endif;?>
-
-                <?php if($product->width):?>
-                <tr>
-                    <th><?= __('Width') ?></th>
-                    <td><?= h($product->width) ?><?= h($product->widthunit) ?></td>
-                </tr>
-                <?php endif;?>
-
-                <?php if($product->length):?>
-                <tr>
-                    <th><?= __('Length') ?></th>
-                    <td><?= h($product->length) ?><?= h($product->lengthunit) ?></td>
-                </tr>
-                <?php endif;?>
-            </table>
-        </div>
 
         <div class="col-md-12">
             <h3>Details</h3>
             <?= $this->Text->autoParagraph(h($product->long_desc)); ?>
         </div>
+
+
+                <div class="col-md-12">
+                    <table class="table">
+                        <?php if($product->size):?>
+                        <tr>
+                            <th><?= __('Size') ?></th>
+                            <td><?= h($product->size) ?><?= h($product->sizeunit) ?></td>
+                        </tr>
+                        <?php endif;?>
+
+                        <?php if($product->weight):?>
+                        <tr>
+                            <th><?= __('Weight') ?></th>
+                            <td><?= h($product->weight) ?><?= h($product->weightunit) ?></td>
+                        </tr>
+                        <?php endif;?>
+
+                        <?php if($product->height):?>
+                        <tr>
+                            <th><?= __('Height') ?></th>
+                            <td><?= h($product->height) ?><?= h($product->heightunit) ?></td>
+                        </tr>
+                        <?php endif;?>
+
+                        <?php if($product->width):?>
+                        <tr>
+                            <th><?= __('Width') ?></th>
+                            <td><?= h($product->width) ?><?= h($product->widthunit) ?></td>
+                        </tr>
+                        <?php endif;?>
+
+                        <?php if($product->length):?>
+                        <tr>
+                            <th><?= __('Length') ?></th>
+                            <td><?= h($product->length) ?><?= h($product->lengthunit) ?></td>
+                        </tr>
+                        <?php endif;?>
+                    </table>
+                </div>
     </div>
     <div class="clearfix"></div>
     <?= $this->Form->end(); ?>
