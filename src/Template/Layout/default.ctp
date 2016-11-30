@@ -47,11 +47,11 @@ $cakeDescription = 'Rubys Gifts';
 </head>
 <body>
 
-    <div id="logo" class="container" style="padding-top: 0px; padding-bottom: 10px;">
+    <div id="logo" class="container" style="padding-top: 0px; padding-bottom: 20px;">
         <div class="col-md-4 col-md-offset-4">
             <a href="<?php echo  $this->request->webroot;?>"><img src="<?php echo  $this->request->webroot;?>img/logo.png" style="max-width:100%;"></a>
         </div>
-        <div class="col-md-4 text-right" style="margin-top:20px;">
+        <div class="col-md-4 text-right" style="margin-top:40px;">
 		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
             <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
             <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
@@ -151,15 +151,28 @@ $cakeDescription = 'Rubys Gifts';
                             <?php endforeach; ?>
                         </ul>
                     </li>
+                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>sales">Sales</a></li>
+                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>giftvouchers">Gift Voucher</a></li>
+                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>enquires">Enquire</a></li>
 
-                    <li>
+                    <!-- <li>
                         <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enquires <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
                             <li><?php echo $this->Html->link('Enquires', ['controller'=>'Enquires', 'action'=>'add']);?></li>
                             <li><a href="#">Gift Vouchers</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
+                <!-- <div class="col-sm-4 col-md-3">
+                  <form class="navbar-form" role="search">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search" name="q">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" style="margin-top: 0px"><i class="glyphicon glyphicon-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div> -->
             </div>
         </div>
     </nav>

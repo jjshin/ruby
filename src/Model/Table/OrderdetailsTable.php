@@ -73,6 +73,14 @@ class OrderdetailsTable extends Table
             ->notEmpty('receive_name');
 
         $validator
+            ->requirePresence('firstname', 'create')
+            ->notEmpty('firstname');
+
+        $validator
+            ->requirePresence('lastname', 'create')
+            ->notEmpty('lastname');
+
+        $validator
             ->requirePresence('phone', 'create')
             ->notEmpty('phone');
 

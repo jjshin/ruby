@@ -1,6 +1,26 @@
 <div class="products index large-9 medium-8 columns content">
     <h3>Brands > <?= $brand['name'];?></h3>
-    <table cellpadding="0" cellspacing="0">
+
+    <?php if($products->count() > 0):?>
+        <?php foreach ($products as $product): ?>
+        <div class="col-sm-4 col-md-3">
+            <div class="thumbnail">
+                <?= $this->Html->image($product->image, ['url'=>['action' => 'view', $product->id]]); ?>
+                <div class="caption">
+                    <h3><?= h($product->name) ?></h3>
+                    <p>
+                        <small><strike><?= $this->Number->currency($product->cost_price, 'USD') ?></strike></small>
+                        <?= $this->Number->currency($product->sale_price, 'USD') ?>
+                </p>
+                </div>
+            </div>
+        </div>
+        <?php endforeach;?>
+    <?php else: ?>
+        <div class="col-md-12 text-center">No items</div>
+    <?php endif; ?>
+    <div class="clearfix"></div>
+    <!-- <table cellpadding="0" cellspacing="0">
         <tbody>
           <?php //echo '<pre>'; print_r($products);?>
           <?php if($products->count() > 0):?>
@@ -24,7 +44,7 @@
             </tr>
           <?php endif; ?>
         </tbody>
-    </table>
+    </table> -->
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
