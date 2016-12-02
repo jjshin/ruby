@@ -1,8 +1,13 @@
 <?php
+
 namespace App\Controller;
 
-use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+use Cake\Mailer\Email;
+use Cake\Event\Event;
 use Cake\Datasource\ConnectionManager;
+use App\Controller\AppController;
+use Cake\ORM\Query;
 
 class OrdersController extends AppController
 {
@@ -84,19 +89,67 @@ class OrdersController extends AppController
 				foreach($cart as $item){
 					// Add Orderproducts table
 					$orderproducts=$this->Orderproducts->newEntity();
-					$data=array(
-						'orderqty'=>$item['qty'],
-						'totalprice'=>$item->Products['sale_price'],
-						'orderdetails_id'=>$orderdetail->id,
-						'products_id'=>$item->Products['id']
-					);
+
+
+                    $data=array(
+                        //'Products_Name'=>$item->Products['name'],
+                        'orderqty'=>$item['qty'],
+                        'totalprice'=>$item->Products['sale_price'],
+                        'orderdetails_id'=>$orderdetail->id,
+                        'products_id'=>$item->Products['id'],
+                    );
+
+                    $this->request->data['Order']['order_total'] = $total;
+
 					$orderproducts=$this->Orderproducts->patchEntity($orderproducts, $data);
 					$this->Orderproducts->save($orderproducts);
 
-					// Reduce qty of products table
+                    //$products = $cart->items;
+                    $totalPrice = $orderproducts->order_total;
+
+                    //$this->set('products', $order_);
+                    $this->set('totalPrice', $totalPrice);
+
+                    $this->value1= $item->Products['name'];
+
+
+
+
+
+
+
+
+                    // Reduce qty of products table
 					$conn = ConnectionManager::get('default');
 					$conn->execute('UPDATE products SET qty=qty-'. $item['qty'].' WHERE id='.$item->Products['id']);
-				}
+
+
+
+                }
+
+
+
+
+                $productname = $item->Products['name'];
+                $this->set('productname', $productname);
+                $orderprice = $item->Products['sale_price'];
+                $this->set('orderprice', $orderprice);
+                $orderqty = $item['qty'];
+                $this->set('orderqty', $orderqty);
+//                $ordertotal = $item->Orderproducts['ordertotal'];
+//                $this->set('ordertotal', $ordertotal);
+
+                $email = new Email('gmail');
+                $email
+                    ->to('rubysgiftstest@gmail.com')
+                    ->subject('Order Information')
+                    ->viewVars(['value' => $item->Products['name']])
+                    ->viewVars(['value1' => $item['qty']])
+                    ->template('order')
+                    ->emailFormat('html')
+                    ->send();
+
+
 				$this->Carts->deleteAll(['users_id'=>$this->Auth->user('id')]);
 			}
 		}else{
@@ -130,6 +183,8 @@ class OrdersController extends AppController
 								->where(['Tmpcarts.session_id'=>$this->request->session()->read('session_id')]);
 		}
 		return $cart;
+        $totalQty = $carts->qty;
+        $this->set('totalQty', $totalQty);
 	}
 
 	public function adminIndex(){

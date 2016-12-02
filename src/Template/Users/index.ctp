@@ -22,8 +22,7 @@
                 <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('gender') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('DOB') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Subscribe') ?></th>
-                <!-- <th scope="col"><?= $this->Paginator->sort('role') ?></th> -->
+<!--                 <th scope="col">--><?//= $this->Paginator->sort('role') ?><!--</th>-->
                 <th scope="col" class="actions"><?= __('More') ?></th>
             </tr>
         </thead>
@@ -38,7 +37,7 @@
                 <td><?= h($user->phone) ?></td>
                 <td><?= h($user->gender) ?></td>
                 <td><?= h($user->dob) ?></td>
-                <td><?= h($user->Subscribe == 1 ? 'Yes' : 'No') ?></td>
+
 
                 <!-- <td><?= h($user->role == 1 ? 'Admin' : 'Customer') ?></td> -->
                 <td class="actions">

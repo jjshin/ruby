@@ -1,6 +1,9 @@
 <?php
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
+use Cake\Mailer\Email;
+use Cake\Event\Event;
+use Cake\Datasource\ConnectionManager;
 use App\Controller\AppController;
 
 /**
@@ -93,6 +96,13 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
 					  if ($this->Users->save($user)) {
+                          $email = new Email('gmail');
+                          $email
+                              ->to('rubysgiftstest@gmail.com')
+                              ->subject('Customer Contact')
+                              ->template('contact')
+                              ->emailFormat('html')
+                              ->send();
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -120,6 +130,14 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
+
+                $email = new Email('gmail');
+                $email
+                    ->to('rubysgiftstest@gmail.com')
+                    ->subject('Customer Contact')
+                    ->template('contact_edit')
+                    ->emailFormat('html')
+                    ->send();
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -159,6 +177,15 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
 						$user['role']=10;
             if ($this->Users->save($user)) {
+
+                $email = new Email('gmail');
+                $email
+                    ->to('rubysgiftstest@gmail.com')
+                    ->subject('Customer Contact')
+                    ->template('contact')
+                    ->emailFormat('html')
+                    ->send();
+
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['controller'=>'Main', 'action' => 'index']);

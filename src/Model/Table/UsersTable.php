@@ -49,24 +49,31 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('firstname', 'create')
-            ->notEmpty('firstname');
+            ->add('firstname', 'firstname',['rule' => 'alphaNumeric', 'message' => 'Alphanumeric characters only'])
+            ->notEmpty('firstname','Please enter your first name');
 
         $validator
             ->requirePresence('lastname', 'create')
-            ->notEmpty('lastname');
+            ->add('lastname', 'lastname',['rule' => 'alphaNumeric', 'message' => 'Alphanumeric characters only'])
+            ->notEmpty('lastname','Please enter your last name');
 
         $validator
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password','Please enter your password');
 
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
+            ->add('email', 'email',['rule' => 'email', 'message' => 'Please enter a valid email address'])
             ->notEmpty('email');
 
         $validator
-            ->integer('phone')
-            ->allowEmpty('phone');
+            ->integer('phone','Phone number can only be 10 digital number')
+           // ->requirePresence('phone', 'create')
+            ->allowEmpty('phone')
+            ->add('phone', 'minlength', ['rule' => ['minLength', 10],
+                'message' => 'Please enter a vaild Australian phone number']);
+
 
         $validator
             ->allowEmpty('address1');
@@ -75,17 +82,20 @@ class UsersTable extends Table
             ->allowEmpty('address2');
 
         $validator
-            ->allowEmpty('suburb');
+            ->add('suburb', 'suburb',['rule' => 'alphaNumeric', 'message' => 'Alphanumeric characters only'])
+            ->allowEmpty('suburb','Please enter your suburb');
 
         $validator
             ->allowEmpty('state');
 
         $validator
-            ->allowEmpty('postcode');
-
-        $validator
-            ->boolean('subscribe')
-            ->allowEmpty('subscribe');
+            ->integer('postcode','Posctcode can only be integer')
+            ->allowEmpty('postcode')
+        ->add('postcode', 'minlength', ['rule' => ['minLength', 4],
+        'message' => 'Please enter a vaild Australian postcode'])
+        ->add('postcode', 'maxlength', ['rule' => ['maxLength', 4],
+            'message' => 'Please enter a vaild Australian postcode']);
+        
 
         $validator
             ->integer('role')
