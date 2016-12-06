@@ -49,8 +49,7 @@ class OrdersController extends AppController
 		// Get cart list
 		$cart=$this->getCarts();
 		$this->set(compact('cart'));
-
-<<<<<<< HEAD
+	}
 
 	public function proceed(){
 		$this->loadModel('Orderdetails');
@@ -88,7 +87,7 @@ class OrdersController extends AppController
 				'postcode'=>$this->request->data['postcode']
 			);
 			$orderdetail=$this->Orderdetails->patchEntity($orderdetail, $od_data);
-			/*if($this->Orderdetails->save($orderdetail)){
+			if($this->Orderdetails->save($orderdetail)){
 
 				foreach($cart as $item){
 					// Add Orderproducts table
@@ -108,15 +107,23 @@ class OrdersController extends AppController
 				}
 				$this->Carts->deleteAll(['users_id'=>$this->Auth->user('id')]);
 
-			}*/
+				$this->loadModel('Products');
+				$products=$this->Orderproducts->find()
+									->select($this->Orderproducts)
+									->select($this->Products)
+									->join(array(
+											'table'=>'products',
+											'alias'=>'Products',
+											'conditions'=>array('Orderproducts.products_id = Products.id'),
+											'type'=>'inner'
+									))
+									->where(['orderdetails_id'=> $orderdetail->id]);
+				$this->set(compact('products'));
+			}
 		}else{
 			$this->redirect(['controller'=>'Cart', 'action'=>'index']);
 		}
-=======
 
-
-
->>>>>>> bb089557e2327d7f4ff3e8407b123aac51379b60
 	}
 
 	private function getCarts(){
@@ -151,7 +158,7 @@ class OrdersController extends AppController
 
 	public function processing(){
 
-		$user = $this->Users-get($id)
+		$user = $this->Users-get($id);
 
 
 	}
@@ -215,5 +222,13 @@ class OrdersController extends AppController
 		){
 			$this->redirect(['action'=>'adminIndex']);
 		}
+	}
+
+	public function success(){
+		echo 'Success'; exit;
+	}
+
+	public function fail(){
+		echo 'Fail'; exit;
 	}
 }
