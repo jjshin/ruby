@@ -22,7 +22,7 @@
                 <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('gender') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('DOB') ?></th>
-<!--                 <th scope="col">--><?//= $this->Paginator->sort('role') ?><!--</th>-->
+                <!-- <th scope="col"><?= $this->Paginator->sort('role') ?></th> -->
                 <th scope="col" class="actions"><?= __('More') ?></th>
             </tr>
         </thead>

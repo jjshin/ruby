@@ -45,6 +45,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-6 about-sec-content">
             <div class="section_header2 common">
                 <h2>Welcome to Ruby's Gifts</h2>

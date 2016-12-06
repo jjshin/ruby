@@ -82,7 +82,7 @@ class UsersTable extends Table
             ->allowEmpty('address2');
 
         $validator
-            ->add('suburb', 'suburb',['rule' => 'alphaNumeric', 'message' => 'Alphanumeric characters only'])
+            // ->add('suburb', 'suburb',['rule' => 'alphaNumeric', 'message' => 'Alphanumeric characters only'])
             ->allowEmpty('suburb','Please enter your suburb');
 
         $validator
@@ -95,7 +95,7 @@ class UsersTable extends Table
         'message' => 'Please enter a vaild Australian postcode'])
         ->add('postcode', 'maxlength', ['rule' => ['maxLength', 4],
             'message' => 'Please enter a vaild Australian postcode']);
-        
+
 
         $validator
             ->integer('role')

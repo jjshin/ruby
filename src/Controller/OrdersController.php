@@ -19,6 +19,7 @@ class OrdersController extends AppController
 	}
 
 	public function index(){
+
 		if($this->Auth->user('id')){
 			$this->loadModel('Carts');
 
@@ -47,114 +48,10 @@ class OrdersController extends AppController
 		// Get cart list
 		$cart=$this->getCarts();
 		$this->set(compact('cart'));
-	}
-
-	public function proceed(){
-		$this->loadModel('Orderdetails');
-		$this->loadModel('Orderproducts');
-		$this->loadModel('Carts');
-
-		// Get Cart List
-		$cart=$this->getCarts();
-		$total=0;
-		foreach($cart as $item){
-			//Check qty of product
-			$productObj=new ProductsController;
-			$qty_check=$productObj->check_qty($item->Products['id'], $item['qty']);
-			if($qty_check>0){	//continue
-				$total += $item['qty'] * $item->Products['sale_price'];
-			}else{
-				$this->Flash->error(__('Not enough stock.'));
-				break;
-			}
-		}
-		if($qty_check>0){
-			// Add Orderdetails table
-			$orderdetail=$this->Orderdetails->newEntity();
-			$od_data=array(
-				'users_id'=>$this->Auth->user('id'),
-				'order_status'=>1,
-				'order_total'=>$total,
-				'receive_name'=>$this->request->data['receive_name'],
-				'phone'=>$this->request->data['phone'],
-				'address1'=>$this->request->data['address1'],
-				'address2'=>$this->request->data['address2'],
-				'suburb'=>$this->request->data['suburb'],
-				'state'=>$this->request->data['state'],
-				'postcode'=>$this->request->data['postcode']
-			);
-			$orderdetail=$this->Orderdetails->patchEntity($orderdetail, $od_data);
-			if($this->Orderdetails->save($orderdetail)){
-
-				foreach($cart as $item){
-					// Add Orderproducts table
-					$orderproducts=$this->Orderproducts->newEntity();
-
-
-                    $data=array(
-                        //'Products_Name'=>$item->Products['name'],
-                        'orderqty'=>$item['qty'],
-                        'totalprice'=>$item->Products['sale_price'],
-                        'orderdetails_id'=>$orderdetail->id,
-                        'products_id'=>$item->Products['id'],
-                    );
-
-                    $this->request->data['Order']['order_total'] = $total;
-
-					$orderproducts=$this->Orderproducts->patchEntity($orderproducts, $data);
-					$this->Orderproducts->save($orderproducts);
-
-                    //$products = $cart->items;
-                    $totalPrice = $orderproducts->order_total;
-
-                    //$this->set('products', $order_);
-                    $this->set('totalPrice', $totalPrice);
-
-                    $this->value1= $item->Products['name'];
 
 
 
 
-
-
-
-
-                    // Reduce qty of products table
-					$conn = ConnectionManager::get('default');
-					$conn->execute('UPDATE products SET qty=qty-'. $item['qty'].' WHERE id='.$item->Products['id']);
-
-
-
-                }
-
-
-
-
-                $productname = $item->Products['name'];
-                $this->set('productname', $productname);
-                $orderprice = $item->Products['sale_price'];
-                $this->set('orderprice', $orderprice);
-                $orderqty = $item['qty'];
-                $this->set('orderqty', $orderqty);
-//                $ordertotal = $item->Orderproducts['ordertotal'];
-//                $this->set('ordertotal', $ordertotal);
-
-                $email = new Email('gmail');
-                $email
-                    ->to('rubysgiftstest@gmail.com')
-                    ->subject('Order Information')
-                    ->viewVars(['value' => $item->Products['name']])
-                    ->viewVars(['value1' => $item['qty']])
-                    ->template('order')
-                    ->emailFormat('html')
-                    ->send();
-
-
-				$this->Carts->deleteAll(['users_id'=>$this->Auth->user('id')]);
-			}
-		}else{
-			$this->redirect(['controller'=>'Cart', 'action'=>'index']);
-		}
 	}
 
 	private function getCarts(){
@@ -185,6 +82,13 @@ class OrdersController extends AppController
 		return $cart;
         $totalQty = $carts->qty;
         $this->set('totalQty', $totalQty);
+	}
+
+	public function processing(){
+
+		$user = $this->Users-get($id)
+
+
 	}
 
 	public function adminIndex(){

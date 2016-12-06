@@ -53,8 +53,9 @@ $cakeDescription = 'Rubys Gifts';
         </div>
         <div class="col-md-4 text-right" style="margin-top:40px;">
 		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
-            <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
-            <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
+            <?= $this->Html->link('', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'glyphicon glyphicon-shopping-cart', 'role'=>'button']);?>
+            <?= $this->Html->link('', ['controller'=>'Users', 'action'=>'login'], ['class'=>"glyphicon glyphicon-user", 'role'=>'button']);?>
+            
         <?php } elseif($this->request->session()->read('Auth.User.role')==1){ //Admin ?>
             <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
             <?= $this->Html->link('Admin', ['controller'=>'Users', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
@@ -151,9 +152,9 @@ $cakeDescription = 'Rubys Gifts';
                             <?php endforeach; ?>
                         </ul>
                     </li>
-                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Sales</a></li>
+                    <!-- <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Sales</a></li>
                     <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Gift Voucher</a></li>
-                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Enquire</a></li>
+                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Enquire</a></li> -->
 
                     <!-- <li>
                         <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enquires <span class="caret"></span></a>

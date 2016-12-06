@@ -51,9 +51,5 @@
             <td><?= $user->address1.' '.$user->address2.', '.$user->suburb.' '.$user->state.' '.$user->postcode.' '.$user->country; ?></td>
         </tr>
 
-<!--        <tr>-->
-<!--            <th scope="row">--><?//= __('Subscribe') ?><!--</th>-->
-<!--            <td>--><?//= $user->subscribe?'Yes':'No'; ?><!--</td>-->
-<!--        </tr>-->
     </table>
 </div>
