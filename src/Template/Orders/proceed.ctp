@@ -10,43 +10,40 @@
           <div>
              <div class="row">
                 <div class="col-md-6">
-                    First Name:<?= $firstName ?>
-                </div>
-                <div class="col-md-6">
-                    Last Name: <?= $lastName ?>
+                    Receive Name:<?= $this->request->data['receive_name'] ?>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                    Email Address: <?= $email ?>
+                    Email Address: <?= $this->request->session()->read('Auth.User.email') ?>
                 </div>
                 <div class="col-md-6">
-                    Phone Number: <?= $phone ?>
+                    Phone Number: <?= $this->request->data['phone'] ?>
                 </div>
               </div>
               <div class="row">
                 <div class="aa-checkout-single-bill">
                 <div class="col-md-12">
-                    Address 1: <?= $address1 ?>
+                    Address 1: <?= $this->request->data['address1'] ?>
                 </div>
               </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                    Address 2: <?= $address2 ?>
+                    Address 2: <?= $this->request->data['address2'] ?>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                    Suburb: <?= $suburb ?>
+                    Suburb: <?= $this->request->data['suburb'] ?>
                 </div>
                 <div class="col-md-6">
-                    State: <?= $state ?>
+                    State: <?= $this->request->data['state'] ?>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                    Postcode: <?= $postcode ?>
+                    Postcode: <?= $this->request->data['postcode'] ?>
                 </div>
               </div>
             </div>
@@ -62,18 +59,10 @@
 
 	    <div class="price-details">
 
-			<span>Sub Total</span>
-                <span class="total">$ <?= $totalPrice ?></span>
-			<!-- <span>Delivery Charges</span>
-			    <span class="total">$ <?= $shippingCost ?></span> -->
+			<span>Total</span>
+                <span class="total">$ <?= $total ?></span>
 		    <div class="clearfix"></div>
 		</div>
-		<h4 class="last-price">GRAND TOTAL</h4>
-			<span class="total final">$
-          <?= $totalPrice ?>
-          <!-- <?= $totalPrice + $shippingCost ?> -->
-			</span>
-			<div class="clearfix"></div>
   </div>
 <br>
 

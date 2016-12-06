@@ -15,6 +15,7 @@ class OrdersController extends AppController
 
 	public function index(){
 		if($this->Auth->user('id')){
+			$this->request->session()->write('paypal.csrf', bin2hex(openssl_random_pseudo_bytes(32)));
 			$this->loadModel('Carts');
 
 			// Update carts table
@@ -44,6 +45,7 @@ class OrdersController extends AppController
 		$this->set(compact('cart'));
 	}
 
+
 	public function proceed(){
 		$this->loadModel('Orderdetails');
 		$this->loadModel('Orderproducts');
@@ -63,6 +65,7 @@ class OrdersController extends AppController
 				break;
 			}
 		}
+		$this->set('total', $total);
 		if($qty_check>0){
 			// Add Orderdetails table
 			$orderdetail=$this->Orderdetails->newEntity();
@@ -79,7 +82,7 @@ class OrdersController extends AppController
 				'postcode'=>$this->request->data['postcode']
 			);
 			$orderdetail=$this->Orderdetails->patchEntity($orderdetail, $od_data);
-			if($this->Orderdetails->save($orderdetail)){
+			/*if($this->Orderdetails->save($orderdetail)){
 
 				foreach($cart as $item){
 					// Add Orderproducts table
@@ -98,7 +101,8 @@ class OrdersController extends AppController
 					$conn->execute('UPDATE products SET qty=qty-'. $item['qty'].' WHERE id='.$item->Products['id']);
 				}
 				$this->Carts->deleteAll(['users_id'=>$this->Auth->user('id')]);
-			}
+
+			}*/
 		}else{
 			$this->redirect(['controller'=>'Cart', 'action'=>'index']);
 		}
