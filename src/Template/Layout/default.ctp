@@ -62,7 +62,7 @@ $cakeDescription = 'Rubys Gifts';
             <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
         <?php } else { //User ?>
             <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
-            <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
+            <?= $this->Html->link('', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'glyphicon glyphicon-shopping-cart', 'role'=>'button']);?>
             <?= $this->Html->link('My Account', ['controller'=>'Myshop', 'action'=>'index'], ['class'=>'btn btn-info', 'role'=>'button']);?>
             <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-warning', 'role'=>'button']);?>
         <?php } ?>

@@ -85,10 +85,7 @@ class OrdersController extends AppController
 	}
 
 	public function processing(){
-
-		$user = $this->Users-get($id)
-
-
+		
 	}
 
 	public function adminIndex(){

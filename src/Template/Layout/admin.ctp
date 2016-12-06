@@ -60,6 +60,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
 
         <div class="center-block">
+          <center>
             <h3>Admin Menu</h3>
             <div class="btn-group admin-menu" role="group">
                 <a class="btn <?= strpos($this->request->url, 'users') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>users">Accounts</a>
@@ -70,6 +71,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'suppliers') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>suppliers">Suppliers</a>
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'enquires') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>enquires">Enquires</a>
                 <a class="btn btn-secondary <?= strpos($this->request->url, 'sliders') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>sliders">Sliders</a>
+                <a class="btn btn-secondary <?= strpos($this->request->url, 'bulkload') !== FALSE ? 'btn-success' : 'btn-secondary'; ?>" href="<?php echo  $this->request->webroot;?>bulkload">Bulk Load</a>
+
             </div>
         </div>
 

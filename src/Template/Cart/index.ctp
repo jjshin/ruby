@@ -59,9 +59,9 @@
                         <td>   </td>
                         <td>   </td>
                         <td>
-                        <button type="button" class="btn btn-default">
+                        <!-- <button type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                        </button></td>
+                        </button></td> -->
                         <td>
                             <?php
                                 if ( $cart->count() > 0 ) {
