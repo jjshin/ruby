@@ -1,6 +1,7 @@
 <nav class="container">
     <ul class="side-nav">
-
+       <li><?php //print_r($product->Category);exit;?> </li>
+       <!-- <li><?= $this->Html->link(__('List Products'), ['action' => 'index', $product->Category['id'], $product->Subcategory['id']], ['class'=>'btn btn-info']) ?> </li> -->
     </ul>
 </nav>
 <div class="container">

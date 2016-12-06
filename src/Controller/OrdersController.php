@@ -1,8 +1,13 @@
 <?php
+
 namespace App\Controller;
 
-use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+use Cake\Mailer\Email;
+use Cake\Event\Event;
 use Cake\Datasource\ConnectionManager;
+use App\Controller\AppController;
+use Cake\ORM\Query;
 
 class OrdersController extends AppController
 {
@@ -14,6 +19,7 @@ class OrdersController extends AppController
 	}
 
 	public function index(){
+
 		if($this->Auth->user('id')){
 			$this->request->session()->write('paypal.csrf', bin2hex(openssl_random_pseudo_bytes(32)));
 			$this->loadModel('Carts');
@@ -43,8 +49,8 @@ class OrdersController extends AppController
 		// Get cart list
 		$cart=$this->getCarts();
 		$this->set(compact('cart'));
-	}
 
+<<<<<<< HEAD
 
 	public function proceed(){
 		$this->loadModel('Orderdetails');
@@ -106,6 +112,11 @@ class OrdersController extends AppController
 		}else{
 			$this->redirect(['controller'=>'Cart', 'action'=>'index']);
 		}
+=======
+
+
+
+>>>>>>> bb089557e2327d7f4ff3e8407b123aac51379b60
 	}
 
 	private function getCarts(){
@@ -134,6 +145,15 @@ class OrdersController extends AppController
 								->where(['Tmpcarts.session_id'=>$this->request->session()->read('session_id')]);
 		}
 		return $cart;
+        $totalQty = $carts->qty;
+        $this->set('totalQty', $totalQty);
+	}
+
+	public function processing(){
+
+		$user = $this->Users-get($id)
+
+
 	}
 
 	public function adminIndex(){

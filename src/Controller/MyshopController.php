@@ -12,7 +12,8 @@ class MyshopController extends AppController
 		$this->Auth->allow(['index', 'order', 'orderDetail']);
 	}
 
-	public function index(){
+public function index(){
+
 	}
 
 	public function order(){

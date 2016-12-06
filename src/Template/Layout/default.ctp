@@ -53,8 +53,9 @@ $cakeDescription = 'Rubys Gifts';
         </div>
         <div class="col-md-4 text-right" style="margin-top:40px;">
 		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
-            <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
-            <?= $this->Html->link('Login', ['controller'=>'Users', 'action'=>'login'], ['class'=>'btn btn-info', 'role'=>'button']);?>
+            <?= $this->Html->link('', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'glyphicon glyphicon-shopping-cart', 'role'=>'button']);?>
+            <?= $this->Html->link('', ['controller'=>'Users', 'action'=>'login'], ['class'=>"glyphicon glyphicon-user", 'role'=>'button']);?>
+            
         <?php } elseif($this->request->session()->read('Auth.User.role')==1){ //Admin ?>
             <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
             <?= $this->Html->link('Admin', ['controller'=>'Users', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
@@ -62,8 +63,8 @@ $cakeDescription = 'Rubys Gifts';
         <?php } else { //User ?>
             <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
             <?= $this->Html->link('My Cart', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
-            <?= $this->Html->link('My Shopping', ['controller'=>'Myshop', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
-            <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
+            <?= $this->Html->link('My Account', ['controller'=>'Myshop', 'action'=>'index'], ['class'=>'btn btn-info', 'role'=>'button']);?>
+            <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-warning', 'role'=>'button']);?>
         <?php } ?>
 
         </div>
@@ -151,9 +152,9 @@ $cakeDescription = 'Rubys Gifts';
                             <?php endforeach; ?>
                         </ul>
                     </li>
-                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>sales">Sales</a></li>
-                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>giftvouchers">Gift Voucher</a></li>
-                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>enquires">Enquire</a></li>
+                    <!-- <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Sales</a></li>
+                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Gift Voucher</a></li>
+                    <li><a class="direct-link" href="<?php echo  $this->request->webroot;?>coming">Enquire</a></li> -->
 
                     <!-- <li>
                         <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enquires <span class="caret"></span></a>
@@ -163,16 +164,16 @@ $cakeDescription = 'Rubys Gifts';
                         </ul>
                     </li> -->
                 </ul>
-                <!-- <div class="col-sm-4 col-md-3">
-                  <form class="navbar-form" role="search">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" name="q">
-                      <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit" style="margin-top: 0px"><i class="glyphicon glyphicon-search"></i></button>
-                      </div>
-                    </div>
-                  </form>
-                </div> -->
+<!--                <div class="col-sm-4 col-md-3">-->
+<!--                  <form class="navbar-form" role="search">-->
+<!--                    <div class="input-group">-->
+<!--                      <input type="text" class="form-control" placeholder="Search" name="q">-->
+<!--                      <div class="input-group-btn">-->
+<!--                        <button class="btn btn-default" type="submit" style="margin-top: 0px"><i class="glyphicon glyphicon-search"></i></button>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </form>-->
+<!--                </div>-->
             </div>
         </div>
     </nav>
@@ -226,7 +227,7 @@ $cakeDescription = 'Rubys Gifts';
                     <li class="widget-container widget_recent_news"><!-- widgets list -->
                         <h1 class="title-widget">Help</h1>
                         <ul>
-                            <p><b><a href="http://eepurl.com/cqb6jD">Subscribe</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>subscribe">Subscribe</b></a></p>
                             <p><b><a href="#">Delivery</b></a></p>
                             <p><b><a href="#">Returns</b></a></p>
                             <p><b><a href="#">Contact</b></a></p>
