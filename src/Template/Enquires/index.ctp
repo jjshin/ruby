@@ -1,6 +1,6 @@
 
 <div class="enquires index large-9 medium-8 columns content">
-    <h3><?= __('Enquires') ?></h3>
+    <center>  <h3><?= __('Enquires') ?></h3></center>
     <table cellpadding="0" cellspacing="0" class="table">
         <thead>
             <tr>
@@ -8,6 +8,8 @@
                 <th><?= $this->Paginator->sort('users_id') ?></th>
                 <th><?= $this->Paginator->sort('products_id') ?></th>
                 <th><?= $this->Paginator->sort('title') ?></th>
+                <th><?= $this->Paginator->sort('email') ?></th>
+                <th><?= $this->Paginator->sort('phone') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>

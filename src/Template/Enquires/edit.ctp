@@ -6,8 +6,13 @@
         <?php
             echo $this->Form->input('users_id', ['options' => $users]);
             echo $this->Form->input('products_id', ['options' => $products, 'empty' => true]);
-            echo $this->Form->input('title');
-            echo $this->Form->input('content');
+
+        echo $this->Form->input('title', ['class' => 'form-control']);
+       // echo $this->Form->input('name', ['class' => 'form-control']);
+        echo $this->Form->input('phone',['class' => 'form-control']);
+
+        echo $this->Form->input('email', ['class' => 'form-control']);
+        echo $this->Form->input('content', ['class' => 'form-control']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

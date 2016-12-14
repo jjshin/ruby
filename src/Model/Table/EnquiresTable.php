@@ -40,14 +40,6 @@ class EnquiresTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->belongsTo('Users', [
-            'foreignKey' => 'users_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Products', [
-            'foreignKey' => 'products_id'
-        ]);
     }
 
     /**
@@ -70,6 +62,10 @@ class EnquiresTable extends Table
             ->requirePresence('content', 'create')
             ->notEmpty('content');
 
+        $validator
+            ->email('email')
+            ->allowEmpty('email');
+
         return $validator;
     }
 
@@ -80,11 +76,5 @@ class EnquiresTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['users_id'], 'Users'));
-        $rules->add($rules->existsIn(['products_id'], 'Products'));
-
-        return $rules;
-    }
+    
 }

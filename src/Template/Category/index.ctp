@@ -1,8 +1,9 @@
-<h3>Manage Categories</h3>
+<center><h3>Manage Categories</h3></center>
 <br>
 <!-- <h3><?= __('Category') ?></h3> -->
-<div class="admin-submenu"><?= $this->Html->link(__('New Category'), ['controller'=>'Maincategory', 'action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
-<br>
+<center><div class="admin-submenu"><?= $this->Html->link(__('New Category'), ['controller'=>'Maincategory', 'action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
+    </center>
+    <br>
 <div class="admin-category-body container no-padding">
   <table class="table table-striped categories-table">
     <thead class="thead-default">

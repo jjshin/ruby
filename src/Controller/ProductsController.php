@@ -52,7 +52,33 @@ class ProductsController extends AppController
 			}else{
 				$subcate_list[]=0;
 			}
-		}
+		}else{
+            // Set category title
+			$this->loadModel('Maincategory');
+			$cate_info=$this->Maincategory->get($maincate);
+			$cate_title=$cate_info['name'];
+
+			// Set sub category list
+			$this->loadModel('Category');
+			$subcategory=$this->Category->find()
+							->select(array('Subcategory.id'))
+                            ->join([
+                                'table'=>'subcategory', 
+                                'alias'=>'subcategory', 
+                                'conditions'=>['Category.id=Subcategory.category_id'],
+                                'type'=> 'inner'
+                            ])
+							->where(array('maincategory_id'=>$maincate));
+
+			$subcate_list=array();
+			if($subcategory->count()>0){
+				foreach($subcategory as $sub){
+					$subcate_list[]=$sub->Subcategory['id'];
+				}
+			}else{
+				$subcate_list[]=0;
+			}
+        }
 
 		//Get Product list
 		$products = $this->Products->find()
@@ -147,6 +173,7 @@ class ProductsController extends AppController
 			}
 		}
 
+		// debug($result);
 		return $result;
 	}
 

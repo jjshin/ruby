@@ -12,6 +12,7 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $content
  * @property \Cake\I18n\Time $created
+ * @property string $email
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Product $product

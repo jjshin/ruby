@@ -14,6 +14,10 @@
             <td><?= h($slider->title) ?></td>
         </tr>
         <tr>
+            <th><?= __('URL') ?></th>
+            <td><?= h($slider->url) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Img') ?></th>
             <td><?= $this->Html->image($slider->img, ['style'=>'max-width:800px;']) ?></td>
         </tr>

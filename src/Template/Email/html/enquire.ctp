@@ -39,45 +39,35 @@
 </head>
 <body>
 
-<?php// debug($_REQUEST);?>
+<?php //debug($_REQUEST);?>
 
 <table>
-    <caption>Notice: Customer <b><?= $value2?></b> has made an order.</caption>
+    <caption>Customer <?php echo $_REQUEST['name'];?> has made an Enquire </caption>
     <tr>
-        <th>Customer Name</th>
-        <td> <b><?= $value2?></b>   </td>
-    </tr>
-
-    <th>Order ID</th>
-    <td> <b><?= $value1 ?></b>   </td>
-    </tr>
-
-    <tr>
-        <th>Order Product</th>
-        <td> <b><?= $value3?></b>   </td>
+        <th>Title</th>
+        <td><?php echo $_REQUEST['title'];?></td>
     </tr>
     <tr>
-        <th>Unit Price</th>
-        <td> <b>$<?= $value6?></b>   </td>
+        <th>Name</th>
+        <td><?php echo $_REQUEST['name'];?></td>
     </tr>
     <tr>
-        <th>Order Quantity</th>
-        <td> <b><?= $value5?></b>   </td>
+        <th>Phone</th>
+        <td><?php echo $_REQUEST['phone'];?></td>
     </tr>
     <tr>
-        <th>Order Total Price</th>
-        <td> <b>$<?= $value4?></b>   </td>
+        <th>Email</th>
+        <td><?php echo $_REQUEST['email'];?></td>
     </tr>
     <tr>
-        <th>Order Created Time</th>
-        <td> <b><?= $value7?></b>   </td>
+        <th>Product ID</th>
+        <td><?php echo $_REQUEST['products_id'];?></td>
     </tr>
+
     <tr>
-
-
-
-
-
+        <th>Content</th>
+        <td><?php echo $_POST['content'];?></td>
+    </tr>
 
 </table>
 </body>

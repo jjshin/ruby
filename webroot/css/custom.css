@@ -48,8 +48,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
+.navbar-inverse .navbar-toggle {
+    border-color: #333;
+    background-color: grey;
+}
 
 a {
   color: #514f4f;
@@ -380,7 +382,7 @@ form button {
 */
 #content-body.aboutus {
     padding: 30px 0;
-    text-align: center;
+   text-align: left;
 }
 
 #content-body.aboutus .form-wrapper {
@@ -390,6 +392,7 @@ form button {
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 300px;
+    color: red;
     /*height: 200px;*/
 }
 
@@ -584,3 +587,6 @@ font-size: 24px;
 border-color: black;
 
 }
+/************************************************************
+*************************Footer******************************
+*************************************************************/

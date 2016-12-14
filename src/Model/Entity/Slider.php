@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $img
  * @property \Cake\I18n\Time $created
+ * @property string $url
  */
 class Slider extends Entity
 {

@@ -35,7 +35,9 @@ $cakeDescription = 'Rubys Gifts';
 
 	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/slick.min.js"></script>
-  <script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/dropdown.js"></script>
+    <script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/dropdown.js"></script>
+    <script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.elevateZoom-3.0.8.min.js"></script>
+    
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <!-- Latest compiled and minified CSS -->
@@ -55,13 +57,13 @@ $cakeDescription = 'Rubys Gifts';
 		<?php if (is_null($this->request->session()->read('Auth.User.id'))) { ?>
             <?= $this->Html->link('', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'glyphicon glyphicon-shopping-cart', 'role'=>'button']);?>
             <?= $this->Html->link('', ['controller'=>'Users', 'action'=>'login'], ['class'=>"glyphicon glyphicon-user", 'role'=>'button']);?>
-            
+
         <?php } elseif($this->request->session()->read('Auth.User.role')==1){ //Admin ?>
-            <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
+            <strong><?php echo $this->request->session()->read('Auth.User.firstname').' '.$this->request->session()->read('Auth.User.lastname');?></strong>
             <?= $this->Html->link('Admin', ['controller'=>'Users', 'action'=>'index'], ['class'=>'btn btn-success', 'role'=>'button']);?>
             <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-info', 'role'=>'button']);?>
         <?php } else { //User ?>
-            <strong><?php echo $this->request->session()->read('Auth.User.firstname').' ,'.$this->request->session()->read('Auth.User.lastname');?></strong>
+            <strong><?php echo $this->request->session()->read('Auth.User.firstname').' '.$this->request->session()->read('Auth.User.lastname');?></strong>
             <?= $this->Html->link('', ['controller'=>'Cart', 'action'=>'index'], ['class'=>'glyphicon glyphicon-shopping-cart', 'role'=>'button']);?>
             <?= $this->Html->link('My Account', ['controller'=>'Myshop', 'action'=>'index'], ['class'=>'btn btn-info', 'role'=>'button']);?>
             <?= $this->Html->link('Logout', ['controller'=>'Users', 'action'=>'logout'], ['class'=>'btn btn-warning', 'role'=>'button']);?>
@@ -120,24 +122,34 @@ $cakeDescription = 'Rubys Gifts';
     				<li>
                        	<?php if(sizeof($main)>1){?>
     						<a type="button" class="dropdown-toggle" data-toggle="dropdown"><?= $main['name'];?> <span class="caret"></span></a>
-    						<ul class="dropdown-menu">
-    						<?php foreach($main['children'] as $cateid=>$cate):?>
-    							<li>
-                                    <?php if(sizeof($cate)>1){?>
-                						<a type="button" class="dropdown-toggle" data-toggle="dropdown"><?= $cate['name'];?> <span class="caret"></span></a>
-                						<ul class="dropdown-menu">
-                						<?php foreach($cate['children'] as $sub):?>
-                							<li>
-                                                <?php echo $this->Html->link($sub['name'], ['controller'=>'Products', 'action' => 'index', $id, $cateid, $sub['id']], ['class'=>'direct-link']) ?>
-                                            </li>
-                						<?php endforeach; ?>
-                						</ul>
-                					<?php }else{ ?>
-                						<?= $this->Html->link($cate['name'], ['controller'=>'Products', 'action' => 'index', $id, $cateid], ['class'=>'direct-link']) ?>
-                					<?php } ?>
+            <ul class="dropdown-menu">
+                  <!-- add view all -->
+                    <li>
+                        <?= $this->Html->link('view all', ['controller'=>'Products', 'action' => 'index', $id], ['class'=>'direct-link']) ?>
+                    </li>
+                <?php foreach($main['children'] as $cateid=>$cate):?>
+                    <li>
+                        <?php if(sizeof($cate)>1){?>
+                            <a type="button" class="dropdown-toggle" data-toggle="dropdown"><?= $cate['name'];?> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+<!--
+                                <li>
+                        <?= $this->Html->link('view all', ['controller'=>'Products', 'action' => 'index', $id, $cateid], ['class'=>'direct-link']) ?>
+                    </li>
+-->
+                            <?php foreach($cate['children'] as $sub):?>
+                                <li>
+                                    <?php echo $this->Html->link($sub['name'], ['controller'=>'Products', 'action' => 'index', $id, $cateid, $sub['id']], ['class'=>'direct-link']) ?>
                                 </li>
-    						<?php endforeach; ?>
-    						</ul>
+                            <?php endforeach; ?>
+                            </ul>
+                        <?php }else{ ?>
+                            <?= $this->Html->link($cate['name'], ['controller'=>'Products', 'action' => 'index', $id, $cateid], ['class'=>'direct-link']) ?>
+                        <?php } ?>
+                    </li>
+                <?php endforeach; ?>
+
+            </ul>
     					<?php }else{ ?>
     						<?= $this->Html->link($main['name'], ['controller'=>'Products', 'action' => 'index', $id], ['class'=>'direct-link']) ?>
     					<?php } ?>
@@ -213,10 +225,10 @@ $cakeDescription = 'Rubys Gifts';
                     <li class="widget-container widget_recent_news"><!-- widgets list -->
                         <h1 class="title-widget"> About</h1>
                         <ul>
-                            <p><b><a href="<?php echo  $this->request->webroot;?>aboutus">About Us</b></a></p>
-                            <p><b><a href="#">Brands</b></a></p>
-                            <p><b><a href="#">Terms &amp; Conditions</b></a></p>
-                            <p><b><a href="#">Privacy Policy</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>/footer/aboutus">About Us</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>/footer/brands">Brands</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>/footer/termsandcondition">Terms &amp; Conditions</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>/footer/privacypolicy">Privacy Policy</b></a></p>
                         </ul>
                     </li>
                 </ul>
@@ -228,10 +240,9 @@ $cakeDescription = 'Rubys Gifts';
                         <h1 class="title-widget">Help</h1>
                         <ul>
                             <p><b><a href="<?php echo  $this->request->webroot;?>subscribe">Subscribe</b></a></p>
-                            <p><b><a href="#">Delivery</b></a></p>
-                            <p><b><a href="#">Returns</b></a></p>
-                            <p><b><a href="#">Contact</b></a></p>
-                            <p><b><a href="#">FAQs</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>/footer/delivery">Delivery</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>/footer/returns">Returns</b></a></p>
+                            <p><b><a href="<?php echo  $this->request->webroot;?>/footer/faq">FAQ</b></a></p>
                         </ul>
                     </li>
                 </ul>
@@ -240,7 +251,7 @@ $cakeDescription = 'Rubys Gifts';
     </div>
     </footer>
     <!--header-->
-
+    
     <div class="footer-bottom">
         <div class="container">
             <div class="row">

@@ -56,8 +56,7 @@ class SlidersTable extends Table
             ->notEmpty('title');
 
         $validator
-            ->requirePresence('img', 'create')
-            ->notEmpty('img');
+            ->allowEmpty('url');
 
         return $validator;
     }

@@ -13,5 +13,33 @@ class FooterController extends AppController
       {
 
       }
+    
+     public function privacypolicy()
+      {
+
+      }
+    
+     public function brands()
+      {
+
+      }
+    
+     public function faq()
+      {
+
+      }
+    public function delivery()
+      {
+
+      }
+    
+    public function returns()
+      {
+
+      }
+    
+    
+    
 
 }
+

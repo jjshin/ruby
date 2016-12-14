@@ -25,8 +25,9 @@
                                 <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
                             </div>
                             <div class="mc-field-group">
-                                <label for="mce-MMERGE4">First Name </label>
-                                <input type="text" value="" name="MMERGE4" class="" id="mce-MMERGE4">
+                                <label for="mce-MMERGE4">First Name  <span class="asterisk">*</span>
+                                </label>
+                                <input type="text" value="" name="MMERGE4" class="required" id="mce-MMERGE4">
                             </div>
                             <div class="mc-field-group">
                                 <label for="mce-LNAME">Last Name </label>
@@ -45,7 +46,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-lg-6 about-sec-content">
             <div class="section_header2 common">
                 <h2>Welcome to Ruby's Gifts</h2>
@@ -61,11 +61,12 @@
             </p>
 
 
-
-
         </div>
     </div>
 </div>
 
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <!--End mc_embed_signup-->
+
+
+

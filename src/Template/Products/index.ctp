@@ -9,9 +9,15 @@
                 <div class="caption">
                     <h3><?= h($product->name) ?></h3>
                     <p>
-                        <small><strike><?= $this->Number->currency($product->cost_price, 'USD') ?></strike></small>
+                        
                         <?= $this->Number->currency($product->sale_price, 'USD') ?>
-                </p>
+                
+                        <?php if(!empty($product->retail_price) && $product->retail_price > $product->sale_price){?>
+        <small><strike><?= $this->Number->currency($product->retail_price, 'USD') ?></strike></small>
+        <?php }?>
+                    
+                    
+                    </p>
                 </div>
             </div>
         </div>

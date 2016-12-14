@@ -17,7 +17,7 @@ class UsersController extends AppController
 	{
 		parent::initialize();
 		$this->Auth->deny();
-		$this->Auth->allow(['add','logout', 'register']);
+		$this->Auth->allow(['add','logout', 'register', 'forgotPassword','resetPassword']);
 	}
 
 
@@ -178,13 +178,13 @@ class UsersController extends AppController
 						$user['role']=10;
             if ($this->Users->save($user)) {
 
-                $email = new Email('gmail');
-                $email
-                    ->to('rubysgiftstest@gmail.com')
-                    ->subject('Customer Contact')
-                    ->template('contact')
-                    ->emailFormat('html')
-                    ->send();
+//                $email = new Email('gmail');
+//                $email
+//                    ->to('rubysgiftstest@gmail.com')
+//                    ->subject('Customer Contact')
+//                    ->template('contact')
+//                    ->emailFormat('html')
+//                    ->send();
 
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -226,4 +226,84 @@ class UsersController extends AppController
 				}
 			}
 		}
+
+
+    /**
+     * This method will send reset passoword link to register users
+     *
+     */
+    public function forgotPassword(){
+//        debug('im here');
+        if($this->request->is('post')) {
+            $mail = $this->request->data['email'];
+            $data = $this->Users->findByEmail($mail)->first();
+          //  debug($data);
+            if(!$data) {
+                $message = __('Could find this email address in our database. Please Try Again');
+                $this->Flash->error($message,'flash',array('alert'=>'error'));
+            } else {
+                $key = $data['secret_key'];
+                //debug($key);
+                $id = $data['id'];
+                //debug($id);
+                $mail = $data['email'];
+                $email = new Email('gmail');
+                $email->to($mail);
+                $email->from("rubysgiftstest@gmail.com");
+                $email->emailFormat('html');
+                $email->subject('Password Reset');
+                $email->viewVars(array('key'=>$key,'id'=>$id,'rand'=> mt_rand()));
+                $email->template('reset');
+                if($email->send('reset')) {
+                    $message = __('Please check your email for reset instructions.');
+                    $this->Flash->success($message);
+                } else {
+                    $message = __('Something went wrong with activation mail. Please try later.');
+                    $this->Flash->success($message);
+                }
+            }
+            $this->redirect(['action' => 'login']);
+        }
+    }
+
+    /*
+     * Reset the password
+     *
+     * @param string|null $resetString
+     *
+     * */
+    public function resetPassword($resetString = null) {
+
+        if ($this->request->is('post')) {
+            $a = func_get_args();
+            $keyPair = $a[0];
+            $key = explode('BXX', $keyPair);
+            $pair = explode('XXB', $key[1]);
+            $key = $key[0];
+            $pair = $pair[1];
+            $password = $this->request->data['newpassword'];
+            debug($password);
+
+            $uArr = $this->Users->get($pair);
+            debug($uArr);
+
+            if ($uArr['secret_key'] == $key) {
+
+                $uArr['password'] = $password;
+                debug($uArr);
+                if ($this->Users->save($uArr)) {
+                    $message = __('Your password has been reset');
+                    $this->Flash->success($message);
+                    $this->redirect(['action' => 'login']);
+                } else {
+                    $message = __('Something has gone wrong. Please try later or <b>sign up again</b>');
+                    $this->Flash->error($message);
+                }
+            } else {
+                $message = __('<b>Please check your reset link</b>');
+                $this->Flash->error($message);
+            }
+
+        }
+    }
 }

@@ -1,12 +1,12 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
       <br>
-        <!-- <li class="heading"><?= __('Actions') ?></li> -->
-        <li><?= $this->Html->link(__('Add Brands'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></li>
+        <center>        <!-- <li class="heading"><?= __('Actions') ?></li> -->
+        <li><?= $this->Html->link(__('Add Brands'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></li></center>
     </ul>
 </nav>
 <div class="brands index large-9 medium-8 columns content">
-    <h3><?= __('Brands') ?></h3>
+    <center>  <h3><?= __('Brands') ?></h3></center>
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>

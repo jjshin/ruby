@@ -4,36 +4,49 @@
        <!-- <li><?= $this->Html->link(__('List Products'), ['action' => 'index', $product->Category['id'], $product->Subcategory['id']], ['class'=>'btn btn-info']) ?> </li> -->
     </ul>
 </nav>
+
+
 <div class="container">
+   
     <?php echo $this->Form->create(null, ['url'=>['controller'=>'Cart', 'action'=>'addCart']]);?>
     <?= $this->Form->hidden('products_id', ['value'=>$product->id]);?>
     <div class="col-md-4">
-        <?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:100%;']); ?>
+        <div id="main_img">
+        <?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:100%;', 'data-zoom-image'=>$this->request->webroot.'img/'.$product->image]); ?>
+        </div>
         <div class="row" style="margin-top:10px;">
-            <div class="col-xs-2 col-xs-offset-1" style="padding:5px;"><?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:100%;']); ?></div>
-            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image2) ? '' : $this->Html->image($product->image2, ['style'=>'max-width:100%;']); ?></div>
-            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image3) ? '' : $this->Html->image($product->image3, ['style'=>'max-width:100%;']); ?></div>
-            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image4) ? '' : $this->Html->image($product->image4, ['style'=>'max-width:100%;']); ?></div>
-            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image5) ? '' : $this->Html->image($product->image5, ['style'=>'max-width:100%;']); ?></div>
+            <div class="col-xs-2 col-xs-offset-1" style="padding:5px;"><?= empty($product->image) ? '' : $this->Html->image($product->image, ['style'=>'max-width:100%;', 'class'=>'sub_img']); ?></div>
+            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image2) ? '' : $this->Html->image($product->image2, ['style'=>'max-width:100%;', 'class'=>'sub_img']); ?></div>
+            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image3) ? '' : $this->Html->image($product->image3, ['style'=>'max-width:100%;', 'class'=>'sub_img']); ?></div>
+            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image4) ? '' : $this->Html->image($product->image4, ['style'=>'max-width:100%;', 'class'=>'sub_img']); ?></div>
+            <div class="col-xs-2" style="padding:5px;"><?= empty($product->image5) ? '' : $this->Html->image($product->image5, ['style'=>'max-width:100%;', 'class'=>'sub_img']); ?></div>
         </div>
     </div>
+    
+
+    
+    
     <div class="col-md-8">
-        <h2>
-            <?= h($product->name) ?>
-            <?= $this->Number->currency($product->sale_price, 'USD') ?>
-            <small><strike><?= $this->Number->currency($product->cost_price, 'USD') ?></strike></small>
-        </h2>
+        <h2><?= h($product->name) ?>
+        <?= $this->Number->currency($product->sale_price, 'USD') ?>
+        <?php if(!empty($product->retail_price) && $product->retail_price > $product->sale_price){?>
+        <small><strike><?= $this->Number->currency($product->retail_price, 'USD') ?></strike></small>
+        <?php }?></h2>
+    
+    
+
+                
         <!-- <div class="col-xs-12">
             <span class="label label-success"><?= $product->Brands['name']; ?></span>
             <span class="label label-warning">SKU: <?= $product->sku; ?></span>
         </div> -->
         <!-- <br> -->
         <div class="col-md-12">
-            <?= $this->Text->autoParagraph(h($product->short_desc)); ?>
+            <h4><?= $this->Text->autoParagraph(h($product->short_desc)); ?></h4>
         </div>
 
         <div class="col-xs-6 col-sm-2">
-            <?= $this->Form->number('qty', ['class'=>'form-control', 'placeholder'=>'Qty', 'value'=>1, 'min'=>1]);?>
+            QUANTITY<?= $this->Form->number('qty', ['class'=>'form-control', 'placeholder'=>'Qty', 'value'=>1, 'min'=>1]);?>
         </div>
         <div class="col-xs-6 col-sm-2">
             <?php
@@ -56,7 +69,7 @@
         </div>
 
 
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                     <table class="table">
                         <?php if($product->size):?>
                         <tr>
@@ -93,10 +106,21 @@
                         </tr>
                         <?php endif;?>
                     </table>
-                </div>
+                </div> -->
     </div>
     <div class="clearfix"></div>
     <?= $this->Form->end(); ?>
 
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.sub_img').on('click', function(e){
+            $('#main_img').html('<img src="' + $(this).attr('src') + '" style="max-width:100%;" data-zoom-image="' + $(this).attr('src') + '">');
+            $('#main_img img').elevateZoom();
+        });
+        
+        $('#main_img img').elevateZoom();
+    });
+</script>

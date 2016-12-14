@@ -12,7 +12,7 @@
           <?php foreach($sliders as $key=>$slider): ?>
             <?php if($key==0){ $class='active'; }else{ $class=''; } ?>
             <div class="item <?= $class;?>" style="height:100%;">
-              <?= $this->Html->image($slider['img'], ['data-holder-rendered'=>'true', 'style'=>'max-height:100%; margin:0 auto 0 auto;']);?>
+              <?= $this->Html->image($slider['img'], ['data-holder-rendered'=>'true', 'style'=>'max-height:100%; margin:0 auto 0 auto;', 'url'=> $slider['url']]);?>
             </div>
           <?php endforeach;?>
         </div>

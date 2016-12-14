@@ -11,15 +11,23 @@
     <table class="vertical-table">
         <tr>
             <th><?= __('User') ?></th>
-            <td><?= $enquire->has('user') ? $this->Html->link($enquire->user->id, ['controller' => 'Users', 'action' => 'view', $enquire->user->id]) : '' ?></td>
+            <td><?= $enquire->Users ? $this->Html->link($enquire->Users['email'], ['controller' => 'Users', 'action' => 'view', $enquire->Users['id']]) : $enquire->email; ?></td>
         </tr>
         <tr>
             <th><?= __('Product') ?></th>
-            <td><?= $enquire->has('product') ? $this->Html->link($enquire->product->name, ['controller' => 'Products', 'action' => 'view', $enquire->product->id]) : '' ?></td>
+            <td><?= $enquire->Products  ? $this->Html->link($enquire->Products['name'], ['controller' => 'Products', 'action' => 'view', $enquire->Products['id']]) : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Title') ?></th>
             <td><?= h($enquire->title) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Email') ?></th>
+            <td><?= h($enquire->email) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Phone') ?></th>
+            <td><?= h($enquire->phone) ?></td>
         </tr>
         <tr>
             <th><?= __('Id') ?></th>

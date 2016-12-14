@@ -1,0 +1,3 @@
+Name,Quantity,SKU,Brands ID,Suppliers ID,Subcategory ID,Image,Cost Price,Sale Price,Status,Active,
+Product01,10,11,1,4,29,uploads/product1.jpg,70,40,1,1,
+Product02,5,12,1,4,29,uploads/product2.jpg,80,50,1,1,

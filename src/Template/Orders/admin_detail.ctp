@@ -7,6 +7,11 @@
       <label><strong>Order Date</strong></label>
       <span><?= $order['created'];?></span>
     </li>
+      
+    <li>
+        <label><strong>Transaction ID</strong></label>
+        <span><?= $order['tranid'];?></span>
+    </li>
 
     <li>
       <label><strong>Order Status</strong></label>

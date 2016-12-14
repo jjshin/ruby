@@ -9,6 +9,7 @@
         <legend><?= __('Edit Slider') ?></legend>
         <?php
             echo $this->Form->input('title', ['class'=>'form-control']);
+            echo $this->Form->input('url', ['class'=>'form-control']);
             echo $this->Form->file('img', ['class'=>'form-control']);
         ?>
     </fieldset>

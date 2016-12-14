@@ -1,6 +1,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('New Slider'), ['action' => 'add'], ['class'=>'btn btn-warning']) ?></li>
+        <br>
+        <li><center><?= $this->Html->link(__('New Slider'), ['action' => 'add'], ['class'=>'btn btn-warning']) ?></center></li>
     </ul>
 </nav>
 <div class="sliders index large-9 medium-8 columns content">

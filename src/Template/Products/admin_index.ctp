@@ -1,6 +1,6 @@
-<h3>Manage Products</h3>
+<center><h3>Manage Products</h3></center>
 <br>
-<div class="admin-submenu"><?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div>
+<center><div class="admin-submenu"><?= $this->Html->link(__('New Product'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?></div></center>
 
 <div class="collapse navbar-collapse">
 	<ul class="nav navbar-nav">

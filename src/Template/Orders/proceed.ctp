@@ -1,103 +1,53 @@
-<br>
-<br>
-<h3>Checkout</h3>
-<br>
-<div class = "row">
-  <div class="col-md-8">
-            <h3>Shipping Address</h3>
-            <br>
-
-          <div>
-             <div class="row">
-                <div class="col-md-6">
-                    Receive Name:<?= $this->request->data['receive_name'] ?>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                    Email Address: <?= $this->request->session()->read('Auth.User.email') ?>
-                </div>
-                <div class="col-md-6">
-                    Phone Number: <?= $this->request->data['phone'] ?>
-                </div>
-              </div>
-              <div class="row">
-                <div class="aa-checkout-single-bill">
-                <div class="col-md-12">
-                    Address 1: <?= $this->request->data['address1'] ?>
-                </div>
-              </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                    Address 2: <?= $this->request->data['address2'] ?>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                    Suburb: <?= $this->request->data['suburb'] ?>
-                </div>
-                <div class="col-md-6">
-                    State: <?= $this->request->data['state'] ?>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                    Postcode: <?= $this->request->data['postcode'] ?>
-                </div>
-              </div>
-            </div>
-            <br>
-<?= $this->Html->link('Edit Address', ['controller' => 'orders', 'action' => 'checkoutguest'], array( 'class' => 'btn btn-default')) ?>
-</div>
-<br>
-  <div class = "col-md-4">
-    <h3>Price Details</h3>
-    <br>
-    <div>
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="frm">
 
 
-	    <div class="price-details">
+        <!-- Identify your business so that you can collect the payments. -->
 
-			<span>Total</span>
-                <span class="total">$ <?= $total ?></span>
-		    <div class="clearfix"></div>
-		</div>
-  </div>
-<br>
+        <!-- Specify a Buy Now button. -->
+
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="upload" value="1">
+    
+        <input type="hidden" name="return" value="http://ie.infotech.monash.edu/team21/build4/orders/success/<?=$order_id?>">
+<!--        <input type="hidden" name="return" value="http://localhost/team-21/orders/success/<?=$order_id?>">-->
+          <?php $number = 1; ?>
+          <?php foreach ($products as  $item): ?>
+                  <?php
+                  $shipping = (json_decode($response)->result->services[0]->totalprice_normal);
+                  if ($shipping = null){
+                          $this->Flash->error(__('Wrong Address.'));
+                  }
+
+                  debug($shipping);
+                  //debug($aa);
+                  die();
+
+                  ?>
+
+        <!-- Specify details about the item that buyers will purchase. -->
+        <input type="hidden" name="item_name_<?php echo $number ?>" value="<?php echo $item->Products['name']?>">
+        <input type="hidden" name="amount_<?php echo $number ?>" value="<?php echo $item->Products['sale_price']?>">
+        <input type="hidden" name="quantity_<?php echo $number ?>" value="<?php echo $item->orderqty;?>">
+                  <input type="hidden" name="handling_cart" value=<?= $shipping ?>>
+          <?php $number = $number +1; ?>
+
+          <?php endforeach; ?>
 
 
-<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-
-  <input type="hidden" name="cmd" value="_cart">
-  <input type="hidden" name="upload" value="1">
-    <?php $number = 1; ?>
-    <?php foreach ($products as  $item): ?>
-
-  <!-- Specify details about the item that buyers will purchase. -->
-  <input type="hidden" name="item_name_<?php echo $number ?>" value="<?php echo $item->Products['name']?>">
-  <input type="hidden" name="amount_<?php echo $number ?>" value="<?php echo $item->Products['sale_price']?>">
-  <input type="hidden" name="quantity_<?php echo $number ?>" value="<?php echo $item['qty']?>">
-    <?php $number++; ?>
-  <?php endforeach; ?>
-
-  <input type="hidden" name="business" value="businesstest@rubysgifts.com">
-  <input type="hidden" name="currency_code" value="AUD">
-  <input type="hidden" name="no_shipping" value="0">
-  <input type="hidden" name="return" value="<?php echo  $this->request->webroot;?>orders/success">
-  <input type="hidden" name="cancel_return" value="<?php echo  $this->request->webroot;?>orders/fail">
+        <input type="hidden" name="business" value="businesstest@rubysgifts.com">
+        <input type="hidden" name="currency_code" value="AUD">
 
 
-  <!-- Display the payment button. -->
-  <center>
-  <input type="image" name="submit" border="0"
-         src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-44px.png"
-         alt="Check out">
-  <img alt="" border="0" width="1" height="1"
-       src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+
+        <!-- <input type="hidden" name="return" value="<?php echo  $redirect_url ?>">
+        <input type="hidden" name="cancel_return" value="<?php echo $redirect_url ?>"> -->
+          <?php //echo $this->Form->create(null, ['url'=>['controller'=>'Orders', 'action'=>'success']]);?>
 
 </form>
 
-
-    </div>
-</div>
+<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+       $('#frm').submit(); 
+    });
+</script>

@@ -1,5 +1,5 @@
 <div>
-  <h3>Manage Orders</h3>
+  <center> <h3>Manage Orders</h3></center>
   <table class="table">
     <thead>
       <tr>
