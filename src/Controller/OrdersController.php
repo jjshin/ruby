@@ -21,6 +21,7 @@ class OrdersController extends AppController
 	public function index(){
 
 		if($this->Auth->user('id')){
+			$this->request->session()->write('paypal.csrf', bin2hex(openssl_random_pseudo_bytes(32)));
 			$this->loadModel('Carts');
 
 			// Update carts table
@@ -48,9 +49,80 @@ class OrdersController extends AppController
 		// Get cart list
 		$cart=$this->getCarts();
 		$this->set(compact('cart'));
+	}
 
+	public function proceed(){
+		$this->loadModel('Orderdetails');
+		$this->loadModel('Orderproducts');
+		$this->loadModel('Carts');
 
+		// Get Cart List
+		$cart=$this->getCarts();
+		$total=0;
+		foreach($cart as $item){
+			//Check qty of product
+			$productObj=new ProductsController;
+			$qty_check=$productObj->check_qty($item->Products['id'], $item['qty']);
+			if($qty_check>0){	//continue
+				$total += $item['qty'] * $item->Products['sale_price'];
+			}else{
+				$this->Flash->error(__('Not enough stock.'));
+				break;
+			}
+		}
+		$this->set('total', $total);
+		if($qty_check>0){
+			// Add Orderdetails table
+			$orderdetail=$this->Orderdetails->newEntity();
+			$od_data=array(
+				'users_id'=>$this->Auth->user('id'),
+				'order_status'=>1,
+				'order_total'=>$total,
+				'receive_name'=>$this->request->data['receive_name'],
+				'phone'=>$this->request->data['phone'],
+				'address1'=>$this->request->data['address1'],
+				'address2'=>$this->request->data['address2'],
+				'suburb'=>$this->request->data['suburb'],
+				'state'=>$this->request->data['state'],
+				'postcode'=>$this->request->data['postcode']
+			);
+			$orderdetail=$this->Orderdetails->patchEntity($orderdetail, $od_data);
+			if($this->Orderdetails->save($orderdetail)){
 
+				foreach($cart as $item){
+					// Add Orderproducts table
+					$orderproducts=$this->Orderproducts->newEntity();
+					$data=array(
+						'orderqty'=>$item['qty'],
+						'totalprice'=>$item->Products['sale_price'],
+						'orderdetails_id'=>$orderdetail->id,
+						'products_id'=>$item->Products['id']
+					);
+					$orderproducts=$this->Orderproducts->patchEntity($orderproducts, $data);
+					$this->Orderproducts->save($orderproducts);
+
+					// Reduce qty of products table
+					$conn = ConnectionManager::get('default');
+					$conn->execute('UPDATE products SET qty=qty-'. $item['qty'].' WHERE id='.$item->Products['id']);
+				}
+				$this->Carts->deleteAll(['users_id'=>$this->Auth->user('id')]);
+
+				$this->loadModel('Products');
+				$products=$this->Orderproducts->find()
+									->select($this->Orderproducts)
+									->select($this->Products)
+									->join(array(
+											'table'=>'products',
+											'alias'=>'Products',
+											'conditions'=>array('Orderproducts.products_id = Products.id'),
+											'type'=>'inner'
+									))
+									->where(['orderdetails_id'=> $orderdetail->id]);
+				$this->set(compact('products'));
+			}
+		}else{
+			$this->redirect(['controller'=>'Cart', 'action'=>'index']);
+		}
 
 	}
 
@@ -85,7 +157,7 @@ class OrdersController extends AppController
 	}
 
 	public function processing(){
-		
+
 	}
 
 	public function adminIndex(){
@@ -147,5 +219,13 @@ class OrdersController extends AppController
 		){
 			$this->redirect(['action'=>'adminIndex']);
 		}
+	}
+
+	public function success(){
+		echo 'Success'; exit;
+	}
+
+	public function fail(){
+		echo 'Fail'; exit;
 	}
 }
