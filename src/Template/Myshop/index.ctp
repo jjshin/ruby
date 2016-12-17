@@ -7,38 +7,55 @@
       <div class="row">
         <div class=" col-md-9 col-lg-9 ">
 
-          <table class="table table-user-information">
-            <tbody>
-              <tr>
-                <td>Full Name</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>E-mail Address</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Date of Birth</td>
-                <td></td>
-              </tr>
-              <tr>
-              <tr>
-                <td>Gender</td>
-                <td></td>
-              </tr>
-                <tr>
-                <td>Home Address</td>
-                <td></td>
-              </tr>
-                <td>Phone Number</td>
-                <td></td>
+  <?= $this->Form->create($user) ?>
+    <fieldset>
+        <legend><?= __('Edit User') ?></legend>
+        <?php
+            echo $this->Form->input('firstname', ['label'=>'First Name ']);
+            echo $this->Form->input('lastname', ['label'=>'Last Name ']);
+            //echo $this->Form->input('username');
+            // echo $this->Form->input('password');
 
-              </tr>
+            // echo $this->Form->input('email');
+        echo $this->Form->input('gender', array('label' => 'Gender', 'type' => 'select',
+            'options' => array('Male'=>'Male','Female'=>'Female')));
+        echo $this->Form->input('dob',
+            array(
+                'type' => 'date',
+                'label' => 'Date of Birth:',
+                'dateFormat' => 'MDY',
+                'empty' => array(
+                    'month' => 'Month',
+                    'day'   => 'Day',
+                    'year'  => 'Year'
+                ),
+                'minYear' => date('Y')-130,
+                'maxYear' => date('Y'),
+                'options' => array('1','2')
+            )
+        );
+            echo $this->Form->input('phone');
+			//  echo $this->Form->select(
+			// 	'role',
+			// 	array('label'=>'Role', 1=>'Admin', 10=>'User'),
+			// 	['empty' => '(choose one)']
+			// );
 
-            </tbody>
-          </table>
 
-          <?= $this->Html->link('My Orders', ['action'=>'order'], ['class'=>'btn btn-info']);?>
-          <!-- <?= $this->Html->link('Edit My Profile', ['controller'=>'users'],['action'=>'view'], ['class'=>'btn btn-info']);?> -->
-        </div>
+      //  echo $this->Form->input('gender',['class' => 'form-control']);
+       // echo $this->Form->input('dob',['class'=>'form-control']);
+      echo $this->Form->input('address1', ['class' => 'form-control']);
+      echo $this->Form->input('address2', ['class' => 'form-control']);
+      echo $this->Form->input('suburb', ['class' => 'form-control']);
+      echo $this->Form->input('state', ['class' => 'form-control']);
+      echo $this->Form->input('postcode', ['class' => 'form-control']);
+
+//      echo $this->Form->input('subscribe', ['type'=>'checkbox', 'value'=>1, 'label'=>'I would like to receive emails about special promos and offers from Ruby\'s Gifts.']);
+        ?>
+    </fieldset>
+    <?= $this->Form->button(__('Edit My Profile'),['class'=>'btn btn-info']) ?>
+    <?= $this->Html->link('My Orders', ['action'=>'order'], ['class'=>'btn btn-info']);?>
+    <?= $this->Form->end() ?>
+
+         </div>
       </div>

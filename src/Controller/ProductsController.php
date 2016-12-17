@@ -24,6 +24,18 @@ class ProductsController extends AppController
      */
     public function index($maincate=null, $cate=null, $subcate=null)
     {
+        if($this->request->is('post')){
+            $price=$this->request->data['price'];
+            $arrPrice=explode('-', $price);
+            $param_min_price=str_replace('$', '', trim($arrPrice[0]));
+            $param_max_price=str_replace('$', '', trim($arrPrice[1]));
+            
+            $param_brands=isset($this->request->data['brands'])?$this->request->data['brands']:0;
+            $param_styles=isset($this->request->data['styles'])?$this->request->data['styles']:0;
+            $param_materials=isset($this->request->data['materials'])?$this->request->data['materials']:0;
+            
+        }
+        
         if($subcate!==null){
 			// Set category title
 			$this->loadModel('Subcategory');
@@ -79,6 +91,29 @@ class ProductsController extends AppController
 				$subcate_list[]=0;
 			}
         }
+        
+        //Get max price
+        $this->loadModel('Products');
+        $max_price_result=$this->Products->find('all');
+        $max_price_result->select(['max_price' => $max_price_result->func()->max('sale_price')])
+                    ;
+        $max_price=0;
+        //echo '<pre>'; print_r($max_price_result); exit;
+        foreach($max_price_result as $m){
+            $max_price=$m->max_price;
+        }
+        
+        //brand list
+        $this->loadModel('Brands');
+        $brands=$this->Brands->find('list');
+
+        //material list
+        $this->loadModel('Material');
+        $materials=$this->Material->find('list');
+
+        //style list
+        $this->loadModel('Style');
+        $styles=$this->Style->find('list');
 
 		//Get Product list
 		$products = $this->Products->find()
@@ -86,11 +121,40 @@ class ProductsController extends AppController
 		if(isset($subcate_list)){
 			$products->where(array('subcategory_id IN'=>$subcate_list));
 		}
+        //echo $min_price;
+        if(isset($param_min_price)){
+            $products->where([
+                'Products.sale_price BETWEEN :min_price AND :max_price'
+            ])
+            ->bind(':min_price', $param_min_price)
+            ->bind(':max_price',   $param_max_price);
+        }
+        
+        if($this->request->is('post')){
+            if($param_brands){
+                $products->where([
+                    'Products.brands_id IN'=>$param_brands
+                ]);
+            }
+            
+            if($param_styles){
+                $products->where([
+                    'Products.style_id IN'=>$param_styles
+                ]);
+            }
+            
+            if($param_materials){
+                $products->where([
+                    'Products.material_id IN'=>$param_materials
+                ]);
+            }
+        }
+        
 		//debug($products);
         $products = $this->paginate($products);
 
 		$this->set('cate_title', $cate_title);
-        $this->set(compact('products'));
+        $this->set(compact('products', 'brands', 'materials', 'styles', 'max_price', 'param_min_price', 'param_max_price'));
         $this->set('_serialize', ['products']);
     }
 
@@ -103,13 +167,17 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
-				$this->loadModel('Category');
+        $this->loadModel('Category');
+        $this->loadModel('Style');
+        $this->loadModel('Material');
         $product = $this->Products->find('all')
 							->select($this->Products)
 							->select($this->Category)
 							->select($this->Products->Subcategory)
 							->select($this->Products->Suppliers)
 							->select($this->Products->Brands)
+							->select($this->Material)
+							->select($this->Style)
 							->join(array(
 								'table'=>'subcategory',
 								'alias'=>'Subcategory',
@@ -132,6 +200,18 @@ class ProductsController extends AppController
 								'table'=>'brands',
 								'alias'=>'brands',
 								'conditions'=>array('Products.brands_id=brands.id'),
+								'type'=>'LEFT OUTER'
+							))
+                            ->join(array(
+								'table'=>'material',
+								'alias'=>'material',
+								'conditions'=>array('Products.material_id=material.id'),
+								'type'=>'LEFT OUTER'
+							))
+                            ->join(array(
+								'table'=>'style',
+								'alias'=>'style',
+								'conditions'=>array('Products.style_id=style.id'),
 								'type'=>'LEFT OUTER'
 							))
 							->where(array('Products.id'=>$id))
@@ -368,9 +448,19 @@ class ProductsController extends AppController
 				//supplier list
 				$this->loadModel('Suppliers');
 				$suppliers=$this->Suppliers->find('list');
+        
+                //material list
+				$this->loadModel('Material');
+				$materials=$this->Material->find('list');
+        
+                //style list
+				$this->loadModel('Style');
+				$styles=$this->Style->find('list');
+        
+                
 
         //$subcategory = $this->Products->Subcategory->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'subcategory', 'brands', 'suppliers'));
+        $this->set(compact('product', 'subcategory', 'brands', 'suppliers', 'materials', 'styles'));
         $this->set('_serialize', ['product']);
     }
 
@@ -519,8 +609,16 @@ class ProductsController extends AppController
 				//supplier list
 				$this->loadModel('Suppliers');
 				$suppliers=$this->Suppliers->find('list');
+        
+                //material list
+				$this->loadModel('Material');
+				$materials=$this->Material->find('list');
+        
+                //style list
+				$this->loadModel('Style');
+				$styles=$this->Style->find('list');
 
-        $this->set(compact('product', 'subcategory', 'brands', 'suppliers'));
+        $this->set(compact('product', 'subcategory', 'brands', 'suppliers', 'materials', 'styles'));
         $this->set('_serialize', ['product']);
     }
 

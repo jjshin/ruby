@@ -10,7 +10,15 @@ use App\Controller\AppController;
  */
 class StyleController extends AppController
 {
-
+    
+    public function initialize()
+    {
+      parent::initialize();
+      $this->Auth->deny();
+      $this->viewBuilder()->layout('admin');
+    }
+    
+    
     /**
      * Index method
      *

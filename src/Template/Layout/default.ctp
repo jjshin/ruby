@@ -37,14 +37,17 @@ $cakeDescription = 'Rubys Gifts';
 	<script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/slick.min.js"></script>
     <script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/dropdown.js"></script>
     <script type="text/javascript" src="<?php echo  $this->request->webroot;?>js/jquery.elevateZoom-3.0.8.min.js"></script>
-    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+    
     <!-- Latest compiled and minified CSS -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo  $this->request->webroot;?>css/slick-theme.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <?= $this->Html->css('custom.css') ?>
 </head>
 <body>

@@ -32,19 +32,19 @@
         <?php if(!empty($product->retail_price) && $product->retail_price > $product->sale_price){?>
         <small><strike><?= $this->Number->currency($product->retail_price, 'USD') ?></strike></small>
         <?php }?></h2>
+        
     
-    
-
-                
-        <!-- <div class="col-xs-12">
-            <span class="label label-success"><?= $product->Brands['name']; ?></span>
-            <span class="label label-warning">SKU: <?= $product->sku; ?></span>
-        </div> -->
-        <!-- <br> -->
+        <?php /* <span class="label label-warning">SKU: <?= $product->sku; ?></span> */ ?>
         <div class="col-md-12">
             <h4><?= $this->Text->autoParagraph(h($product->short_desc)); ?></h4>
         </div>
 
+        <div class="col-xs-12">
+            <span class="label label-success"><?= $product->Brands['name']; ?></span> 
+            <span class="label label-warning"><?= $product->Style['name']; ?></span> 
+            <span class="label label-danger"><?= $product->Material['name']; ?></span>
+        </div>
+        
         <div class="col-xs-6 col-sm-2">
             QUANTITY<?= $this->Form->number('qty', ['class'=>'form-control', 'placeholder'=>'Qty', 'value'=>1, 'min'=>1]);?>
         </div>

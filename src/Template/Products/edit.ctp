@@ -9,6 +9,8 @@
             echo $this->Form->input('subcategory_id', ['options' => $subcategory, 'class' => 'form-control']);
             echo $this->Form->input('suppliers_id', ['options' => $suppliers, 'class' => 'form-control']);
             echo $this->Form->input('brands_id', ['options' => $brands, 'class' => 'form-control']);
+            echo $this->Form->input('style_id', ['options' => $styles, 'class' => 'form-control']);
+            echo $this->Form->input('material_id', ['options' => $materials, 'class' => 'form-control']);
             echo $this->Form->input('name', ['class' => 'form-control']);
             echo $this->Form->input('qty', ['class' => 'form-control', 'min'=>0]);
 

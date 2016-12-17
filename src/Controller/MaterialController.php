@@ -10,7 +10,15 @@ use App\Controller\AppController;
  */
 class MaterialController extends AppController
 {
-
+    
+    public function initialize()
+    {
+      parent::initialize();
+      $this->Auth->deny();
+      $this->viewBuilder()->layout('admin');
+    }
+    
+    
     /**
      * Index method
      *
